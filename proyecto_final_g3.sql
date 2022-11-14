@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2022 a las 21:00:48
+-- Tiempo de generación: 14-11-2022 a las 14:14:44
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -73,8 +73,8 @@ CREATE TABLE `paciente` (
   `nombre` varchar(20) NOT NULL,
   `apellido` varchar(20) NOT NULL,
   `domicilio` varchar(20) NOT NULL,
-  `dni` int(11) NOT NULL,
-  `telefono` float NOT NULL
+  `dni` varchar(15) NOT NULL,
+  `telefono` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -106,7 +106,8 @@ ALTER TABLE `itemdieta`
 -- Indices de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
