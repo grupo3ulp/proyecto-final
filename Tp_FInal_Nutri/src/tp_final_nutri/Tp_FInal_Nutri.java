@@ -15,7 +15,10 @@ public class Tp_FInal_Nutri {
         
         Paciente pacienteAux=new Paciente("marco", "silva", "Que te importa", "35656989", "2664698789");
         pacienteData.createPaciente(pacienteAux);
-        //una palabra
+//        System.out.println(pacienteData.readPaciente(1));
+//        pacienteData.readAllPaciente().forEach(System.out::println);
+//        pacienteData.updatePaciente(1, "Pepe", "Pepe", "Que te importa2", "55555555", "999999999", true);
+//        pacienteData.deletePaciente(1);
     }
     
 }
