@@ -17,7 +17,7 @@ public class PacienteData {
     }
 
     public void createPaciente(Paciente pacienteAux) {
-        String sql = "INSERT INTO `paciente`( `nombre`, `apellido`, `domicilio`, `dni`, `telefono`) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO `paciente`(`nombre`, `apellido`, `domicilio`, `dni`, `telefono`, `estado`) VALUES (?,?,?,?,?,?)";
         try {
 
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

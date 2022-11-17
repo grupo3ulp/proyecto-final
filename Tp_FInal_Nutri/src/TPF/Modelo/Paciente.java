@@ -32,6 +32,14 @@ public class Paciente {
         this.telefono = telefono;
         this.estado = estado;
     }
+
+    public Paciente(String nombre, String apellido, String domicilio, String dni, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.dni = dni;
+        this.telefono = telefono;
+    }
     
     public int getId() {
         return id;

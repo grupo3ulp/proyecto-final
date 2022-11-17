@@ -13,7 +13,7 @@ public class Tp_FInal_Nutri {
         
         PacienteData pacienteData=new PacienteData();
         
-        Paciente pacienteAux=new Paciente("marco", "silva", "Que te importa", "35656989", "2664698789",true);
+        Paciente pacienteAux=new Paciente("marco", "silva", "Que te importa", "35656989", "2664698789");
         pacienteData.createPaciente(pacienteAux);
     }
     
