@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 14:14:44
+-- Tiempo de generación: 17-11-2022 a las 22:51:07
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -31,7 +31,8 @@ CREATE TABLE `comida` (
   `id` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `detalles` varchar(200) DEFAULT NULL,
-  `calorias` int(11) NOT NULL
+  `calorias` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -47,7 +48,8 @@ CREATE TABLE `dieta` (
   `fecha_fin` date NOT NULL,
   `peso_inicial` double NOT NULL,
   `peso_deseado` double NOT NULL,
-  `limite_calorico` int(11) NOT NULL
+  `limite_calorico` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -59,7 +61,8 @@ CREATE TABLE `dieta` (
 CREATE TABLE `itemdieta` (
   `id` int(11) NOT NULL,
   `id_dieta` int(11) NOT NULL,
-  `id_comida` int(11) NOT NULL
+  `id_comida` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,7 +77,8 @@ CREATE TABLE `paciente` (
   `apellido` varchar(20) NOT NULL,
   `domicilio` varchar(20) NOT NULL,
   `dni` varchar(15) NOT NULL,
-  `telefono` varchar(15) NOT NULL
+  `telefono` varchar(15) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
