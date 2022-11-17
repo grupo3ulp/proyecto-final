@@ -13,7 +13,7 @@ public class Paciente {
     
     public Paciente() {
     }
-
+ //una palabra
     public Paciente(int id, String nombre, String apellido, String domicilio, String dni, String telefono, boolean estado) {
         this.id = id;
         this.nombre = nombre;
