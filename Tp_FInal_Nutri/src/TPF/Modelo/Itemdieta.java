@@ -10,7 +10,7 @@ public class Itemdieta {
     
     public Itemdieta() {
     }
-
+ //una palabra
     public Itemdieta(int id, int id_dieta, int id_comida, boolean estado) {
         this.id = id;
         this.id_dieta = id_dieta;
@@ -24,7 +24,10 @@ public class Itemdieta {
         this.estado = estado;
     }
 
-  
+    public Itemdieta(int id_dieta, int id_comida) {
+        this.id_dieta = id_dieta;
+        this.id_comida = id_comida;
+    }
 
     public int getId() {
         return id;

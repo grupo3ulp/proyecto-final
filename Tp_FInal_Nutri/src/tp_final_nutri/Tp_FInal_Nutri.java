@@ -15,6 +15,7 @@ public class Tp_FInal_Nutri {
         
         Paciente pacienteAux=new Paciente("marco", "silva", "Que te importa", "35656989", "2664698789");
         pacienteData.createPaciente(pacienteAux);
+        //una palabra
     }
     
 }

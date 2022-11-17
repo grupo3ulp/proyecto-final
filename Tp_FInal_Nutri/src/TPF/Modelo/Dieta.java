@@ -15,7 +15,7 @@ public class Dieta {
     
     public Dieta() {
     }
-
+ //una palabra
     public Dieta(int id, int id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
         this.id = id;
         this.id_paciente = id_paciente;
@@ -36,8 +36,16 @@ public class Dieta {
         this.limite_calorico = limite_calorico;
         this.estado = estado;
     }
-    
 
+    public Dieta(int id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico) {
+        this.id_paciente = id_paciente;
+        this.fecha_incio = fecha_incio;
+        this.fecha_fin = fecha_fin;
+        this.peso_inicial = peso_inicial;
+        this.peso_deseado = peso_deseado;
+        this.limite_calorico = limite_calorico;
+    }
+    
     public int getId() {
         return id;
     }
