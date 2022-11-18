@@ -7,28 +7,29 @@ public class Itemdieta {
     private int id_dieta;
     private int id_comida;
     private boolean estado;
-    
+    private int cantidad;
+    private int dia;
     public Itemdieta() {
     }
  //una palabra
-    public Itemdieta(int id, int id_dieta, int id_comida, boolean estado) {
+
+    public Itemdieta(int id, int id_dieta, int id_comida, boolean estado, int cantidad, int dia) {
         this.id = id;
         this.id_dieta = id_dieta;
         this.id_comida = id_comida;
         this.estado = estado;
+        this.cantidad = cantidad;
+        this.dia = dia;
     }
 
-    public Itemdieta(int id_dieta, int id_comida, boolean estado) {
+    public Itemdieta(int id_dieta, int id_comida, int cantidad, int dia) {
         this.id_dieta = id_dieta;
         this.id_comida = id_comida;
-        this.estado = estado;
+        this.cantidad = cantidad;
+        this.dia = dia;
     }
-
-    public Itemdieta(int id_dieta, int id_comida) {
-        this.id_dieta = id_dieta;
-        this.id_comida = id_comida;
-    }
-
+    
+    
     public int getId() {
         return id;
     }
@@ -61,11 +62,26 @@ public class Itemdieta {
         this.estado = estado;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    
     @Override
     public String toString() {
         return "Itemdieta{" + "id=" + id + ", id_dieta=" + id_dieta + ", id_comida=" + id_comida + ", estado=" + estado + '}';
-    }
-    
-    
+    }   
     
 }
