@@ -46,15 +46,15 @@ public class ComidaData {
         }
     }
 
-    public void modificarComida(Comida c, String nombre, String detalles, int calorias) {
+    public void modificarComida(int id, String nombre, String detalles, int calorias) {
         try {
             String sql = "UPDATE `comida` SET `id`=?,`nombre`=?,`detalles`=?,`calorias`=? WHERE id=?";
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, c.getId());
+            ps.setInt(1, id);
             ps.setString(2, nombre);
             ps.setString(3, detalles);
             ps.setInt(4, calorias);
-            ps.setInt(5, c.getId());
+            ps.setInt(5, id);
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "La comida fue modificada correctamente");
