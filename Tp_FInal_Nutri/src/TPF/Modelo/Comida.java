@@ -10,7 +10,7 @@ public class Comida {
 
     public Comida() {
     }
- //una palabra
+
     public Comida(int id, String nombre, String detalles, int calorias, boolean estado) {
         this.id = id;
         this.nombre = nombre;
