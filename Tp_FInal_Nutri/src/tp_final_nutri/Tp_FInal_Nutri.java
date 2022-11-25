@@ -2,6 +2,8 @@ package tp_final_nutri;
 
 import TPF.Control.ComidaData;
 import TPF.Control.Conexion;
+import TPF.Control.PacienteData;
+import TPF.Gui.GuiCargarPaciente;
 import TPF.Modelo.Comida;
 import java.sql.Connection;
 
@@ -11,7 +13,7 @@ public class Tp_FInal_Nutri {
         Connection conec = Conexion.getConexion();
 
         //---PRUEBAS PACIENTE---
-//        PacienteData pacienteData=new PacienteData();    
+        PacienteData pacienteData = new PacienteData();
         //--CREAR PACIENTE--
 //        Paciente pacienteAux=new Paciente("marco", "silva", "Que te importa", "35656989", "2664698789");
 //        pacienteData.createPaciente(pacienteAux);
@@ -23,8 +25,8 @@ public class Tp_FInal_Nutri {
 //        pacienteData.updatePaciente(1, "Pepe", "Pepe", "Que te importa2", "55555555", "999999999", true);
         //--BORRAR PACIENTE--
 //        pacienteData.deletePaciente(1);
-//------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------
         //---PRUEBAS DIETA---
 //        DietaData dietaData=new DietaData();
 //        LocalDate date1 = LocalDate.of(2021, 11, 20);
@@ -43,10 +45,9 @@ public class Tp_FInal_Nutri {
         //--BORRAR DIETA--
 //        dietaData.deleteDieta(2);
 //------------------------------------------------------------------------------
-
         //---PRUEBAS COMIDA---
         //ComidaData comidaData = new ComidaData();
- //       Comida c = new Comida("Pizza", "Muzzarella con palmitos", 500);
+        //       Comida c = new Comida("Pizza", "Muzzarella con palmitos", 500);
         //Comida c1 = new Comida("Arroz", "Blanco o integral", 300);
         //Comida c2 = new Comida("Tarta", "De verduras con queso", 400);
         //Comida c3 = new Comida("Empanadas", "Humita", 500);
@@ -65,8 +66,6 @@ public class Tp_FInal_Nutri {
 //        for (Comida comidas : comidaData.mostrarComidas()) {
 //            System.out.println(comidas);
 //        }
-        
-
     }
 
 }

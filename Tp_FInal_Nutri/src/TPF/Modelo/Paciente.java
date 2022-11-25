@@ -9,37 +9,33 @@ public class Paciente {
     private String domicilio;
     private String dni;
     private String telefono;
+    private float pesoActual;
     private boolean estado;
     
     public Paciente() {
     }
- //una palabra
-    public Paciente(int id, String nombre, String apellido, String domicilio, String dni, String telefono, boolean estado) {
+
+    public Paciente(int id, String nombre, String apellido, String domicilio, String dni, String telefono, float pesoActual, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
+        this.pesoActual = pesoActual;
         this.estado = estado;
     }
 
-    public Paciente(String nombre, String apellido, String domicilio, String dni, String telefono, boolean estado) {
+    public Paciente(String nombre, String apellido, String domicilio, String dni, String telefono, float pesoActual) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
-        this.estado = estado;
+        this.pesoActual = pesoActual;
     }
 
-    public Paciente(String nombre, String apellido, String domicilio, String dni, String telefono) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.dni = dni;
-        this.telefono = telefono;
-    }
+
     
     public int getId() {
         return id;
@@ -89,6 +85,15 @@ public class Paciente {
         this.telefono = telefono;
     }
 
+    public float getPesoActual() {
+        return pesoActual;
+    }
+
+    public void setPesoActual(float pesoActual) {
+        this.pesoActual = pesoActual;
+    }
+    
+
     public boolean isEstado() {
         return estado;
     }
@@ -99,7 +104,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", domicilio=" + domicilio + ", dni=" + dni + ", telefono=" + telefono + ", estado=" + estado + '}';
+        return  apellido + " " +nombre +  " - DNI: " + dni;
     }
     
     
