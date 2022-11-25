@@ -179,6 +179,49 @@ public class PacienteData {
         }
 
     }
+     
+     public void readAllPacienteNoCumplieronMeta(DefaultTableModel modelo) {
+        Paciente pacienteAux = new Paciente();
+        float pesoDeseado;
+        float pesoInicial;
+        float kilosBuscados;
+          float kilosBajados;
+        String sql = "SELECT p.id, nombre, apellido, domicilio, dni, telefono,"
+                + " peso_actual,peso_inicial, peso_deseado,(d.peso_inicial-d.peso_deseado)"
+                + " as \"kilos_a_bajar\", (d.peso_inicial-p.peso_actual)"
+                + " as \"kilos_bajados\" FROM paciente p JOIN dieta d"
+                + " ON d.id_paciente = p.id"
+                + " WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                pacienteAux.setId(rs.getInt("id"));
+                pacienteAux.setNombre(rs.getString("nombre"));
+                pacienteAux.setApellido(rs.getString("apellido"));
+                pacienteAux.setDomicilio(rs.getString("domicilio"));
+                pacienteAux.setDni(rs.getString("dni"));
+                pacienteAux.setTelefono(rs.getString("telefono"));
+                pacienteAux.setPesoActual(rs.getFloat("peso_actual"));
+                pesoInicial=rs.getFloat("peso_inicial");
+                pesoDeseado=rs.getFloat("peso_deseado");
+                kilosBuscados=rs.getFloat("kilos_a_bajar");
+                kilosBajados=rs.getFloat("kilos_bajados");
+
+                modelo.addRow(new Object[]{ pacienteAux.getNombre(),pacienteAux.getApellido(),
+                pacienteAux.getDomicilio(),pacienteAux.getDni(),pacienteAux.getTelefono(),
+                pacienteAux.getPesoActual(),pesoInicial,pesoDeseado,kilosBuscados,kilosBajados});
+                System.out.println("aaaaa");
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+        }
+
+    }
 
     public void readAllPacientePeso(float kilos, DefaultTableModel modelo) {
         Paciente pacienteAux = new Paciente();

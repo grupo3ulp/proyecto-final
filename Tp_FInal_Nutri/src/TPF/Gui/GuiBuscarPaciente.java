@@ -74,6 +74,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tPacientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        rbtnSinCumplir = new javax.swing.JRadioButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Buscar Paciente");
@@ -85,7 +86,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        rbtnTodos.setText("Todos");
+        rbtnTodos.setText("Mostrar Todos");
         rbtnTodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnTodosMousePressed(evt);
@@ -139,21 +140,17 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
 
         jLabel2.setText("* Simbolo negativo significa que subio de peso");
 
+        rbtnSinCumplir.setText("Mostrar Pacientes sin cumplir meta");
+        rbtnSinCumplir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rbtnSinCumplirMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnKilos)
-                    .addComponent(rbtnTodos)
-                    .addComponent(rbtnDni))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtKilos)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -172,7 +169,21 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(340, 340, 340))
+                .addGap(339, 339, 339))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnSinCumplir)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnKilos)
+                            .addComponent(rbtnTodos)
+                            .addComponent(rbtnDni))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtKilos)
+                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,10 +199,12 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
                     .addComponent(txtKilos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(rbtnTodos)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnSinCumplir)
+                .addGap(35, 35, 35)
                 .addComponent(btnBuscar)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -201,7 +214,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-     
+
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
@@ -215,9 +228,9 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void txtKilosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilosKeyTyped
-       
+
         Character c = evt.getKeyChar();
-        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')&&!c.equals('-')) {
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.') && !c.equals('-')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
                     + "este campo");
@@ -227,11 +240,17 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     private void rbtnDniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnDniMousePressed
         if (!rbtnDni.isSelected()) {
             btnBuscar.setEnabled(false);
+            
             txtDni.setEditable(true);
             txtKilos.setEditable(false);
+            
             txtKilos.setText("");
+            txtDni.setText("");
+            
             rbtnKilos.setSelected(false);
             rbtnTodos.setSelected(false);
+            rbtnSinCumplir.setSelected(false);
+            
         }
 
 
@@ -240,24 +259,33 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     private void rbtnKilosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnKilosMousePressed
         if (!rbtnKilos.isSelected()) {
             btnBuscar.setEnabled(false);
+            
             txtDni.setEditable(false);
             txtKilos.setEditable(true);
+            
+            txtKilos.setText("");
             txtDni.setText("");
+            
             rbtnDni.setSelected(false);
             rbtnTodos.setSelected(false);
+            rbtnSinCumplir.setSelected(false);
         }
 
     }//GEN-LAST:event_rbtnKilosMousePressed
 
     private void rbtnTodosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnTodosMousePressed
         if (!rbtnTodos.isSelected()) {
+            btnBuscar.setEnabled(true);
+            
             txtDni.setEditable(false);
             txtKilos.setEditable(false);
-            rbtnDni.setSelected(false);
+
             txtKilos.setText("");
             txtDni.setText("");
+
+            rbtnDni.setSelected(false);
             rbtnKilos.setSelected(false);
-            btnBuscar.setEnabled(true);
+            rbtnSinCumplir.setSelected(false);
         }
 
     }//GEN-LAST:event_rbtnTodosMousePressed
@@ -276,11 +304,9 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
 
         } else if (rbtnTodos.isSelected()) {
             pacienteData.readAllPaciente(modelo);
-//            for (Paciente aux : pacienteData.readAllPaciente()) {
-//                modelo.addRow(new Object[]{aux.getNombre(), aux.getApellido(), aux.getDomicilio(),
-//                    aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
-//            }
 
+        }else if(rbtnSinCumplir.isSelected()){
+            pacienteData.readAllPacienteNoCumplieronMeta(modelo);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -294,12 +320,29 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtKilosKeyReleased
 
     private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
-         if (txtDni.getText().isEmpty() && txtKilos.getText().isEmpty()) {
+        if (txtDni.getText().isEmpty() && txtKilos.getText().isEmpty()) {
             btnBuscar.setEnabled(false);
         } else {
             btnBuscar.setEnabled(true);
         }
     }//GEN-LAST:event_txtDniKeyReleased
+
+    private void rbtnSinCumplirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnSinCumplirMousePressed
+        if (!rbtnSinCumplir.isSelected()) {
+            btnBuscar.setEnabled(true);
+            
+            txtDni.setEditable(false);
+            txtKilos.setEditable(false);
+            
+            txtKilos.setText("");
+            txtDni.setText("");
+            
+            rbtnDni.setSelected(false);
+            rbtnKilos.setSelected(false);
+            rbtnTodos.setSelected(false);           
+
+        }
+    }//GEN-LAST:event_rbtnSinCumplirMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -309,6 +352,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnDni;
     private javax.swing.JRadioButton rbtnKilos;
+    private javax.swing.JRadioButton rbtnSinCumplir;
     private javax.swing.JRadioButton rbtnTodos;
     private javax.swing.JTable tPacientes;
     private javax.swing.JTextField txtDni;

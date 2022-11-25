@@ -19,20 +19,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="rbtnKilos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnTodos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnDni" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtKilos" max="32767" attributes="0"/>
-                  <Component id="txtDni" min="-2" pref="306" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="187" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -58,7 +44,26 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnBuscar" min="-2" pref="174" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="339" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="rbtnSinCumplir" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="rbtnKilos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnTodos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbtnDni" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtKilos" max="32767" attributes="0"/>
+                          <Component id="txtDni" min="-2" pref="306" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="187" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,10 +83,12 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="rbtnTodos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="rbtnSinCumplir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="340" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="256" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -108,7 +115,7 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbtnTodos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Todos"/>
+        <Property name="text" type="java.lang.String" value="Mostrar Todos"/>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnTodosMousePressed"/>
@@ -167,6 +174,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="* Simbolo negativo significa que subio de peso"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbtnSinCumplir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mostrar Pacientes sin cumplir meta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnSinCumplirMousePressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
