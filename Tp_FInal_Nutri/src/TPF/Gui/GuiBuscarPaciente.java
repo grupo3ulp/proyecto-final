@@ -264,8 +264,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{aux.getNombre(), aux.getApellido(), aux.getDomicilio(),
                     aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
         } else if (rbtnKilos.isSelected()) {
-            System.out.println("KILOS");
-            
+            pacienteData.readAllPacientePeso(Float.parseFloat(txtKilos.getText()), modelo);           
 
         } else if (rbtnTodos.isSelected()) {
             for (Paciente aux : pacienteData.readAllPaciente()) {
