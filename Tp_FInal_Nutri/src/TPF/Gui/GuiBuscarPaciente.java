@@ -265,6 +265,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
                     aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
         } else if (rbtnKilos.isSelected()) {
             System.out.println("KILOS");
+            
 
         } else if (rbtnTodos.isSelected()) {
             for (Paciente aux : pacienteData.readAllPaciente()) {

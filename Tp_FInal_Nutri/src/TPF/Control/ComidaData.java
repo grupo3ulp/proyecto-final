@@ -46,15 +46,15 @@ public class ComidaData {
         }
     }
 
-    public void modificarComida(int id, String nombre, String detalles, int calorias) {
+    public void modificarComida(Comida c, String nombre, String detalles, int calorias) {
         try {
             String sql = "UPDATE `comida` SET `id`=?,`nombre`=?,`detalles`=?,`calorias`=? WHERE id=?";
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id);
+            ps.setInt(1, c.getId());
             ps.setString(2, nombre);
             ps.setString(3, detalles);
             ps.setInt(4, calorias);
-            ps.setInt(5, id);
+            ps.setInt(5, c.getId());
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "La comida fue modificada correctamente");
@@ -137,6 +137,29 @@ public class ComidaData {
         }
         return listaAux;
 
+    }
+    
+    public ArrayList<Comida> buscarMinCal(int calorias){
+        ArrayList<Comida> listaAux = new ArrayList();
+        String sql = "SELECT * FROM `comida` WHERE estado=1 AND calorias < ?;";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, calorias);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comida comidaAux = new Comida();
+                comidaAux.setId(rs.getInt("id"));
+                comidaAux.setNombre(rs.getString("nombre"));
+                comidaAux.setDetalles(rs.getString("detalles"));
+                comidaAux.setCalorias(rs.getInt("calorias"));
+                comidaAux.setEstado(rs.getBoolean("estado"));
+                listaAux.add(comidaAux);
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+        }
+        return listaAux;
     }
 
 }
