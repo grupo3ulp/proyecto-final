@@ -94,6 +94,8 @@ public class DietaData {
                 dietaAux.setPeso_deseado(rs.getDouble(6));
                 dietaAux.setLimite_calorico(rs.getInt(7));
                 dietaAux.setEstado(rs.getBoolean(8));
+                
+                listaAux.add(dietaAux);
             }
 
             conec.close();

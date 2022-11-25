@@ -97,12 +97,18 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
         });
 
         txtKilos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKilosKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtKilosKeyTyped(evt);
             }
         });
 
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDniKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
             }
@@ -150,8 +156,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
                             .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(156, 156, 156))
             .addGroup(layout.createSequentialGroup()
                 .addGap(298, 298, 298)
@@ -183,12 +188,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-        if (txtDni.getText().length() == 0 && txtKilos.getText().length() == 0) {
-            btnBuscar.setEnabled(false);
-        } else {
-            btnBuscar.setEnabled(true);
-        }
-
+     
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
@@ -202,12 +202,7 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void txtKilosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilosKeyTyped
-        if (txtDni.getText().length() == 0 && txtKilos.getText().length() == 0) {
-            btnBuscar.setEnabled(false);
-        } else {
-            btnBuscar.setEnabled(true);
-        }
-
+       
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')) {
             evt.consume();
@@ -260,11 +255,11 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
         borrarFilasTabla();
 
         if (rbtnDni.isSelected()) {
-            Paciente aux=pacienteData.readPacienteDni(txtDni.getText());
+            Paciente aux = pacienteData.readPacienteDni(txtDni.getText());
             modelo.addRow(new Object[]{aux.getNombre(), aux.getApellido(), aux.getDomicilio(),
-                    aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
+                aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
         } else if (rbtnKilos.isSelected()) {
-            pacienteData.readAllPacientePeso(Float.parseFloat(txtKilos.getText()), modelo);           
+            pacienteData.readAllPacientePeso(Float.parseFloat(txtKilos.getText()), modelo);
 
         } else if (rbtnTodos.isSelected()) {
             for (Paciente aux : pacienteData.readAllPaciente()) {
@@ -273,11 +268,24 @@ public class GuiBuscarPaciente extends javax.swing.JInternalFrame {
             }
 
         }
-
-//        columnas.add("Peso Actual");
-//        columnas.add("Peso Buscado");
-//        columnas.add("Total kilos a bajar");
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtKilosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilosKeyReleased
+        if (txtDni.getText().isEmpty() && txtKilos.getText().isEmpty()) {
+            btnBuscar.setEnabled(false);
+        } else {
+            btnBuscar.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_txtKilosKeyReleased
+
+    private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
+         if (txtDni.getText().isEmpty() && txtKilos.getText().isEmpty()) {
+            btnBuscar.setEnabled(false);
+        } else {
+            btnBuscar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtDniKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

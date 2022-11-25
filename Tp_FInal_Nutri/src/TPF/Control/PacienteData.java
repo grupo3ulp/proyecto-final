@@ -143,7 +143,7 @@ public class PacienteData {
         float pesoDeseado;
         float kilosBuscados;
         String sql = "SELECT p.id, nombre, apellido, domicilio, dni, telefono, "
-                + "peso_actual, peso_deseado,(d.peso_deseado-p.peso_actual)"
+                + "peso_inicial, peso_deseado,(d.peso_deseado-p.peso_actual)"
                 + "as\"kilos_a_bajar\"FROM paciente p JOIN dieta d ON d.id_paciente"
                 + " = p.id WHERE (p.peso_actual - d.peso_deseado) < ?";
         try {
@@ -158,11 +158,13 @@ public class PacienteData {
                 pacienteAux.setDomicilio(rs.getString("domicilio"));
                 pacienteAux.setDni(rs.getString("dni"));
                 pacienteAux.setTelefono(rs.getString("telefono"));
-                pacienteAux.setPesoActual(rs.getFloat("peso_actual"));
+                pacienteAux.setPesoActual(rs.getFloat("peso_inicial"));
                 pesoDeseado=(rs.getFloat("peso_deseado"));
                 kilosBuscados=(rs.getFloat("kilos_a_bajar"));
 
-                modelo.addRow(new Object[]{ pacienteAux.getNombre()});
+                modelo.addRow(new Object[]{ pacienteAux.getNombre(),pacienteAux.getApellido(),
+                pacienteAux.getDomicilio(),pacienteAux.getDni(),pacienteAux.getTelefono(),
+                pacienteAux.getPesoActual(),pesoDeseado,kilosBuscados});
                 System.out.println("aaaaa");
             }
 
