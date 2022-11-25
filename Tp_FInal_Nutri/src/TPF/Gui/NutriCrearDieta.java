@@ -246,7 +246,7 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
 
     private void PITextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextKeyTyped
         Character c = evt.getKeyChar();
-        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals(',')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
                     + "este campo");
@@ -255,7 +255,7 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
 
     private void PDTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PDTextKeyTyped
         Character c = evt.getKeyChar();
-        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals(',')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
                     + "este campo");
@@ -264,7 +264,7 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
 
     private void LCTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LCTextKeyTyped
         Character c = evt.getKeyChar();
-        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals(',')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
                     + "este campo");

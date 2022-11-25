@@ -315,7 +315,7 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void habilitarBoton(){
-        if (!PITextMod.getText().isEmpty() && !PDTextMod.getText().isEmpty() && !LCTextMod.getText().isEmpty() && !((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).getText().isEmpty()) {
+        if (PITextMod.getText().isEmpty() || PDTextMod.getText().isEmpty() || LCTextMod.getText().isEmpty() && ((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).getText().isEmpty()) {
             MDGuardar.setEnabled(false);
         }else{
             MDGuardar.setEnabled(true);
@@ -406,6 +406,10 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
         for (Dieta dieta : dietaData.readAllDieta()) {
             if (((Paciente)NModDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
                 NModDietaD.addItem(dieta);
+                PITextMod.setText(String.valueOf(dieta.getPeso_inicial()));
+                PDTextMod.setText(String.valueOf(dieta.getPeso_deseado()));
+                LCTextMod.setText(String.valueOf(dieta.getLimite_calorico()));
+                FIDateChooserMod.setDate(java.sql.Date.valueOf(dieta.getFecha_incio()));
             }
         }
     }//GEN-LAST:event_NModDietaPItemStateChanged
