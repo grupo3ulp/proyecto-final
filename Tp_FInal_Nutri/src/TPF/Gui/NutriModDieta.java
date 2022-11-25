@@ -4,6 +4,15 @@
  */
 package TPF.Gui;
 
+import TPF.Control.DietaData;
+import TPF.Control.PacienteData;
+import TPF.Modelo.Dieta;
+import TPF.Modelo.Paciente;
+import java.time.LocalDate;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author dante
@@ -15,6 +24,19 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
      */
     public NutriModDieta() {
         initComponents();
+        MDGuardar.setEnabled(false);
+        
+        PacienteData pacienteData = new PacienteData();
+        
+        
+        for (Paciente paciente : pacienteData.readAllPaciente()) {
+            
+           NModDietaP.addItem(paciente);
+           NBorrarDietaP.addItem(paciente);
+            
+        }
+        
+        
     }
 
     /**
@@ -26,21 +48,402 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        NModDietaP = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        NModDietaD = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        PITextMod = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        PDTextMod = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        FIDateChooserMod = new com.toedter.calendar.JDateChooser();
+        LCTextMod = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        MDGuardar = new javax.swing.JButton();
+        MDLimpiar = new javax.swing.JButton();
+        MDCerrar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        BDBorrar = new javax.swing.JButton();
+        BDCerrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        NBorrarDietaP = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        NBorrarDietaD = new javax.swing.JComboBox<>();
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Modificar Dieta");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setText("Elija un paciente:");
+
+        NModDietaP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NModDietaPItemStateChanged(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setText("Elija una dieta del paciente: ");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel4.setText("Ingrese su peso inicial:");
+
+        PITextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                PITextModKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PITextModKeyTyped(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel5.setText("Ingrese el peso deseado:");
+
+        PDTextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                PDTextModKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PDTextModKeyTyped(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel6.setText("Ingrese el limite de calorias:");
+
+        FIDateChooserMod.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                FIDateChooserModPropertyChange(evt);
+            }
+        });
+
+        LCTextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                LCTextModKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                LCTextModKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setText("Ingrese la fecha de inicio:");
+
+        MDGuardar.setText("Guardar");
+        MDGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MDGuardarActionPerformed(evt);
+            }
+        });
+
+        MDLimpiar.setText("Limpiar");
+        MDLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MDLimpiarActionPerformed(evt);
+            }
+        });
+
+        MDCerrar.setText("Cerrar");
+        MDCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MDCerrarActionPerformed(evt);
+            }
+        });
+
+        BDBorrar.setText("Borrar");
+        BDBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDBorrarActionPerformed(evt);
+            }
+        });
+
+        BDCerrar.setText("Cerrar");
+        BDCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDCerrarActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setText("Borrar Dieta");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("Elija un paciente:");
+
+        NBorrarDietaP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NBorrarDietaPItemStateChanged(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setText("Elija una dieta del paciente: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(227, 227, 227))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(NModDietaD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(NModDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(15, 15, 15))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PITextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FIDateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LCTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PDTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(162, 162, 162))))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(MDGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(MDLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(MDCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(BDBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(286, 286, 286)
+                        .addComponent(BDCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NBorrarDietaD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(NBorrarDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(NModDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(NModDietaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(PITextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(PDTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(LCTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FIDateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MDGuardar)
+                    .addComponent(MDLimpiar)
+                    .addComponent(MDCerrar))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(NBorrarDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(NBorrarDietaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BDBorrar)
+                    .addComponent(BDCerrar))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void habilitarBoton(){
+        if (!PITextMod.getText().isEmpty() && !PDTextMod.getText().isEmpty() && !LCTextMod.getText().isEmpty() && !((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            MDGuardar.setEnabled(false);
+        }else{
+            MDGuardar.setEnabled(true);
+        }
+            
+    }
+    
+    private void PITextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextModKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_PITextModKeyReleased
+
+    private void PITextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextModKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                + "este campo");
+        }
+    }//GEN-LAST:event_PITextModKeyTyped
+
+    private void PDTextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PDTextModKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_PDTextModKeyReleased
+
+    private void PDTextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PDTextModKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                + "este campo");
+        }
+    }//GEN-LAST:event_PDTextModKeyTyped
+
+    private void FIDateChooserModPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FIDateChooserModPropertyChange
+        habilitarBoton();
+    }//GEN-LAST:event_FIDateChooserModPropertyChange
+
+    private void LCTextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LCTextModKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_LCTextModKeyReleased
+
+    private void LCTextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LCTextModKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                + "este campo");
+        }
+    }//GEN-LAST:event_LCTextModKeyTyped
+
+    private void MDGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDGuardarActionPerformed
+        int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea asignar esta dieta?");
+        if (aux == 0){
+            Dieta dt = new Dieta();
+            int d = FIDateChooserMod.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int m = FIDateChooserMod.getCalendar().getTime().getMonth() + 1;
+            int an = FIDateChooserMod.getCalendar().getTime().getYear() + 1900;
+
+            DietaData DD = new DietaData();
+            
+            DD.updateDieta(((Dieta)NModDietaD.getSelectedItem()).getId(), LocalDate.of(an, m, d), LocalDate.of(an, m, d).plusDays(7), Double.parseDouble(PITextMod.getText()), Double.parseDouble(PDTextMod.getText()), Integer.parseInt(LCTextMod.getText()), true);
+        }
+    }//GEN-LAST:event_MDGuardarActionPerformed
+
+    private void MDLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDLimpiarActionPerformed
+        PITextMod.setText("");
+        PDTextMod.setText("");
+        LCTextMod.setText("");
+        ((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).setText("");
+        habilitarBoton();
+    }//GEN-LAST:event_MDLimpiarActionPerformed
+
+    private void MDCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_MDCerrarActionPerformed
+
+    private void BDBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDBorrarActionPerformed
+        DietaData dietaData = new DietaData();
+        dietaData.deleteDieta(((Dieta) NBorrarDietaD.getSelectedItem()).getId());
+    }//GEN-LAST:event_BDBorrarActionPerformed
+
+    private void BDCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_BDCerrarActionPerformed
+
+    private void NModDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NModDietaPItemStateChanged
+        DietaData dietaData = new DietaData();
+        for (Dieta dieta : dietaData.readAllDieta()) {
+            if (((Paciente)NModDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
+                NModDietaD.addItem(dieta);
+            }
+        }
+    }//GEN-LAST:event_NModDietaPItemStateChanged
+
+    private void NBorrarDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NBorrarDietaPItemStateChanged
+        DietaData dietaData = new DietaData();
+        for (Dieta dieta : dietaData.readAllDieta()) {
+            if (((Paciente)NBorrarDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
+                NBorrarDietaD.addItem(dieta);
+            }
+        }
+    }//GEN-LAST:event_NBorrarDietaPItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BDBorrar;
+    private javax.swing.JButton BDCerrar;
+    private com.toedter.calendar.JDateChooser FIDateChooserMod;
+    private javax.swing.JTextField LCTextMod;
+    private javax.swing.JButton MDCerrar;
+    private javax.swing.JButton MDGuardar;
+    private javax.swing.JButton MDLimpiar;
+    private javax.swing.JComboBox<Object> NBorrarDietaD;
+    private javax.swing.JComboBox<Object> NBorrarDietaP;
+    private javax.swing.JComboBox<Object> NModDietaD;
+    private javax.swing.JComboBox<Object> NModDietaP;
+    private javax.swing.JTextField PDTextMod;
+    private javax.swing.JTextField PITextMod;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
