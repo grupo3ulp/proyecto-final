@@ -27,21 +27,104 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMAgregarComida = new javax.swing.JMenuItem();
+        jMModificarComida = new javax.swing.JMenuItem();
+        jMBuscarComida = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 688, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("Paciente");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Comida");
+
+        jMAgregarComida.setText("Agregar");
+        jMAgregarComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMAgregarComidaMousePressed(evt);
+            }
+        });
+        jMenu2.add(jMAgregarComida);
+
+        jMModificarComida.setText("Modificar");
+        jMModificarComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMModificarComidaMousePressed(evt);
+            }
+        });
+        jMenu2.add(jMModificarComida);
+
+        jMBuscarComida.setText("Buscar");
+        jMBuscarComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMBuscarComidaMousePressed(evt);
+            }
+        });
+        jMBuscarComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBuscarComidaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMBuscarComida);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Dieta");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMBuscarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBuscarComidaActionPerformed
+        MostrarComida aux = new MostrarComida();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMBuscarComidaActionPerformed
+
+    private void jMAgregarComidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMAgregarComidaMousePressed
+        AgregarComida aux = new AgregarComida();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMAgregarComidaMousePressed
+
+    private void jMModificarComidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMModificarComidaMousePressed
+        ModificarComida aux = new ModificarComida();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMModificarComidaMousePressed
+
+    private void jMBuscarComidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMBuscarComidaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMBuscarComidaMousePressed
 
     /**
      * @param args the command line arguments
@@ -79,5 +162,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem jMAgregarComida;
+    private javax.swing.JMenuItem jMBuscarComida;
+    private javax.swing.JMenuItem jMModificarComida;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

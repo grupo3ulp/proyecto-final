@@ -1,14 +1,17 @@
 package tp_final_nutri;
 
-import TPF.Control.ComidaData;
 import TPF.Control.Conexion;
-import TPF.Modelo.Comida;
+import TPF.Gui.Menu;
 import java.sql.Connection;
 
 public class Tp_FInal_Nutri {
 
     public static void main(String[] args) {
         Connection conec = Conexion.getConexion();
+        
+        Menu main=new Menu();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);    
 
         //---PRUEBAS PACIENTE---
 //        PacienteData pacienteData=new PacienteData();    
