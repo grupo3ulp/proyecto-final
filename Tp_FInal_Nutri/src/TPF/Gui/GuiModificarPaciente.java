@@ -376,8 +376,7 @@ public class GuiModificarPaciente extends javax.swing.JInternalFrame {
         pacienteData.deletePaciente(((Paciente) JComboModPac.getSelectedItem()).getId());
         int index = JComboModPac.getSelectedIndex();
         JComboModPac.removeItemAt(index);
-        
-        
+                
         System.out.println(index);
         txtNombre.setText("");
         txtApellido.setText("");
@@ -385,10 +384,7 @@ public class GuiModificarPaciente extends javax.swing.JInternalFrame {
         txtDni.setText("");
         txtTelefono.setText("");
         txtPesoActual.setText("");
-        JComboModPac.setSelectedItem(null);
-
-        
-
+        JComboModPac.setSelectedItem(null);       
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
