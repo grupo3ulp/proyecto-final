@@ -20,7 +20,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                       <Component id="jLTitulo" min="-2" max="-2" attributes="0"/>
@@ -30,27 +30,31 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jCBComida" min="-2" pref="410" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLCalorias" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLDetalles" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jBCancelar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="jBLimpiar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTFNombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTFCalorias" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTFDetalles" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLCalorias" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLDetalles" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jTFNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTFCalorias" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTFDetalles" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="jBCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jBBorrar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jBLimpiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="98" max="32767" attributes="0"/>
@@ -86,6 +90,7 @@
                   <Component id="jBGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
@@ -103,7 +108,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Elija la comida que quiere modificar"/>
+        <Property name="text" type="java.lang.String" value="Elija la comida que quiere modificar/eliminar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCBComida">
@@ -163,6 +168,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFCalorias">
+    </Component>
+    <Component class="javax.swing.JButton" name="jBBorrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Borrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBorrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -37,6 +37,10 @@ public class Menu extends javax.swing.JFrame {
         jMAgregarComida = new javax.swing.JMenuItem();
         jMModificarComida = new javax.swing.JMenuItem();
         jMBuscarComida = new javax.swing.JMenuItem();
+        MenuDieta = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +111,34 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        MenuDieta.setText("Dieta");
+
+        jMenuItem3.setText("Agregar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MenuDieta.add(jMenuItem3);
+
+        jMenuItem4.setText("Modificar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        MenuDieta.add(jMenuItem4);
+
+        jMenuItem5.setText("Buscar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        MenuDieta.add(jMenuItem5);
+
+        jMenuBar1.add(MenuDieta);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +191,24 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(aux);
     }//GEN-LAST:event_jMBuscarComidaMousePressed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        NutriCrearDieta aux = new NutriCrearDieta();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        NutriModDieta aux = new NutriModDieta();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        NutriBuscarDieta aux = new NutriBuscarDieta();
+        aux.setVisible(true);
+        jDesktopPane1.add(aux);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +223,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuDieta;
     private javax.swing.JMenu Paciente;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMAgregarComida;
@@ -182,6 +233,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem miBuscar;
     // End of variables declaration//GEN-END:variables
 }

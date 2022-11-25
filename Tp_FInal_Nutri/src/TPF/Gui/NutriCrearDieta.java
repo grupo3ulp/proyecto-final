@@ -4,6 +4,7 @@
  */
 package TPF.Gui;
 
+import TPF.Control.DietaData;
 import TPF.Control.PacienteData;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Paciente;
@@ -215,7 +216,7 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void habilitarBoton(){
-        if (!PIText.getText().isEmpty() && !PDText.getText().isEmpty() && !LCText.getText().isEmpty() && !((JTextField) FIDateChooser.getDateEditor().getUiComponent()).getText().isEmpty()) {
+        if (PIText.getText().isEmpty() || PDText.getText().isEmpty() || LCText.getText().isEmpty() || ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).getText().isEmpty()) {
             CDGuardar.setEnabled(false);
         }else{
             CDGuardar.setEnabled(true);
@@ -292,6 +293,22 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
             dt.setFecha_incio(LocalDate.of(an, m, d));
             dt.setFecha_fin(LocalDate.of(an, m, d).plusDays(7));
             dt.setId_paciente(((Paciente)CDListaPaciente.getSelectedItem()).getId());
+            
+            DietaData DD = new DietaData();
+            
+            DD.createDieta(dt);
+            
+            PIText.setText("");
+            PDText.setText("");
+            LCText.setText("");
+            ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
+            CDGuardar.setEnabled(false);
+         }else if(aux == 1){
+             PIText.setText("");
+            PDText.setText("");
+            LCText.setText("");
+            ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
+            CDGuardar.setEnabled(false);
          }
     }//GEN-LAST:event_CDGuardarActionPerformed
 
