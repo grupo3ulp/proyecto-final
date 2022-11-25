@@ -46,11 +46,12 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         jLDetalles = new javax.swing.JLabel();
         jTFNombre = new javax.swing.JTextField();
         jTFCalorias = new javax.swing.JTextField();
+        jBBorrar = new javax.swing.JButton();
 
         jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLTitulo.setText("Modificar Comida");
 
-        jLabel1.setText("Elija la comida que quiere modificar");
+        jLabel1.setText("Elija la comida que quiere modificar/eliminar");
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,12 +86,19 @@ public class ModificarComida extends javax.swing.JInternalFrame {
             }
         });
 
+        jBBorrar.setText("Borrar");
+        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLTitulo))
@@ -98,23 +106,27 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLNombre)
-                                    .addComponent(jLCalorias)
-                                    .addComponent(jLDetalles))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jBCancelar)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(jBLimpiar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBGuardar))
-                                    .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFCalorias, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFDetalles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLNombre)
+                            .addComponent(jLCalorias)
+                            .addComponent(jLDetalles))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFCalorias, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFDetalles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jBCancelar)
+                        .addGap(32, 32, 32)
+                        .addComponent(jBBorrar)
+                        .addGap(33, 33, 33)
+                        .addComponent(jBLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBGuardar)))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -142,7 +154,8 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
                     .addComponent(jBCancelar)
-                    .addComponent(jBLimpiar))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBBorrar))
                 .addGap(36, 36, 36))
         );
 
@@ -168,8 +181,14 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
 
+    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
+        ComidaData CD = new ComidaData();
+        CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
+    }//GEN-LAST:event_jBBorrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
