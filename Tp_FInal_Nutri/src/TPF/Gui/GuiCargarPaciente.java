@@ -28,7 +28,8 @@ public class GuiCargarPaciente extends javax.swing.JInternalFrame {
         for (Paciente aux : pacienteData.readAllPacienteBaja()) {
             cbPacientesBaja.addItem(aux);
         }
-cbPacientesBaja.setSelectedItem(null);
+        cbPacientesBaja.setSelectedItem(null);
+        btnAlta.setEnabled(false);
     }
 
     /**
@@ -137,6 +138,12 @@ cbPacientesBaja.setSelectedItem(null);
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setText("Renovar Alta");
 
+        cbPacientesBaja.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbPacientesBajaItemStateChanged(evt);
+            }
+        });
+
         jLPaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLPaciente.setText("Paciente");
 
@@ -239,7 +246,7 @@ cbPacientesBaja.setSelectedItem(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+        
         Paciente paciente = new Paciente(txtNombre.getText(), txtApellido.getText(),
                 txtDomicilio.getText(), txtDni.getText(), txtTelefono.getText(),
                 Float.parseFloat(txtPesoActual.getText()));
@@ -248,14 +255,15 @@ cbPacientesBaja.setSelectedItem(null);
             pacienteData.createPaciente(paciente);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ya existe un paciente con ese DNI en nuestra base de datos, desea darle de alta nuevamente?");
-            pacienteData.updatePaciente(pacienteData.readPacienteDni(txtDni.getText()).getId(),
+            pacienteData.updatePaciente(pacienteData.readPaciente(txtDni.getText()).getId(),
                     txtNombre.getText(), txtApellido.getText(),
                     txtDomicilio.getText(), txtDni.getText(),
                     txtTelefono.getText(), Float.parseFloat(txtPesoActual.getText()),
                     true);
         }
-
+        
         btnAgregar.setEnabled(false);
+           
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -294,7 +302,7 @@ cbPacientesBaja.setSelectedItem(null);
         } else {
             btnAgregar.setEnabled(true);
         }
-
+        
         if (txtDomicilio.getText().length() > 19) {
             evt.consume();
         }
@@ -307,14 +315,14 @@ cbPacientesBaja.setSelectedItem(null);
         } else {
             btnAgregar.setEnabled(true);
         }
-
+        
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
                     + "este campo");
         }
-
+        
         if (txtDni.getText().length() > 14) {
             evt.consume();
         }
@@ -327,7 +335,7 @@ cbPacientesBaja.setSelectedItem(null);
         } else {
             btnAgregar.setEnabled(true);
         }
-
+        
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
@@ -346,7 +354,7 @@ cbPacientesBaja.setSelectedItem(null);
         } else {
             btnAgregar.setEnabled(true);
         }
-
+        
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')) {
             evt.consume();
@@ -367,6 +375,12 @@ cbPacientesBaja.setSelectedItem(null);
         cbPacientesBaja.removeItemAt(index);
         cbPacientesBaja.setSelectedItem(null);
     }//GEN-LAST:event_btnAltaActionPerformed
+
+    private void cbPacientesBajaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPacientesBajaItemStateChanged
+        if (cbPacientesBaja.getSelectedItem() != null) {
+            btnAlta.setEnabled(true);
+        }
+    }//GEN-LAST:event_cbPacientesBajaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
