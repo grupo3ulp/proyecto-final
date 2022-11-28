@@ -402,6 +402,7 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BDCerrarActionPerformed
 
     private void NModDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NModDietaPItemStateChanged
+        NModDietaD.removeAllItems();
         DietaData dietaData = new DietaData();
         for (Dieta dieta : dietaData.readAllDieta()) {
             if (((Paciente)NModDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
@@ -415,6 +416,7 @@ public class NutriModDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NModDietaPItemStateChanged
 
     private void NBorrarDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NBorrarDietaPItemStateChanged
+        NModDietaD.removeAllItems();
         DietaData dietaData = new DietaData();
         for (Dieta dieta : dietaData.readAllDieta()) {
             if (((Paciente)NBorrarDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
