@@ -320,7 +320,6 @@ public class PacienteData {
             conec.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-            JOptionPane.showMessageDialog(null, "lalallalal");
 
         }
 
