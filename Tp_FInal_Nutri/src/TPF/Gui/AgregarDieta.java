@@ -290,7 +290,7 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
             dt.setLimite_calorico(Integer.parseInt(LCText.getText()));
             dt.setFecha_incio(LocalDate.of(an, m, d));
             dt.setFecha_fin(LocalDate.of(an, m, d).plusDays(7));
-            dt.setId_paciente(((Paciente)CDListaPaciente.getSelectedItem()).getId());
+            dt.setId_paciente(((Paciente)CDListaPaciente.getSelectedItem()));
             
             DietaData DD = new DietaData();
             

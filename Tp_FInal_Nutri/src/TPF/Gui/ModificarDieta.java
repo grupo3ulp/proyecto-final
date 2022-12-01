@@ -405,7 +405,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         NModDietaD.removeAllItems();
         DietaData dietaData = new DietaData();
         for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)NModDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
+            if (((Paciente)NModDietaP.getSelectedItem()) == dieta.getId_paciente()) {
                 NModDietaD.addItem(dieta);
                 PITextMod.setText(String.valueOf(dieta.getPeso_inicial()));
                 PDTextMod.setText(String.valueOf(dieta.getPeso_deseado()));
@@ -419,7 +419,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         NModDietaD.removeAllItems();
         DietaData dietaData = new DietaData();
         for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)NBorrarDietaP.getSelectedItem()).getId() == dieta.getId_paciente()) {
+            if (((Paciente)NBorrarDietaP.getSelectedItem()) == dieta.getId_paciente()) {
                 NBorrarDietaD.addItem(dieta);
             }
         }

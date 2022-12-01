@@ -142,7 +142,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
         for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)ListaDB.getSelectedItem()).getId() == dieta.getId_paciente()) {
+            if (((Paciente)ListaDB.getSelectedItem()) == dieta.getId_paciente()) {
                 modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
             }
         }
