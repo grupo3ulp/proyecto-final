@@ -69,6 +69,7 @@ public class DietaData {
                 PacienteData pacienteData = new PacienteData(); 
                 dietaAux.setId(id);
                 Paciente pacienteAux = pacienteData.readPaciente(rs.getInt(2));
+                dietaAux.setId_paciente(pacienteAux);
                 dietaAux.setFecha_incio(rs.getDate(3).toLocalDate());
                 dietaAux.setFecha_fin(rs.getDate(4).toLocalDate());
                 dietaAux.setPeso_inicial(rs.getDouble(5));
@@ -96,6 +97,7 @@ public class DietaData {
                 Dieta dietaAux = new Dieta();
                 dietaAux.setId(rs.getInt(1));
                 Paciente pacienteAux = pacienteData.readPaciente(rs.getInt(2));
+                dietaAux.setId_paciente(pacienteAux);
                 dietaAux.setFecha_incio(rs.getDate(3).toLocalDate());
                 dietaAux.setFecha_fin(rs.getDate(4).toLocalDate());
                 dietaAux.setPeso_inicial(rs.getDouble(5));
