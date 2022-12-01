@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author Heisen
  */
-public class GuiCargarPaciente extends javax.swing.JInternalFrame {
+public class AgregarPaciente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GuiCargarPaciente
      */
-    public GuiCargarPaciente() {
+    public AgregarPaciente() {
         PacienteData pacienteData = new PacienteData();
         
         initComponents();

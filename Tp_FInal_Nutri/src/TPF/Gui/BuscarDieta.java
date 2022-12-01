@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dante
  */
-public class NutriBuscarDieta extends javax.swing.JInternalFrame {
+public class BuscarDieta extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
     
-    public NutriBuscarDieta() {
+    public BuscarDieta() {
         initComponents();
         modelo = new DefaultTableModel();
         armarCabecera();

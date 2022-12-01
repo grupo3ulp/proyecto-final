@@ -17,12 +17,12 @@ import javax.swing.JTextField;
  *
  * @author dante
  */
-public class NutriCrearDieta extends javax.swing.JInternalFrame {
+public class AgregarDieta extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NutriCrearDieta
      */
-    public NutriCrearDieta() {
+    public AgregarDieta() {
         initComponents();
         CDGuardar.setEnabled(false);
         
@@ -166,9 +166,7 @@ public class NutriCrearDieta extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel6))
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CDListaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)

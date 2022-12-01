@@ -17,12 +17,12 @@ import javax.swing.JTextField;
  *
  * @author dante
  */
-public class NutriModDieta extends javax.swing.JInternalFrame {
+public class ModificarDieta extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NutriModDieta
      */
-    public NutriModDieta() {
+    public ModificarDieta() {
         initComponents();
         MDGuardar.setEnabled(false);
         

@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Heisen
  */
-public class GuiModificarPaciente extends javax.swing.JInternalFrame {
+public class ModificarPaciente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GuiModificarPaciente
      */
-    public GuiModificarPaciente() {
+    public ModificarPaciente() {
         initComponents();
         PacienteData pacienteData = new PacienteData();
         ArrayList<Paciente> pacientes = pacienteData.readAllPaciente();

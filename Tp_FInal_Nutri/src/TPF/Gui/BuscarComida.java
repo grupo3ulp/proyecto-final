@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Moon
  */
-public class MostrarComida extends javax.swing.JInternalFrame {
+public class BuscarComida extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo; //Creamos el modelo de la tabla
 
     /**
      * Creates new form BuscarComida
      */
-    public MostrarComida() {
+    public BuscarComida() {
         initComponents();
         modelo = new DefaultTableModel();
         armarCabecera();

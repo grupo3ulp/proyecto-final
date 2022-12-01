@@ -3,19 +3,18 @@ package tp_final_nutri;
 import TPF.Control.ComidaData;
 import TPF.Control.Conexion;
 import TPF.Control.DietaData;
-import TPF.Control.ItemdietaData;
 import TPF.Control.PacienteData;
-import TPF.Gui.GuiCargarPaciente;
-import TPF.Modelo.Comida;
-import TPF.Modelo.Dieta;
-import TPF.Modelo.Itemdieta;
+import TPF.Gui.Menu;
 import java.sql.Connection;
-import java.time.LocalDate;
 
 public class Tp_FInal_Nutri {
 
     public static void main(String[] args) {
         Connection conec = Conexion.getConexion();
+        
+        Menu main=new Menu();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
 
         //---PRUEBAS PACIENTE---
         PacienteData pacienteData = new PacienteData();
