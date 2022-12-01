@@ -359,7 +359,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             for (Paciente aux : pacientes) {
                 for (Dieta dieta : dietas) {
 
-                    if (((Paciente) aux).getId() == dieta.getId_paciente()) {
+                    if (((Paciente) aux).getId() == dieta.getId_paciente().getId()) {
                         flag = true;
                     }
 
@@ -379,7 +379,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             for (Paciente aux : pacientes) {
                 for (Dieta dieta : dietas) {
 
-                    if (((Paciente) aux).getId() == dieta.getId_paciente()) {
+                    if (((Paciente) aux).getId() == dieta.getId_paciente().getId()) {
                         flag = true;
                     }
 
