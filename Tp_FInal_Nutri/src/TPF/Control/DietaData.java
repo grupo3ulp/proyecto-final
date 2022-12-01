@@ -1,6 +1,7 @@
 package TPF.Control;
 
 import TPF.Modelo.Dieta;
+import TPF.Modelo.Paciente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,9 +22,12 @@ public class DietaData {
 
     public void createDieta(Dieta dietaAux) {
         String sql = "INSERT INTO `dieta`(`id_paciente`, `fecha_inicio`, `fecha_fin`, `peso_inicial`, `peso_deseado`, `limite_calorico`, `estado`) VALUES (?,?,?,?,?,?,?)";
+        
+        int id_paciente=dietaAux.getId_paciente().getId();
+        
         try {
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, dietaAux.getId_paciente());
+            ps.setInt(1, id_paciente);
             ps.setDate(2, java.sql.Date.valueOf(dietaAux.getFecha_incio()));
             ps.setDate(3, java.sql.Date.valueOf(dietaAux.getFecha_fin()));
             ps.setDouble(4, dietaAux.getPeso_inicial());
@@ -54,14 +58,17 @@ public class DietaData {
     public Dieta readDieta(int id) {
         String sql = "SELECT * FROM `dieta` WHERE estado=1 and id=?";
         Dieta dietaAux = new Dieta();
+        
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+            
 
             if (rs.next()) {
+                PacienteData pacienteData = new PacienteData(); 
                 dietaAux.setId(id);
-                dietaAux.setId_paciente(rs.getInt(2));
+                Paciente pacienteAux = pacienteData.readPaciente(rs.getInt(2));
                 dietaAux.setFecha_incio(rs.getDate(3).toLocalDate());
                 dietaAux.setFecha_fin(rs.getDate(4).toLocalDate());
                 dietaAux.setPeso_inicial(rs.getDouble(5));
@@ -85,9 +92,10 @@ public class DietaData {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                PacienteData pacienteData = new PacienteData(); 
                 Dieta dietaAux = new Dieta();
                 dietaAux.setId(rs.getInt(1));
-                dietaAux.setId_paciente(rs.getInt(2));
+                Paciente pacienteAux = pacienteData.readPaciente(rs.getInt(2));
                 dietaAux.setFecha_incio(rs.getDate(3).toLocalDate());
                 dietaAux.setFecha_fin(rs.getDate(4).toLocalDate());
                 dietaAux.setPeso_inicial(rs.getDouble(5));

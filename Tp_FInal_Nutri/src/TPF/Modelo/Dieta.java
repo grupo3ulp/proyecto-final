@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Dieta {
     private int id;
-    private int id_paciente;
+    private Paciente id_paciente;
     private LocalDate fecha_incio;
     private LocalDate fecha_fin;
     private double peso_inicial;
@@ -16,7 +16,7 @@ public class Dieta {
     public Dieta() {
     }
  //una palabra
-    public Dieta(int id, int id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
+    public Dieta(int id, Paciente id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
         this.id = id;
         this.id_paciente = id_paciente;
         this.fecha_incio = fecha_incio;
@@ -27,7 +27,7 @@ public class Dieta {
         this.estado = estado;
     }
 
-    public Dieta(int id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
+    public Dieta(Paciente id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
         this.id_paciente = id_paciente;
         this.fecha_incio = fecha_incio;
         this.fecha_fin = fecha_fin;
@@ -37,7 +37,7 @@ public class Dieta {
         this.estado = estado;
     }
 
-    public Dieta(int id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico) {
+    public Dieta(Paciente id_paciente, LocalDate fecha_incio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico) {
         this.id_paciente = id_paciente;
         this.fecha_incio = fecha_incio;
         this.fecha_fin = fecha_fin;
@@ -54,11 +54,11 @@ public class Dieta {
         this.id = id;
     }
 
-    public int getId_paciente() {
+    public Paciente getId_paciente() {
         return id_paciente;
     }
 
-    public void setId_paciente(int id_paciente) {
+    public void setId_paciente(Paciente id_paciente) {
         this.id_paciente = id_paciente;
     }
 
