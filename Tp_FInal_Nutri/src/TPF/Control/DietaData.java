@@ -171,7 +171,6 @@ public class DietaData {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
 
         }
-
     }
      
      public void deleteDieta(int id) {
@@ -195,8 +194,6 @@ public class DietaData {
 
             }
         }
-           
-
     } 
      
        public ArrayList<Dieta> readAllDietaNoCumplena() {

@@ -341,32 +341,49 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         PacienteData pacienteData = new PacienteData();
+        PacienteData pacienteData2 = new PacienteData();
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
         boolean flag = false;
-       
 
         if (rbtnDni.isSelected()) {
-            pacienteData.readPaciente(modelo, txtDni.getText());
+            Paciente pacienteAux = null;
+            pacienteData2.readPaciente(modelo, txtDni.getText());
+
+            if (modelo.getRowCount() < 1) {
+                ArrayList<Dieta> dietas = dietaData.readAllDieta();
+                pacienteAux = pacienteData.readPaciente(txtDni.getText());
+                for (Dieta dieta : dietas) {
+
+                    if (((Paciente) pacienteAux).getId() == dieta.getId_paciente().getId()) {
+                        flag = true;
+                    }
+
+                }
+                if (!flag) {
+                    modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(), pacienteAux.getDomicilio(),
+                        pacienteAux.getDni(), pacienteAux.getTelefono(), pacienteAux.getPesoActual(), "-", "-", "-", "-", "-"});
+                }
+            }
 
             if (modelo.getRowCount() < 1) {
                 JOptionPane.showMessageDialog(null, "No se encuentra un paciente con ese DNI");
             }
 
         } else if (rbtnKilos.isSelected()) {
-               ArrayList<Dieta> dietasAux = dietaData.readAllDietaxKilo(Integer.parseInt(txtKilos.getText()));
-            
+            ArrayList<Dieta> dietasAux = dietaData.readAllDietaxKilo(Integer.parseInt(txtKilos.getText()));
+
             for (Dieta aux : dietasAux) {
                 modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
                     aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
                     aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
                     aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
-                    aux.getPeso_deseado(), (aux.getPeso_inicial()-aux.getPeso_deseado()),
-                    (aux.getPeso_inicial()-aux.getId_paciente().getPesoActual())});
+                    aux.getPeso_deseado(), (aux.getPeso_inicial() - aux.getPeso_deseado()),
+                    (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
             }
 
         } else if (rbtnTodos.isSelected()) {
-             ArrayList<Dieta> dietas = dietaData.readAllDieta();
+            ArrayList<Dieta> dietas = dietaData.readAllDieta();
             pacienteData.readAllPaciente(modelo);
 
             for (Paciente aux : pacientes) {
@@ -387,18 +404,18 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
 
         } else if (rbtnSinCumplir.isSelected()) {
             ArrayList<Dieta> dietasAux = dietaData.readAllDietaNoCumplena();
-            
+
             for (Dieta aux : dietasAux) {
                 modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
                     aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
                     aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
                     aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
-                    aux.getPeso_deseado(), (aux.getPeso_inicial()-aux.getPeso_deseado()),
-                    (aux.getPeso_inicial()-aux.getId_paciente().getPesoActual())});
+                    aux.getPeso_deseado(), (aux.getPeso_inicial() - aux.getPeso_deseado()),
+                    (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
             }
 
         } else if (rbtnsinDieta.isSelected()) {
-             ArrayList<Dieta> dietas = dietaData.readAllDieta();
+            ArrayList<Dieta> dietas = dietaData.readAllDieta();
             for (Paciente aux : pacientes) {
                 for (Dieta dieta : dietas) {
 
