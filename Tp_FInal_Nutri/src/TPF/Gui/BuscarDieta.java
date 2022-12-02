@@ -8,7 +8,10 @@ import TPF.Control.DietaData;
 import TPF.Control.PacienteData;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Paciente;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,38 +21,39 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarDieta extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
-    
+
     public BuscarDieta() {
         initComponents();
         modelo = new DefaultTableModel();
         armarCabecera();
         TDieta.setEnabled(false);
-  
+        fechaInicio.setEnabled(false);
+        fechaFinal.setEnabled(false);
+
         PacienteData pacienteData = new PacienteData();
-        
-        
+
         for (Paciente paciente : pacienteData.readAllPaciente()) {
-            
-           ListaDB.addItem(paciente);
-            
+
+            ListaDB.addItem(paciente);
+
         }
     }
-    
-    private void armarCabecera(){
+
+    private void armarCabecera() {
         ArrayList<Object> columnas = new ArrayList();
         columnas.add("Fecha de inicio");
         columnas.add("Fecha final");
         columnas.add("Peso inicial");
         columnas.add("Peso deseado");
         columnas.add("Limite calorico");
-        
+
         for (Object columna : columnas) {
             modelo.addColumn(columna);
         }
-        
+
         TDieta.setModel(modelo);
     }
-    
+
     private void borrarFilasTabla() {
         if (modelo != null) {
             int a = modelo.getRowCount() - 1;
@@ -76,8 +80,8 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         BDBuscar = new javax.swing.JButton();
         ListaDB = new javax.swing.JComboBox<>();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        fechaInicio = new com.toedter.calendar.JDateChooser();
+        fechaFinal = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -105,6 +109,23 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         });
 
         jRadioButton1.setText("Seleccionar un rango de fechas para ver las dietas del paciente durante ese periodo");
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRadioButton1MousePressed(evt);
+            }
+        });
+
+        fechaInicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaInicioPropertyChange(evt);
+            }
+        });
+
+        fechaFinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaFinalPropertyChange(evt);
+            }
+        });
 
         jLabel2.setText("Fecha inicial");
 
@@ -136,11 +157,11 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(34, 34, 34)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(59, 59, 59)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(38, 38, 38)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jRadioButton1))
                                 .addGap(162, 162, 162))))))
         );
@@ -155,9 +176,9 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(37, 37, 37)
                 .addComponent(BDBuscar)
@@ -169,23 +190,89 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void habilitarDate() {
+        if (!jRadioButton1.isSelected()) {
+            fechaInicio.setEnabled(true);
+            fechaFinal.setEnabled(true);
+        } else {
+            fechaInicio.setEnabled(false);
+            fechaFinal.setEnabled(false);
+            ((JTextField) fechaInicio.getDateEditor().getUiComponent()).setText("");
+            ((JTextField) fechaFinal.getDateEditor().getUiComponent()).setText("");
+            BDBuscar.setEnabled(true);
+        }
+    }
+
+    public void habilitarBoton() {
+        if (fechaInicio.isEnabled() && fechaFinal.isEnabled()) {
+            if (((JTextField) fechaInicio.getDateEditor().getUiComponent()).getText().isEmpty() || ((JTextField) fechaFinal.getDateEditor().getUiComponent()).getText().isEmpty()) {
+                BDBuscar.setEnabled(false);
+            } else {
+                BDBuscar.setEnabled(true);
+            }
+        }
+    }
+
     private void BDBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDBuscarActionPerformed
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
-        for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)ListaDB.getSelectedItem()).getId() == dieta.getId_paciente().getId()){
-                modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
+        if (jRadioButton1.isSelected()) {
+            boolean esta = false;
+            int dInicial = fechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int mInicial = fechaInicio.getCalendar().getTime().getMonth() + 1;
+            int anInicial = fechaInicio.getCalendar().getTime().getYear() + 1900;
+
+            int dFinal = fechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int mFinal = fechaFinal.getCalendar().getTime().getMonth() + 1;
+            int anFinal = fechaFinal.getCalendar().getTime().getYear() + 1900;
+
+            LocalDate fechaPri = LocalDate.of(anInicial, mInicial, dInicial);
+            LocalDate fechaUlti = LocalDate.of(anFinal, mFinal, dFinal);
+
+            for (Dieta dieta : dietaData.readAllDietas()) {
+                if (dieta.getFecha_incio().isEqual(fechaPri) || dieta.getFecha_incio().isEqual(fechaUlti)) {
+                    esta = true;
+                } else if (dieta.getFecha_incio().isBefore(fechaUlti) && dieta.getFecha_incio().isAfter(fechaPri)) {
+                    esta = true;
+                } else if (dieta.getFecha_fin().isEqual(fechaPri) || dieta.getFecha_fin().isEqual(fechaUlti)) {
+                    esta = true;
+                } else if (dieta.getFecha_fin().isBefore(fechaUlti) && dieta.getFecha_fin().isAfter(fechaPri)) {
+                    esta = true;
+                } else {
+                    esta = false;
+                }
+                if (((Paciente) ListaDB.getSelectedItem()).getId() == dieta.getId_paciente().getId() && esta) {
+                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
+                }
+            }
+        } else {
+            for (Dieta dieta : dietaData.readAllDieta()) {
+                if (((Paciente) ListaDB.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
+                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
+                }
             }
         }
     }//GEN-LAST:event_BDBuscarActionPerformed
+
+    private void jRadioButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MousePressed
+        habilitarDate();
+    }//GEN-LAST:event_jRadioButton1MousePressed
+
+    private void fechaInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaInicioPropertyChange
+        habilitarBoton();
+    }//GEN-LAST:event_fechaInicioPropertyChange
+
+    private void fechaFinalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaFinalPropertyChange
+        habilitarBoton();
+    }//GEN-LAST:event_fechaFinalPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BDBuscar;
     private javax.swing.JComboBox<Object> ListaDB;
     private javax.swing.JTable TDieta;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser fechaFinal;
+    private com.toedter.calendar.JDateChooser fechaInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
