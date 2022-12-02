@@ -344,16 +344,29 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
         boolean flag = false;
-        ArrayList<Dieta> dietas = dietaData.readAllDieta();
+       
 
         if (rbtnDni.isSelected()) {
-            Paciente aux = pacienteData.readPaciente(txtDni.getText());
-            modelo.addRow(new Object[]{aux.getNombre(), aux.getApellido(), aux.getDomicilio(),
-                aux.getDni(), aux.getTelefono(), aux.getPesoActual(), aux.getNombre(), aux.getNombre()});
+            pacienteData.readPaciente(modelo, txtDni.getText());
+
+            if (modelo.getRowCount() < 1) {
+                JOptionPane.showMessageDialog(null, "No se encuentra un paciente con ese DNI");
+            }
+
         } else if (rbtnKilos.isSelected()) {
-            pacienteData.readAllPacientePeso(Float.parseFloat(txtKilos.getText()), modelo);
+               ArrayList<Dieta> dietasAux = dietaData.readAllDietaxKilo(Integer.parseInt(txtKilos.getText()));
+            
+            for (Dieta aux : dietasAux) {
+                modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
+                    aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
+                    aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
+                    aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
+                    aux.getPeso_deseado(), (aux.getPeso_inicial()-aux.getPeso_deseado()),
+                    (aux.getPeso_inicial()-aux.getId_paciente().getPesoActual())});
+            }
 
         } else if (rbtnTodos.isSelected()) {
+             ArrayList<Dieta> dietas = dietaData.readAllDieta();
             pacienteData.readAllPaciente(modelo);
 
             for (Paciente aux : pacientes) {
@@ -373,9 +386,19 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             }
 
         } else if (rbtnSinCumplir.isSelected()) {
-            pacienteData.readAllPacienteNoCumplieronMeta(modelo);
+            ArrayList<Dieta> dietasAux = dietaData.readAllDietaNoCumplena();
+            
+            for (Dieta aux : dietasAux) {
+                modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
+                    aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
+                    aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
+                    aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
+                    aux.getPeso_deseado(), (aux.getPeso_inicial()-aux.getPeso_deseado()),
+                    (aux.getPeso_inicial()-aux.getId_paciente().getPesoActual())});
+            }
 
         } else if (rbtnsinDieta.isSelected()) {
+             ArrayList<Dieta> dietas = dietaData.readAllDieta();
             for (Paciente aux : pacientes) {
                 for (Dieta dieta : dietas) {
 
@@ -448,7 +471,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             rbtnTodos.setSelected(false);
             rbtnSinCumplir.setSelected(false);
 
-        } 
+        }
     }//GEN-LAST:event_rbtnsinDietaMousePressed
 
 

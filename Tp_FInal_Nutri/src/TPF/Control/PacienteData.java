@@ -82,7 +82,7 @@ public class PacienteData {
         return pacienteAux;
     }
 
-    public Paciente readPaciente(String dni) {
+ public Paciente readPaciente(String dni) {
         String sql = "SELECT * FROM `paciente` WHERE estado=1 and dni=?";
         Paciente pacienteAux = new Paciente();
         try {
@@ -110,6 +110,49 @@ public class PacienteData {
         return pacienteAux;
     }
 
+    public void readPaciente(DefaultTableModel modelo,String dni) {
+        Paciente pacienteAux = new Paciente();
+        float pesoDeseado;
+        float pesoInicial;
+        float kilosBuscados;
+        float kilosBajados;
+        String sql = "SELECT p.id, nombre, apellido, domicilio, dni, telefono, "
+                + "peso_actual,peso_inicial, peso_deseado,(d.peso_inicial-d.peso_deseado) "
+                + "as\"kilos_a_bajar\", (d.peso_inicial-p.peso_actual) as \"kilos_bajados\" "
+                + "FROM paciente p JOIN dieta d ON d.id_paciente = p.id "
+                + "WHERE p.estado=1 and p.dni=?";        
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                pacienteAux.setId(rs.getInt("id"));
+                pacienteAux.setNombre(rs.getString("nombre"));
+                pacienteAux.setApellido(rs.getString("apellido"));
+                pacienteAux.setDomicilio(rs.getString("domicilio"));
+                pacienteAux.setDni(rs.getString("dni"));
+                pacienteAux.setTelefono(rs.getString("telefono"));
+                pacienteAux.setPesoActual(rs.getFloat("peso_actual"));
+                pesoInicial = rs.getFloat("peso_inicial");
+                pesoDeseado = rs.getFloat("peso_deseado");
+                kilosBuscados = rs.getFloat("kilos_a_bajar");
+                kilosBajados = rs.getFloat("kilos_bajados");
+            
+                  modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
+                    pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
+                    pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
+                
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+        }
+
+    }
+
     public ArrayList<Paciente> readAllPaciente() {
         ArrayList<Paciente> listaAux = new ArrayList();
         String sql = "SELECT * FROM `paciente` WHERE estado=1";
@@ -126,15 +169,14 @@ public class PacienteData {
                 pacienteAux.setTelefono(rs.getString(6));
                 pacienteAux.setPesoActual(rs.getFloat(7));
                 pacienteAux.setEstado(rs.getBoolean(8));
-                
+
                 listaAux.add(pacienteAux);
             }
 
             conec.close();
         } catch (SQLException ex) {
             System.out.println("ERROR");
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea"+ ex);
-            
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
 
         }
 
@@ -172,92 +214,6 @@ public class PacienteData {
                     pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
                     pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
 
-            }
-
-            conec.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-        }
-
-    }
-
-    public void readAllPacienteNoCumplieronMeta(DefaultTableModel modelo) {
-        Paciente pacienteAux = new Paciente();
-        float pesoDeseado;
-        float pesoInicial;
-        float kilosBuscados;
-        float kilosBajados;
-        String sql = "SELECT p.id, nombre, apellido, domicilio, dni, telefono,"
-                + " peso_actual,peso_inicial, peso_deseado,(d.peso_inicial-d.peso_deseado)"
-                + " as \"kilos_a_bajar\", (d.peso_inicial-p.peso_actual)"
-                + " as \"kilos_bajados\" FROM paciente p JOIN dieta d"
-                + " ON d.id_paciente = p.id"
-                + " WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0";
-        try {
-            PreparedStatement ps = conec.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                pacienteAux.setId(rs.getInt("id"));
-                pacienteAux.setNombre(rs.getString("nombre"));
-                pacienteAux.setApellido(rs.getString("apellido"));
-                pacienteAux.setDomicilio(rs.getString("domicilio"));
-                pacienteAux.setDni(rs.getString("dni"));
-                pacienteAux.setTelefono(rs.getString("telefono"));
-                pacienteAux.setPesoActual(rs.getFloat("peso_actual"));
-                pesoInicial = rs.getFloat("peso_inicial");
-                pesoDeseado = rs.getFloat("peso_deseado");
-                kilosBuscados = rs.getFloat("kilos_a_bajar");
-                kilosBajados = rs.getFloat("kilos_bajados");
-
-                modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
-                    pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
-                    pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
-                System.out.println("aaaaa");
-            }
-
-            conec.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
-
-        }
-
-    }
-
-    public void readAllPacientePeso(float kilos, DefaultTableModel modelo) {
-        Paciente pacienteAux = new Paciente();
-        float pesoInicial;
-        float pesoDeseado;
-        float kilosBuscados;
-        float kilosBajados;
-        String sql = "SELECT p.id, nombre, apellido, domicilio, dni, telefono, "
-                + "peso_actual,peso_inicial, peso_deseado,(d.peso_inicial-d.peso_deseado) "
-                + "as\"kilos_a_bajar\", (d.peso_inicial-p.peso_actual) as \"kilos_bajados\" "
-                + "FROM paciente p JOIN dieta d ON d.id_paciente = p.id "
-                + "WHERE (d.peso_inicial-d.peso_deseado) >=?";
-        try {
-            PreparedStatement ps = conec.prepareStatement(sql);
-            ps.setFloat(1, kilos);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                pacienteAux.setId(rs.getInt("id"));
-                pacienteAux.setNombre(rs.getString("nombre"));
-                pacienteAux.setApellido(rs.getString("apellido"));
-                pacienteAux.setDomicilio(rs.getString("domicilio"));
-                pacienteAux.setDni(rs.getString("dni"));
-                pacienteAux.setTelefono(rs.getString("telefono"));
-                pacienteAux.setPesoActual(rs.getFloat("peso_actual"));
-                pesoInicial = rs.getFloat("peso_inicial");
-                pesoDeseado = rs.getFloat("peso_deseado");
-                kilosBuscados = rs.getFloat("kilos_a_bajar");
-                kilosBajados = rs.getFloat("kilos_bajados");
-
-                modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
-                    pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
-                    pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
-                System.out.println("aaaaa");
             }
 
             conec.close();

@@ -198,4 +198,49 @@ public class DietaData {
            
 
     } 
+     
+       public ArrayList<Dieta> readAllDietaNoCumplena() {
+        ArrayList<Dieta> listaAux = new ArrayList();
+         String sql = "SELECT d.id FROM dieta d JOIN paciente p ON d.id_paciente"
+                 + " = p.id WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DietaData dietaData=new DietaData();
+                Dieta dietaAux = dietaData.readDieta(rs.getInt("id"))             ;             
+
+                listaAux.add(dietaAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
+
+        }
+        return listaAux;
+    }
+    
+    public ArrayList<Dieta> readAllDietaxKilo(int kilos) {
+        ArrayList<Dieta> listaAux = new ArrayList();
+         String sql = "SELECT d.id FROM dieta d JOIN paciente p ON d.id_paciente"
+                 + " = p.id WHERE  (d.peso_inicial-d.peso_deseado) >=?";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, kilos);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DietaData dietaData=new DietaData();
+                Dieta dietaAux = dietaData.readDieta(rs.getInt("id"))             ;             
+
+                listaAux.add(dietaAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
+
+        }
+        return listaAux;
+    }
 }
