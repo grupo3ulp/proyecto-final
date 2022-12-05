@@ -37,6 +37,8 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         CBCantidad.setEnabled(false);
         CBDia.setEnabled(false);
         jBGuardar.setEnabled(false);
+        jRBEliminar.setOpaque(false);
+        jRBModificar.setOpaque(false);
     }
 
     private void armarCabecera() {
@@ -80,9 +82,16 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         jRBModificar = new javax.swing.JRadioButton();
         jBGuardar = new javax.swing.JButton();
         jRBEliminar = new javax.swing.JRadioButton();
+        fondo = new javax.swing.JLabel();
 
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setText("Mostrar plan alimenticio");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
+        jTItemdieta.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jTItemdieta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,110 +105,75 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTItemdieta);
 
-        jBVolver.setText("Volver");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 760, 210));
+
+        jBVolver.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBVolver.setText("Cerrar");
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 680, 76, -1));
 
+        jCBItemdieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jCBItemdieta.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBItemdietaItemStateChanged(evt);
             }
         });
+        getContentPane().add(jCBItemdieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 453, -1));
 
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Elegir la dieta que quiere ver en detalle");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
+        jLPorciones.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLPorciones.setText("Porciones");
+        getContentPane().add(jLPorciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, -1));
 
+        jLDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDia.setText("Día");
+        getContentPane().add(jLDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 570, -1, 20));
 
+        CBDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        getContentPane().add(CBDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, 119, -1));
 
+        CBCantidad.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 119, -1));
 
+        jRBModificar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBModificar.setText("Modificar");
         jRBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBModificarActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
 
+        jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, -1, -1));
 
+        jRBEliminar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBEliminar.setText("Eliminar de la dieta");
         jRBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(206, 206, 206))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRBEliminar)
-                    .addComponent(jLabel2)
-                    .addComponent(jCBItemdieta, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(245, 245, 245)
-                            .addComponent(jBVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBGuardar))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLPorciones)
-                            .addComponent(jLDia)
-                            .addComponent(jRBModificar))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(CBCantidad, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CBDia, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jCBItemdieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jRBModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLPorciones)
-                    .addComponent(CBCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLDia)
-                    .addComponent(CBDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jRBEliminar)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBVolver)
-                    .addComponent(jBGuardar))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +233,7 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBCantidad;
     private javax.swing.JComboBox<String> CBDia;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBVolver;
     private javax.swing.JComboBox<Object> jCBItemdieta;

@@ -34,9 +34,11 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
 
         for (Paciente paciente : pacienteData.readAllPaciente()) {
 
-            ListaDB.addItem(paciente);
+            cbDietas.addItem(paciente);
 
         }
+        cbDietas.setSelectedItem(null);
+        rbtnRango.setOpaque(false);
     }
 
     private void armarCabecera() {
@@ -78,15 +80,21 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TDieta = new javax.swing.JTable();
         BDBuscar = new javax.swing.JButton();
-        ListaDB = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        cbDietas = new javax.swing.JComboBox<>();
+        rbtnRango = new javax.swing.JRadioButton();
         fechaInicio = new com.toedter.calendar.JDateChooser();
         fechaFinal = new com.toedter.calendar.JDateChooser();
+        btnCancel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setText("Buscar Dieta");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 210, -1));
 
         TDieta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,97 +109,69 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TDieta);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 760, 270));
+
+        BDBuscar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         BDBuscar.setText("Buscar");
         BDBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BDBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(BDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 108, -1));
 
-        jRadioButton1.setText("Seleccionar un rango de fechas para ver las dietas del paciente durante ese periodo");
-        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cbDietas.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(cbDietas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 342, -1));
+
+        rbtnRango.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        rbtnRango.setText("Seleccionar un rango de fechas para ver las dietas del paciente durante ese periodo");
+        rbtnRango.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jRadioButton1MousePressed(evt);
+                rbtnRangoMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
         fechaInicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 fechaInicioPropertyChange(evt);
             }
         });
+        getContentPane().add(fechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 100, -1));
 
         fechaFinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 fechaFinalPropertyChange(evt);
             }
         });
+        getContentPane().add(fechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 100, -1));
 
+        btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnCancel.setText("Cerrar");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 90, 30));
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Fecha inicial");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel3.setText("Fecha final");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 64, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 195, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                                    .addComponent(BDBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(355, 355, 355))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ListaDB, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(230, 230, 230))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jRadioButton1))
-                                .addGap(162, 162, 162))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(ListaDB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(37, 37, 37)
-                .addComponent(BDBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public void habilitarDate() {
-        if (!jRadioButton1.isSelected()) {
+        if (!rbtnRango.isSelected()) {
             fechaInicio.setEnabled(true);
             fechaFinal.setEnabled(true);
         } else {
@@ -216,7 +196,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
     private void BDBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDBuscarActionPerformed
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
-        if (jRadioButton1.isSelected()) {
+        if (rbtnRango.isSelected()) {
             boolean esta = false;
             int dInicial = fechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
             int mInicial = fechaInicio.getCalendar().getTime().getMonth() + 1;
@@ -241,22 +221,22 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 } else {
                     esta = false;
                 }
-                if (((Paciente) ListaDB.getSelectedItem()).getId() == dieta.getId_paciente().getId() && esta) {
+                if (((Paciente) cbDietas.getSelectedItem()).getId() == dieta.getId_paciente().getId() && esta) {
                     modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
                 }
             }
         } else {
             for (Dieta dieta : dietaData.readAllDieta()) {
-                if (((Paciente) ListaDB.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
+                if (((Paciente) cbDietas.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
                     modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
                 }
             }
         }
     }//GEN-LAST:event_BDBuscarActionPerformed
 
-    private void jRadioButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MousePressed
+    private void rbtnRangoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnRangoMousePressed
         habilitarDate();
-    }//GEN-LAST:event_jRadioButton1MousePressed
+    }//GEN-LAST:event_rbtnRangoMousePressed
 
     private void fechaInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaInicioPropertyChange
         habilitarBoton();
@@ -266,17 +246,23 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         habilitarBoton();
     }//GEN-LAST:event_fechaFinalPropertyChange
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BDBuscar;
-    private javax.swing.JComboBox<Object> ListaDB;
     private javax.swing.JTable TDieta;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JComboBox<Object> cbDietas;
     private com.toedter.calendar.JDateChooser fechaFinal;
     private com.toedter.calendar.JDateChooser fechaInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbtnRango;
     // End of variables declaration//GEN-END:variables
 }

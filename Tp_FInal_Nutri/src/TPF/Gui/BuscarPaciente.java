@@ -31,6 +31,21 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabecera();
         tPacientes.setEnabled(false);
+        tPacientes.getColumnModel().getColumn(9).setPreferredWidth(40);
+        tPacientes.getColumnModel().getColumn(8).setPreferredWidth(40);
+        tPacientes.getColumnModel().getColumn(7).setPreferredWidth(40);
+        tPacientes.getColumnModel().getColumn(6).setPreferredWidth(40);
+        tPacientes.getColumnModel().getColumn(5).setPreferredWidth(40);       
+        tPacientes.getColumnModel().getColumn(2).setPreferredWidth(120);
+        
+        rbtnDni.setOpaque(false);
+        rbtnKilos.setOpaque(false);
+        rbtnSinCumplir.setOpaque(false);
+        rbtnTodos.setOpaque(false);
+        rbtnsinDieta.setOpaque(false);
+        
+                
+
     }
 
     private void armarCabecera() {
@@ -40,11 +55,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         columnas.add("Domicilio");
         columnas.add("DNI");
         columnas.add("Telefono");
-        columnas.add("Peso Actual");
-        columnas.add("Peso Inicial");
-        columnas.add("Peso Buscado");
-        columnas.add("Kg a bajar *");
-        columnas.add("Kg Bajados *");
+        columnas.add("P Act");
+        columnas.add("P Ini");
+        columnas.add("P Bus");
+        columnas.add("Kg Fal*");
+        columnas.add("Kg Baj*");
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);
@@ -81,31 +96,44 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         rbtnSinCumplir = new javax.swing.JRadioButton();
         btnCancelar = new javax.swing.JButton();
         rbtnsinDieta = new javax.swing.JRadioButton();
+        fondo = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Paciente");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 110, 770, -1));
 
+        rbtnDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnDni.setText("Por DNI");
         rbtnDni.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnDniMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 150, -1));
 
+        rbtnTodos.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnTodos.setText("Mostrar Todos");
         rbtnTodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnTodosMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 140, -1));
 
+        rbtnKilos.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnKilos.setText("Por kilos buscados");
         rbtnKilos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnKilosMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnKilos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 207, -1));
 
+        txtKilos.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtKilos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtKilosKeyReleased(evt);
@@ -114,7 +142,9 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                 txtKilosKeyTyped(evt);
             }
         });
+        getContentPane().add(txtKilos, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 151, -1));
 
+        txtDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDniKeyReleased(evt);
@@ -123,14 +153,18 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                 txtDniKeyTyped(evt);
             }
         });
+        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 151, -1));
 
+        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 110, 30));
 
+        tPacientes.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         tPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -144,117 +178,42 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tPacientes);
 
-        jLabel2.setText("* Simbolo negativo significa que subio de peso");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 750, 260));
 
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        jLabel2.setText("* Simbolo negativo significa que subio de peso");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 679, -1));
+
+        rbtnSinCumplir.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnSinCumplir.setText("Mostrar Pacientes sin cumplir meta");
         rbtnSinCumplir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnSinCumplirMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnSinCumplir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 250, -1));
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnCancelar.setText("Cerrar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 110, 30));
 
+        rbtnsinDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnsinDieta.setText("Mostrar Pacientes sin dieta");
         rbtnsinDieta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnsinDietaMousePressed(evt);
             }
         });
+        getContentPane().add(rbtnsinDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(298, 298, 298)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(135, 135, 135)))
-                        .addGap(294, 294, 294)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(388, 388, 388))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnSinCumplir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(278, 278, 278))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbtnsinDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(323, 323, 323))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnKilos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtnDni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(57, 57, 57)))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtKilos)
-                            .addComponent(txtDni))))
-                .addGap(187, 187, 187))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(339, 339, 339))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(337, 337, 337))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(rbtnDni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDni)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(rbtnKilos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtKilos)))
-                .addGap(18, 18, 18)
-                .addComponent(rbtnTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(rbtnsinDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(rbtnSinCumplir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap())
-        );
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -495,6 +454,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

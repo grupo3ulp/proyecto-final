@@ -35,6 +35,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLTitulo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jCBComida = new javax.swing.JComboBox<>();
         jTFDetalles = new javax.swing.JTextField();
@@ -47,117 +48,91 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         jTFNombre = new javax.swing.JTextField();
         jTFCalorias = new javax.swing.JTextField();
         jBBorrar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLTitulo.setText("Modificar Comida");
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel2.setText("Datos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 70, 40));
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel1.setText("Elija la comida que quiere modificar/eliminar");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
+        jCBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 410, -1));
+
+        jTFDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 310, 127));
+
+        jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 90, -1));
 
+        jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 680, 110, -1));
 
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 90, -1));
 
+        jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre");
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
+        jLCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLCalorias.setText("Calorías");
+        getContentPane().add(jLCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
+        jLDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDetalles.setText("Detalles");
+        getContentPane().add(jLDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
+        jTFNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 310, -1));
 
+        jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 310, -1));
+
+        jBBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBBorrar.setText("Borrar");
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBorrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(jLTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLNombre)
-                            .addComponent(jLCalorias)
-                            .addComponent(jLDetalles))
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFCalorias, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFDetalles, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jBCancelar)
-                        .addGap(32, 32, 32)
-                        .addComponent(jBBorrar)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBGuardar)))
-                .addContainerGap(98, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombre)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCalorias)
-                    .addComponent(jTFCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLDetalles))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBCancelar)
-                    .addComponent(jBLimpiar)
-                    .addComponent(jBBorrar))
-                .addGap(36, 36, 36))
-        );
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,6 +163,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBGuardar;
@@ -198,6 +174,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTFCalorias;
     private javax.swing.JTextField jTFDetalles;
     private javax.swing.JTextField jTFNombre;

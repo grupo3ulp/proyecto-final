@@ -25,9 +25,9 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
          btnMod.setEnabled(false);
           btnEliminar.setEnabled(false);
         for (Paciente aux : pacientes) {
-            JComboModPac.addItem(aux);
+            cbPaciente.addItem(aux);
         }
-        JComboModPac.setSelectedItem(null);
+        cbPaciente.setSelectedItem(null);
 
         txtNombre.setText("");
         txtApellido.setText("");
@@ -47,6 +47,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLApellido = new javax.swing.JLabel();
         jLDni = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
@@ -59,57 +60,87 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         txtDni = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         txtPesoActual = new javax.swing.JTextField();
-        JComboModPac = new javax.swing.JComboBox<>();
+        cbPaciente = new javax.swing.JComboBox<>();
         jLNombre1 = new javax.swing.JLabel();
         btnMod = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setText("Modificar Paciente");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 320, -1));
 
-        jLApellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel2.setText("Datos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 70, 30));
+
+        jLApellido.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLApellido.setText("Apellido:");
+        jLApellido.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 90, 40));
 
-        jLDni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDni.setText("DNI: ");
+        jLDni.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 90, 40));
 
-        jLNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre: ");
+        jLNombre.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 90, 40));
 
-        jLTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLTelefono.setText("Telefono:");
+        jLTelefono.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 90, 40));
 
-        jLPesoActual.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLPesoActual.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLPesoActual.setText("Peso Actual");
+        jLPesoActual.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 90, 40));
 
-        jLDomicilio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLDomicilio.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDomicilio.setText("Domicilio:");
+        jLDomicilio.setPreferredSize(new java.awt.Dimension(64, 26));
+        getContentPane().add(jLDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 90, 40));
 
+        txtNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
         });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 320, 27));
 
+        txtApellido.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidoKeyTyped(evt);
             }
         });
+        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 320, 27));
 
+        txtDomicilio.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDomicilioKeyTyped(evt);
             }
         });
+        getContentPane().add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 320, 27));
 
+        txtDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
             }
         });
+        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 320, 27));
 
+        txtTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyPressed(evt);
@@ -118,130 +149,61 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtTelefonoKeyTyped(evt);
             }
         });
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 320, 27));
 
+        txtPesoActual.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtPesoActual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPesoActualKeyTyped(evt);
             }
         });
+        getContentPane().add(txtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 320, 27));
 
-        JComboModPac.setBackground(new java.awt.Color(255, 255, 255));
-        JComboModPac.addItemListener(new java.awt.event.ItemListener() {
+        cbPaciente.setBackground(new java.awt.Color(255, 255, 255));
+        cbPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        cbPaciente.setMinimumSize(new java.awt.Dimension(64, 26));
+        cbPaciente.setPreferredSize(new java.awt.Dimension(64, 26));
+        cbPaciente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                JComboModPacItemStateChanged(evt);
+                cbPacienteItemStateChanged(evt);
             }
         });
+        getContentPane().add(cbPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 320, 30));
 
-        jLNombre1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLNombre1.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre1.setText("Paciente");
+        getContentPane().add(jLNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 50));
 
+        btnMod.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnMod.setText("Modificar");
         btnMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, -1, 30));
 
+        btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 580, 90, 30));
 
-        btnCancel.setText("Cancelar");
+        btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnCancel.setText("Cerrar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 683, 90, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(97, 97, 97))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLDomicilio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLDni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLPesoActual, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLNombre1))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JComboModPac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtApellido)
-                    .addComponent(txtPesoActual)
-                    .addComponent(txtTelefono)
-                    .addComponent(txtDni)
-                    .addComponent(txtDomicilio)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
-                .addGap(32, 32, 32))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btnCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminar)
-                .addGap(98, 98, 98)
-                .addComponent(btnMod)
-                .addGap(48, 48, 48))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JComboModPac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLNombre1))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLDni, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txtPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addComponent(jLPesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMod)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnCancel))
-                .addGap(48, 48, 48))
-        );
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,23 +247,23 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtPesoActualKeyTyped
 
-    private void JComboModPacItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboModPacItemStateChanged
-        if (JComboModPac.getSelectedItem() != null) {
-            txtNombre.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getNombre()));
-            txtApellido.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getApellido()));
-            txtDomicilio.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getDomicilio()));
-            txtDni.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getDni()));
-            txtTelefono.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getTelefono()));
-            txtPesoActual.setText(String.valueOf(((Paciente) JComboModPac.getSelectedItem()).getPesoActual()));
+    private void cbPacienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPacienteItemStateChanged
+        if (cbPaciente.getSelectedItem() != null) {
+            txtNombre.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getNombre()));
+            txtApellido.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getApellido()));
+            txtDomicilio.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getDomicilio()));
+            txtDni.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getDni()));
+            txtTelefono.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getTelefono()));
+            txtPesoActual.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getPesoActual()));
             btnMod.setEnabled(true);
             btnEliminar.setEnabled(true);
         }else{
          btnMod.setEnabled(false);
          btnEliminar.setEnabled(false);
         }
-        System.out.println(JComboModPac.getSelectedIndex());
+        System.out.println(cbPaciente.getSelectedIndex());
 
-    }//GEN-LAST:event_JComboModPacItemStateChanged
+    }//GEN-LAST:event_cbPacienteItemStateChanged
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
         if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
@@ -363,19 +325,19 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
         PacienteData pacienteData = new PacienteData();
 
-        pacienteData.updatePaciente(((Paciente) JComboModPac.getSelectedItem()).getId(),
+        pacienteData.updatePaciente(((Paciente) cbPaciente.getSelectedItem()).getId(),
                 txtNombre.getText(), txtApellido.getText(),
                 txtDomicilio.getText(), txtDni.getText(),
                 txtTelefono.getText(), Float.parseFloat(txtPesoActual.getText()),
-                ((Paciente) JComboModPac.getSelectedItem()).isEstado());
+                ((Paciente) cbPaciente.getSelectedItem()).isEstado());
 
     }//GEN-LAST:event_btnModActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         PacienteData pacienteData = new PacienteData();
-        pacienteData.deletePaciente(((Paciente) JComboModPac.getSelectedItem()).getId());
-        int index = JComboModPac.getSelectedIndex();
-        JComboModPac.removeItemAt(index);
+        pacienteData.deletePaciente(((Paciente) cbPaciente.getSelectedItem()).getId());
+        int index = cbPaciente.getSelectedIndex();
+        cbPaciente.removeItemAt(index);
                 
         System.out.println(index);
         txtNombre.setText("");
@@ -384,7 +346,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         txtDni.setText("");
         txtTelefono.setText("");
         txtPesoActual.setText("");
-        JComboModPac.setSelectedItem(null);       
+        cbPaciente.setSelectedItem(null);       
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -393,10 +355,11 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Paciente> JComboModPac;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMod;
+    private javax.swing.JComboBox<Paciente> cbPaciente;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLApellido;
     private javax.swing.JLabel jLDni;
     private javax.swing.JLabel jLDomicilio;
@@ -405,6 +368,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLPesoActual;
     private javax.swing.JLabel jLTelefono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDomicilio;

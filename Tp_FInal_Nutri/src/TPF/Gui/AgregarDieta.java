@@ -58,15 +58,21 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
         CDCerrar = new javax.swing.JButton();
         CDListaPaciente = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
+        setBorder(null);
         setVisible(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setText("Crear Dieta");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 190, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("Ingrese su peso inicial:");
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel2.setText("Peso inicial:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 80, 30));
 
+        PIText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         PIText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 PITextKeyReleased(evt);
@@ -75,10 +81,13 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 PITextKeyTyped(evt);
             }
         });
+        getContentPane().add(PIText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 281, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Ingrese el peso deseado:");
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel3.setText("Peso deseado:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 100, 30));
 
+        PDText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         PDText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 PDTextKeyReleased(evt);
@@ -87,16 +96,20 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 PDTextKeyTyped(evt);
             }
         });
+        getContentPane().add(PDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 281, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setText("Ingrese el limite de calorias:");
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel4.setText("Llimite de calorias:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 120, 40));
 
         FIDateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FIDateChooserPropertyChange(evt);
             }
         });
+        getContentPane().add(FIDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 280, 30));
 
+        LCText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         LCText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 LCTextKeyReleased(evt);
@@ -105,110 +118,49 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 LCTextKeyTyped(evt);
             }
         });
+        getContentPane().add(LCText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 280, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setText("Ingrese la fecha de inicio:");
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel5.setText("Fecha de inicio:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 177, 50));
 
+        CDGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CDGuardar.setText("Guardar");
         CDGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(CDGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 90, -1));
 
+        CDLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CDLimpiar.setText("Limpiar");
         CDLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(CDLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 91, -1));
 
+        CDCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CDCerrar.setText("Cerrar");
         CDCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDCerrarActionPerformed(evt);
             }
         });
+        getContentPane().add(CDCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel6.setText("Seleccione al paciente");
+        CDListaPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(CDListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 281, -1));
+
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel6.setText("Paciente");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 60, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CDGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
-                        .addComponent(CDLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
-                        .addComponent(CDCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PIText, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FIDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LCText, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jLabel6))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CDListaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PDText, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(145, 145, 145))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(CDListaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(PIText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(PDText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(LCText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FIDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CDGuardar)
-                    .addComponent(CDLimpiar)
-                    .addComponent(CDCerrar))
-                .addGap(25, 25, 25))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -320,6 +272,7 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField LCText;
     private javax.swing.JTextField PDText;
     private javax.swing.JTextField PIText;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

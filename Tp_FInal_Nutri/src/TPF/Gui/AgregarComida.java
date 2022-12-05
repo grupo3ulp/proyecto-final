@@ -41,94 +41,70 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLTitulo.setText("Agregar Comida");
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 280, -1));
 
+        jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre");
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
+        jLCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLCalorias.setText("Calorías");
+        getContentPane().add(jLCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
+        jLDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDetalles.setText("Detalles");
+        getContentPane().add(jLDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
+        jTFNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 303, -1));
 
+        jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 303, -1));
+
+        jTFDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 303, 127));
+
+        jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 100, -1));
 
+        jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 100, 30));
 
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLNombre)
-                    .addComponent(jLCalorias)
-                    .addComponent(jLDetalles))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBCancelar)
-                        .addGap(40, 40, 40)
-                        .addComponent(jBLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jBGuardar))
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFCalorias, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFDetalles, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLTitulo)
-                .addGap(209, 209, 209))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLTitulo)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombre)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCalorias)
-                    .addComponent(jTFCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLDetalles))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBCancelar)
-                    .addComponent(jBLimpiar))
-                .addGap(36, 36, 36))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,6 +148,7 @@ public class AgregarComida extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;

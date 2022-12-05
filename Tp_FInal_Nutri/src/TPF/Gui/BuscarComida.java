@@ -33,6 +33,11 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         jCBCalorias.setEnabled(false);
         jCBComida.setEnabled(false);
         jTFCalorias.setEnabled(false);
+
+        jRBTodas.setOpaque(false);
+        jRBUnaComida.setOpaque(false);
+        jCBCalorias.setOpaque(false);
+
     }
 
     /**
@@ -55,30 +60,48 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         jBCancelar = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
-        jLTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLTitulo.setText("Mostrar Comidas");
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
+        jRBUnaComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBUnaComida.setText("Una comida");
         jRBUnaComida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBUnaComidaMousePressed(evt);
             }
         });
+        getContentPane().add(jRBUnaComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
+        jRBTodas.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBTodas.setText("Todas las comidas");
         jRBTodas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRBTodasMousePressed(evt);
             }
         });
+        getContentPane().add(jRBTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
+        jCBCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jCBCalorias.setText("Calorías menor a: ");
         jCBCalorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jCBCaloriasMousePressed(evt);
             }
         });
+        getContentPane().add(jCBCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+
+        jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 116, -1));
+
+        jCBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jCBComida.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 311, -1));
 
         jTComidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,82 +116,38 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTComidas);
 
-        jBCancelar.setText("Volver");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 750, 250));
+
+        jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 100, -1));
 
+        jBBuscar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 100, -1));
 
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 610, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(jLTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jBCancelar)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(jBLimpiar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jBBuscar))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRBUnaComida)
-                                .addGap(50, 50, 50)
-                                .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jRBTodas)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCBCalorias)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLTitulo)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBUnaComida)
-                    .addComponent(jCBComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jRBTodas)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBCalorias)
-                    .addComponent(jTFCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCancelar)
-                    .addComponent(jBBuscar)
-                    .addComponent(jBLimpiar))
-                .addGap(26, 26, 26))
-        );
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +256,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jCBCalorias;
     private javax.swing.JComboBox<Comida> jCBComida;
     private javax.swing.JLabel jLTitulo;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRBTodas;
     private javax.swing.JRadioButton jRBUnaComida;
     private javax.swing.JScrollPane jScrollPane1;

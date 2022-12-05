@@ -9,6 +9,7 @@ import TPF.Control.PacienteData;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Paciente;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -24,19 +25,28 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
      */
     public ModificarDieta() {
         initComponents();
-        MDGuardar.setEnabled(false);
-        
+        btnGuardar.setEnabled(false);
+
         PacienteData pacienteData = new PacienteData();
-        
-        
-        for (Paciente paciente : pacienteData.readAllPaciente()) {
-            
-           NModDietaP.addItem(paciente);
-           NBorrarDietaP.addItem(paciente);
-            
+        DietaData dietaData = new DietaData();
+        ArrayList<Dieta> dietas = dietaData.readAllDieta();
+        ArrayList<Paciente> pacientes = pacienteData.readAllPaciente();
+        System.out.println("");
+        for (Dieta dieta : dietas) {
+            for (Paciente paciente : pacientes) {
+                if (dieta.getId_paciente().getId() == paciente.getId()) {
+                    cbPaciente.addItem(paciente);
+                }
+            }
         }
-        
-        
+
+//        for (Paciente paciente : pacienteData.readAllPaciente()) {
+//            
+//            cbPaciente.addItem(paciente);
+//        }
+        cbDieta.setSelectedItem(null);
+        cbPaciente.setSelectedItem(null);
+
     }
 
     /**
@@ -49,399 +59,290 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NModDietaP = new javax.swing.JComboBox<>();
+        cbPaciente = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        NModDietaD = new javax.swing.JComboBox<>();
+        cbDieta = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        PITextMod = new javax.swing.JTextField();
+        txtPesoInicial = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        PDTextMod = new javax.swing.JTextField();
+        txtPesoDeseado = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         FIDateChooserMod = new com.toedter.calendar.JDateChooser();
-        LCTextMod = new javax.swing.JTextField();
+        txtLimiteCal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        MDGuardar = new javax.swing.JButton();
-        MDLimpiar = new javax.swing.JButton();
-        MDCerrar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        BDBorrar = new javax.swing.JButton();
-        BDCerrar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        NBorrarDietaP = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        NBorrarDietaD = new javax.swing.JComboBox<>();
+        btnGuardar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        setBorder(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setText("Modificar Dieta");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 270, -1));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("Elija un paciente:");
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setText("Datos");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 70, 30));
 
-        NModDietaP.addItemListener(new java.awt.event.ItemListener() {
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel2.setText("Paciente:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 60, 40));
+
+        cbPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        cbPaciente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                NModDietaPItemStateChanged(evt);
+                cbPacienteItemStateChanged(evt);
             }
         });
+        getContentPane().add(cbPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 300, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Elija una dieta del paciente: ");
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel3.setText("Dieta ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, 30));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setText("Ingrese su peso inicial:");
+        cbDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        getContentPane().add(cbDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 300, -1));
 
-        PITextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel4.setText("Peso inicial:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 80, 30));
+
+        txtPesoInicial.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        txtPesoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                PITextModKeyReleased(evt);
+                txtPesoInicialKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                PITextModKeyTyped(evt);
+                txtPesoInicialKeyTyped(evt);
             }
         });
+        getContentPane().add(txtPesoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 300, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setText("Ingrese el peso deseado:");
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel5.setText("Peso deseado");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 167, 30));
 
-        PDTextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPesoDeseado.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        txtPesoDeseado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                PDTextModKeyReleased(evt);
+                txtPesoDeseadoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                PDTextModKeyTyped(evt);
+                txtPesoDeseadoKeyTyped(evt);
             }
         });
+        getContentPane().add(txtPesoDeseado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 300, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel6.setText("Ingrese el limite de calorias:");
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jLabel6.setText("Limite de cal");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 177, 30));
 
         FIDateChooserMod.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FIDateChooserModPropertyChange(evt);
             }
         });
+        getContentPane().add(FIDateChooserMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 300, 30));
 
-        LCTextMod.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtLimiteCal.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        txtLimiteCal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                LCTextModKeyReleased(evt);
+                txtLimiteCalKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                LCTextModKeyTyped(evt);
+                txtLimiteCalKeyTyped(evt);
             }
         });
+        getContentPane().add(txtLimiteCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 300, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("Ingrese la fecha de inicio:");
+        jLabel7.setText("Fecha de inicio");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 519, 110, 30));
 
-        MDGuardar.setText("Guardar");
-        MDGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MDGuardarActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 570, 90, -1));
 
-        MDLimpiar.setText("Limpiar");
-        MDLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MDLimpiarActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 100, -1));
 
-        MDCerrar.setText("Cerrar");
-        MDCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MDCerrarActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 90, -1));
 
-        BDBorrar.setText("Borrar");
-        BDBorrar.addActionListener(new java.awt.event.ActionListener() {
+        btnBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BDBorrarActionPerformed(evt);
+                btnBorrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 90, -1));
 
-        BDCerrar.setText("Cerrar");
-        BDCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BDCerrarActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel8.setText("Borrar Dieta");
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel9.setText("Elija un paciente:");
-
-        NBorrarDietaP.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                NBorrarDietaPItemStateChanged(evt);
-            }
-        });
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setText("Elija una dieta del paciente: ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(227, 227, 227))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(NModDietaD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(NModDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(15, 15, 15))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PITextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FIDateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LCTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PDTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(162, 162, 162))))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(MDGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
-                        .addComponent(MDLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
-                        .addComponent(MDCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(BDBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(286, 286, 286)
-                        .addComponent(BDCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NBorrarDietaD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(NBorrarDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(NModDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(NModDietaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(PITextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(PDTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(LCTextMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FIDateChooserMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MDGuardar)
-                    .addComponent(MDLimpiar)
-                    .addComponent(MDCerrar))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(NBorrarDietaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(NBorrarDietaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BDBorrar)
-                    .addComponent(BDCerrar))
-                .addGap(23, 23, 23))
-        );
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void habilitarBoton(){
-        if (PITextMod.getText().isEmpty() || PDTextMod.getText().isEmpty() || LCTextMod.getText().isEmpty() && ((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).getText().isEmpty()) {
-            MDGuardar.setEnabled(false);
-        }else{
-            MDGuardar.setEnabled(true);
+    public void habilitarBoton() {
+        if (txtPesoInicial.getText().isEmpty() || txtPesoDeseado.getText().isEmpty() || txtLimiteCal.getText().isEmpty() && ((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            btnGuardar.setEnabled(false);
+        } else {
+            btnGuardar.setEnabled(true);
         }
-            
+
     }
-    
-    private void PITextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextModKeyReleased
-        habilitarBoton();
-    }//GEN-LAST:event_PITextModKeyReleased
 
-    private void PITextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextModKeyTyped
+    private void txtPesoInicialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoInicialKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_txtPesoInicialKeyReleased
+
+    private void txtPesoInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoInicialKeyTyped
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
-                + "este campo");
+                    + "este campo");
         }
-    }//GEN-LAST:event_PITextModKeyTyped
+    }//GEN-LAST:event_txtPesoInicialKeyTyped
 
-    private void PDTextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PDTextModKeyReleased
+    private void txtPesoDeseadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoDeseadoKeyReleased
         habilitarBoton();
-    }//GEN-LAST:event_PDTextModKeyReleased
+    }//GEN-LAST:event_txtPesoDeseadoKeyReleased
 
-    private void PDTextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PDTextModKeyTyped
+    private void txtPesoDeseadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoDeseadoKeyTyped
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
-                + "este campo");
+                    + "este campo");
         }
-    }//GEN-LAST:event_PDTextModKeyTyped
+    }//GEN-LAST:event_txtPesoDeseadoKeyTyped
 
     private void FIDateChooserModPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FIDateChooserModPropertyChange
         habilitarBoton();
     }//GEN-LAST:event_FIDateChooserModPropertyChange
 
-    private void LCTextModKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LCTextModKeyReleased
+    private void txtLimiteCalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLimiteCalKeyReleased
         habilitarBoton();
-    }//GEN-LAST:event_LCTextModKeyReleased
+    }//GEN-LAST:event_txtLimiteCalKeyReleased
 
-    private void LCTextModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LCTextModKeyTyped
+    private void txtLimiteCalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLimiteCalKeyTyped
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
-                + "este campo");
+                    + "este campo");
         }
-    }//GEN-LAST:event_LCTextModKeyTyped
+    }//GEN-LAST:event_txtLimiteCalKeyTyped
 
-    private void MDGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea asignar esta dieta?");
-        if (aux == 0){
+        if (aux == 0) {
             Dieta dt = new Dieta();
             int d = FIDateChooserMod.getCalendar().get(Calendar.DAY_OF_MONTH);
             int m = FIDateChooserMod.getCalendar().getTime().getMonth() + 1;
             int an = FIDateChooserMod.getCalendar().getTime().getYear() + 1900;
 
             DietaData DD = new DietaData();
-            
-            DD.updateDieta(((Dieta)NModDietaD.getSelectedItem()).getId(), LocalDate.of(an, m, d), LocalDate.of(an, m, d).plusDays(7), Double.parseDouble(PITextMod.getText()), Double.parseDouble(PDTextMod.getText()), Integer.parseInt(LCTextMod.getText()), true);
-        }
-    }//GEN-LAST:event_MDGuardarActionPerformed
 
-    private void MDLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDLimpiarActionPerformed
-        PITextMod.setText("");
-        PDTextMod.setText("");
-        LCTextMod.setText("");
+            DD.updateDieta(((Dieta) cbDieta.getSelectedItem()).getId(), LocalDate.of(an, m, d), LocalDate.of(an, m, d).plusDays(7), Double.parseDouble(txtPesoInicial.getText()), Double.parseDouble(txtPesoDeseado.getText()), Integer.parseInt(txtLimiteCal.getText()), true);
+        }
+
+        cbDieta.setSelectedItem(null);
+        cbPaciente.setSelectedItem(null);
+
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtPesoInicial.setText("");
+        txtPesoDeseado.setText("");
+        txtLimiteCal.setText("");
         ((JTextField) FIDateChooserMod.getDateEditor().getUiComponent()).setText("");
         habilitarBoton();
-    }//GEN-LAST:event_MDLimpiarActionPerformed
+        cbDieta.setSelectedItem(null);
+        cbPaciente.setSelectedItem(null);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void MDCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDCerrarActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
-    }//GEN-LAST:event_MDCerrarActionPerformed
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void BDBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDBorrarActionPerformed
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         DietaData dietaData = new DietaData();
-        dietaData.deleteDieta(((Dieta) NBorrarDietaD.getSelectedItem()).getId());
-    }//GEN-LAST:event_BDBorrarActionPerformed
+        DietaData dietaData2 = new DietaData();
+        PacienteData pacienteData = new PacienteData();
+        dietaData.deleteDieta(((Dieta) cbDieta.getSelectedItem()).getId());
+        
+        cbDieta.removeAllItems();
+        cbPaciente.removeAllItems();
+        ArrayList<Dieta> dietas = dietaData2.readAllDieta();
+        ArrayList<Paciente> pacientes = pacienteData.readAllPaciente();
 
-    private void BDCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDCerrarActionPerformed
-        dispose();
-    }//GEN-LAST:event_BDCerrarActionPerformed
-
-    private void NModDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NModDietaPItemStateChanged
-        NModDietaD.removeAllItems();
-        DietaData dietaData = new DietaData();
-        for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)NModDietaP.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
-                NModDietaD.addItem(dieta);
-                PITextMod.setText(String.valueOf(dieta.getPeso_inicial()));
-                PDTextMod.setText(String.valueOf(dieta.getPeso_deseado()));
-                LCTextMod.setText(String.valueOf(dieta.getLimite_calorico()));
-                FIDateChooserMod.setDate(java.sql.Date.valueOf(dieta.getFecha_incio()));
+        for (Dieta dieta : dietas) {
+            for (Paciente paciente : pacientes) {
+                if (dieta.getId_paciente().getId() == paciente.getId()) {
+                    cbPaciente.addItem(paciente);
+                }
             }
         }
-    }//GEN-LAST:event_NModDietaPItemStateChanged
+        cbDieta.setSelectedItem(null);
+        cbPaciente.setSelectedItem(null);
 
-    private void NBorrarDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NBorrarDietaPItemStateChanged
-        NBorrarDietaD.removeAllItems();
+
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void cbPacienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbPacienteItemStateChanged
+        cbDieta.removeAllItems();
         DietaData dietaData = new DietaData();
-        for (Dieta dieta : dietaData.readAllDieta()) {
-            if (((Paciente)NBorrarDietaP.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
-                NBorrarDietaD.addItem(dieta);
+        if (cbPaciente.getSelectedItem() != null) {
+            for (Dieta dieta : dietaData.readAllDieta()) {
+                if (((Paciente) cbPaciente.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
+                    cbDieta.addItem(dieta);
+                    txtPesoInicial.setText(String.valueOf(dieta.getPeso_inicial()));
+                    txtPesoDeseado.setText(String.valueOf(dieta.getPeso_deseado()));
+                    txtLimiteCal.setText(String.valueOf(dieta.getLimite_calorico()));
+                    FIDateChooserMod.setDate(java.sql.Date.valueOf(dieta.getFecha_incio()));
+                }
             }
         }
-    }//GEN-LAST:event_NBorrarDietaPItemStateChanged
+
+    }//GEN-LAST:event_cbPacienteItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BDBorrar;
-    private javax.swing.JButton BDCerrar;
     private com.toedter.calendar.JDateChooser FIDateChooserMod;
-    private javax.swing.JTextField LCTextMod;
-    private javax.swing.JButton MDCerrar;
-    private javax.swing.JButton MDGuardar;
-    private javax.swing.JButton MDLimpiar;
-    private javax.swing.JComboBox<Object> NBorrarDietaD;
-    private javax.swing.JComboBox<Object> NBorrarDietaP;
-    private javax.swing.JComboBox<Object> NModDietaD;
-    private javax.swing.JComboBox<Object> NModDietaP;
-    private javax.swing.JTextField PDTextMod;
-    private javax.swing.JTextField PITextMod;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<Object> cbDieta;
+    private javax.swing.JComboBox<Object> cbPaciente;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -449,7 +350,8 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField txtLimiteCal;
+    private javax.swing.JTextField txtPesoDeseado;
+    private javax.swing.JTextField txtPesoInicial;
     // End of variables declaration//GEN-END:variables
 }
