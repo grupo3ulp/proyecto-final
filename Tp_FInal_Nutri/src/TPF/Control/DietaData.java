@@ -116,6 +116,36 @@ public class DietaData {
         return listaAux;
     }
      
+     public ArrayList<Dieta> readAllDietas() {
+         ArrayList<Dieta> listaAux = new ArrayList();
+        String sql = "SELECT * FROM `dieta` ";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PacienteData pacienteData = new PacienteData(); 
+                Dieta dietaAux = new Dieta();
+                dietaAux.setId(rs.getInt(1));
+                Paciente pacienteAux = pacienteData.readPaciente(rs.getInt(2));
+                dietaAux.setId_paciente(pacienteAux);
+                dietaAux.setFecha_incio(rs.getDate(3).toLocalDate());
+                dietaAux.setFecha_fin(rs.getDate(4).toLocalDate());
+                dietaAux.setPeso_inicial(rs.getDouble(5));
+                dietaAux.setPeso_deseado(rs.getDouble(6));
+                dietaAux.setLimite_calorico(rs.getInt(7));
+                dietaAux.setEstado(rs.getBoolean(8));
+                
+                listaAux.add(dietaAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+        }
+        return listaAux;
+    }
+     
      public void updateDieta(int id, LocalDate fecha_inicio, LocalDate fecha_fin, double peso_inicial, double peso_deseado, int limite_calorico, boolean estado) {
         String sql = "UPDATE `dieta` SET `fecha_inicio`=?,`fecha_fin`=?,`peso_inicial`=?,`peso_deseado`=?,`limite_calorico`=?,`estado`=? WHERE id=?";
         try {
@@ -141,7 +171,6 @@ public class DietaData {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
 
         }
-
     }
      
      public void deleteDieta(int id) {
@@ -165,7 +194,50 @@ public class DietaData {
 
             }
         }
-           
-
     } 
+     
+       public ArrayList<Dieta> readAllDietaNoCumplena() {
+        ArrayList<Dieta> listaAux = new ArrayList();
+         String sql = "SELECT d.id FROM dieta d JOIN paciente p ON d.id_paciente"
+                 + " = p.id WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DietaData dietaData=new DietaData();
+                Dieta dietaAux = dietaData.readDieta(rs.getInt("id"))             ;             
+
+                listaAux.add(dietaAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
+
+        }
+        return listaAux;
+    }
+    
+    public ArrayList<Dieta> readAllDietaxKilo(int kilos) {
+        ArrayList<Dieta> listaAux = new ArrayList();
+         String sql = "SELECT d.id FROM dieta d JOIN paciente p ON d.id_paciente"
+                 + " = p.id WHERE  (d.peso_inicial-d.peso_deseado) >=?";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, kilos);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                DietaData dietaData=new DietaData();
+                Dieta dietaAux = dietaData.readDieta(rs.getInt("id"))             ;             
+
+                listaAux.add(dietaAux);
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
+
+        }
+        return listaAux;
+    }
 }

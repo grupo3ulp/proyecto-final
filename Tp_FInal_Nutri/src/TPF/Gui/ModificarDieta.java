@@ -416,7 +416,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NModDietaPItemStateChanged
 
     private void NBorrarDietaPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NBorrarDietaPItemStateChanged
-        NModDietaD.removeAllItems();
+        NBorrarDietaD.removeAllItems();
         DietaData dietaData = new DietaData();
         for (Dieta dieta : dietaData.readAllDieta()) {
             if (((Paciente)NBorrarDietaP.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
