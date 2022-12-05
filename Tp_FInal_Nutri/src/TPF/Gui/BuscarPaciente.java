@@ -31,12 +31,12 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         armarCabecera();
         tPacientes.setEnabled(false);
-        tPacientes.getColumnModel().getColumn(9).setPreferredWidth(40);
-        tPacientes.getColumnModel().getColumn(8).setPreferredWidth(40);
+        tPacientes.getColumnModel().getColumn(9).setPreferredWidth(50);
+        tPacientes.getColumnModel().getColumn(8).setPreferredWidth(50);
         tPacientes.getColumnModel().getColumn(7).setPreferredWidth(40);
         tPacientes.getColumnModel().getColumn(6).setPreferredWidth(40);
         tPacientes.getColumnModel().getColumn(5).setPreferredWidth(40);       
-        tPacientes.getColumnModel().getColumn(2).setPreferredWidth(120);
+        tPacientes.getColumnModel().getColumn(2).setPreferredWidth(110);
         
         rbtnDni.setOpaque(false);
         rbtnKilos.setOpaque(false);
@@ -58,7 +58,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         columnas.add("P Act");
         columnas.add("P Ini");
         columnas.add("P Bus");
-        columnas.add("Kg Fal*");
+        columnas.add("Kg a Baj*");
         columnas.add("Kg Baj*");
 
         for (Object columna : columnas) {
