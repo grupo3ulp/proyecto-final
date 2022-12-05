@@ -3,7 +3,6 @@ package TPF.Control;
 import TPF.Modelo.Comida;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Itemdieta;
-import TPF.Modelo.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ItemdietaData {
 
@@ -22,8 +22,8 @@ public class ItemdietaData {
 
     public void createItemDieta(Itemdieta itemDieta) {
         String sql = "INSERT INTO `itemdieta`(`id_dieta`, `id_comida`, `cantidad`, `dia`, `estado`)  VALUES (?,?,?,?,?)";
-        int id_dieta=itemDieta.getDieta().getId();
-        int id_comida=itemDieta.getComida().getId();
+        int id_dieta = itemDieta.getDieta().getId();
+        int id_comida = itemDieta.getComida().getId();
         try {
 
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -63,10 +63,10 @@ public class ItemdietaData {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                DietaData dietaData= new DietaData();
-                ComidaData comidaData= new ComidaData();
-                Dieta dietaAux=dietaData.readDieta(rs.getInt(2));
-                Comida comidaAux=comidaData.mostrarComida(rs.getInt(3));
+                DietaData dietaData = new DietaData();
+                ComidaData comidaData = new ComidaData();
+                Dieta dietaAux = dietaData.readDieta(rs.getInt(2));
+                Comida comidaAux = comidaData.mostrarComida(rs.getInt(3));
                 itemDietaAux.setId(id);
                 itemDietaAux.setDieta(dietaAux);
                 itemDietaAux.setComida(comidaAux);
@@ -77,7 +77,7 @@ public class ItemdietaData {
 
             conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea "+ex );
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
 
         }
         return itemDietaAux;
@@ -90,40 +90,38 @@ public class ItemdietaData {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Itemdieta itemDietaAux = new Itemdieta();  
-                DietaData dietaData= new DietaData();
-                ComidaData comidaData= new ComidaData();
-              
-                Dieta dietaAux=dietaData.readDieta(rs.getInt(2));
-                Comida comidaAux=comidaData.mostrarComida(rs.getInt(3));
-                
+                Itemdieta itemDietaAux = new Itemdieta();
+                DietaData dietaData = new DietaData();
+                ComidaData comidaData = new ComidaData();
+
+                Dieta dietaAux = dietaData.readDieta(rs.getInt(2));
+                Comida comidaAux = comidaData.mostrarComida(rs.getInt(3));
+
                 itemDietaAux.setId(rs.getInt(1));
                 itemDietaAux.setDieta(dietaAux);
                 itemDietaAux.setComida(comidaAux);
                 itemDietaAux.setCantidad(rs.getInt(4));
                 itemDietaAux.setDia(rs.getInt(5));
                 itemDietaAux.setEstado(rs.getBoolean(6));
-                           
+
                 listaAux.add(itemDietaAux);
             }
             conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea "+ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
         }
         return listaAux;
     }
 
-    public void updateItemDieta(int id, int id_dieta, int id_comida,int cantidad, int dia, boolean estado) {
-        String sql = "UPDATE `itemdieta` SET `id_dieta`=?,`id_comida`=?,`cantidad`=?,`dia`=?,`estado`=? WHERE id=?";
+    public void updateItemDieta(int id, int cantidad, int dia, boolean estado) {
+        String sql = "UPDATE `itemdieta` SET `cantidad`=?,`dia`=?,`estado`=? WHERE id=?";
         try {
-            PreparedStatement ps = conec.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, id_dieta);
-            ps.setInt(2, id_comida);
-            ps.setInt(3, cantidad);
-            ps.setInt(4, dia);
-            ps.setBoolean(5, estado);
-            ps.setInt(6, id);
+            ps.setInt(1, cantidad);
+            ps.setInt(2, dia);
+            ps.setBoolean(3, estado);
+            ps.setInt(4, id);
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
@@ -134,19 +132,20 @@ public class ItemdietaData {
 
             conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea sadsdsa"+ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
 
         }
 
     }
-     public void deleteItemDieta(int id) {
+
+    public void deleteItemDieta(int id) {
         String sql = "UPDATE `itemdieta` SET `estado`=0 WHERE id=?";
-        
-        if((JOptionPane.showConfirmDialog(null, "Borara el "
-                 + "plan de comidas con id "+ id+" desea continuar?", "Confirmar Borrado",
+
+        if ((JOptionPane.showConfirmDialog(null, "Borara el "
+                + "plan de comidas con id " + id + " desea continuar?", "Confirmar Borrado",
                 JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE))==0){
-        try {
+                JOptionPane.QUESTION_MESSAGE)) == 0) {
+            try {
                 PreparedStatement ps = conec.prepareStatement(sql);
                 ps.setInt(1, id);
                 if (ps.executeUpdate() > 0) {
@@ -156,12 +155,61 @@ public class ItemdietaData {
                 }
                 conec.close();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea "+ex);
+                JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
 
             }
         }
-           
 
-    }  
+    }
+
+    public int encontrarID(int id_dieta, String comida, int dia, int cantidad) {
+        int iditemdieta = 0;
+        String sql = "SELECT itemd.id\n"
+                + "FROM itemdieta itemd\n"
+                + "JOIN  dieta d ON d.id = itemd.id_dieta\n"
+                + "JOIN comida c ON c.id = itemd.id_comida\n"
+                + "WHERE d.id = ? AND c.nombre = ? AND itemd.dia = ? AND itemd.cantidad = ?;";
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id_dieta);
+            ps.setString(2, comida);
+            ps.setInt(3, dia);
+            ps.setInt(4, cantidad);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                iditemdieta = rs.getInt("itemd.id");
+            }
+
+            //conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea asdsd " + ex);
+
+        }
+        return iditemdieta;
+    }
+
+    public void detallesDieta(int idDieta, DefaultTableModel modelo) {
+        String sql = "SELECT nombre, detalles, cantidad, dia FROM dieta d JOIN itemdieta itemd ON d.id = itemd.id_dieta JOIN comida c ON itemd.id_comida = c.id WHERE itemd.estado = 1 and d.id = ? ORDER BY itemd.dia ASC";
+        Itemdieta itemDietaAux = new Itemdieta();
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comida comidaAux = new Comida();
+                comidaAux.setNombre(rs.getString("nombre"));
+                comidaAux.setDetalles(rs.getString("detalles"));
+                itemDietaAux.setCantidad(rs.getInt("cantidad"));
+                itemDietaAux.setDia(rs.getInt("dia"));
+                modelo.addRow(new Object[]{comidaAux.getNombre(), comidaAux.getDetalles(), itemDietaAux.getCantidad(), itemDietaAux.getDia()});
+            }
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
+
+        }
+
+    }
 
 }
