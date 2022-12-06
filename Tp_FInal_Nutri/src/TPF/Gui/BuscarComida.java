@@ -119,7 +119,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 750, 250));
 
         jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        jBCancelar.setText("Cancelar");
+        jBCancelar.setText("Cerrar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);

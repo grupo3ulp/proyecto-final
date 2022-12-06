@@ -104,7 +104,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="agregarPlan">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar plan"/>
+                <Property name="text" type="java.lang.String" value="Cargar plan"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregarPlanMousePressed"/>

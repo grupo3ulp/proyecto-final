@@ -114,7 +114,7 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
                 jBVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 680, 76, -1));
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 680, 100, -1));
 
         jCBItemdieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jCBItemdieta.addItemListener(new java.awt.event.ItemListener() {
@@ -160,7 +160,7 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, -1, -1));
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, 100, -1));
 
         jRBEliminar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBEliminar.setText("Eliminar de la dieta");

@@ -40,7 +40,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         jCBComida = new javax.swing.JComboBox<>();
         jTFDetalles = new javax.swing.JTextField();
         jBGuardar = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
+        jBCerrar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
         jLNombre = new javax.swing.JLabel();
         jLCalorias = new javax.swing.JLabel();
@@ -80,14 +80,14 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 90, -1));
 
-        jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        jBCancelar.setText("Cancelar");
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jBCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBCerrar.setText("Cerrar");
+        jBCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
+                jBCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 680, 110, -1));
+        getContentPane().add(jBCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 680, 110, -1));
 
         jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
@@ -152,9 +152,9 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         jTFDetalles.setText("");
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+    private void jBCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCerrarActionPerformed
         dispose();
-    }//GEN-LAST:event_jBCancelarActionPerformed
+    }//GEN-LAST:event_jBCerrarActionPerformed
 
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
         ComidaData CD = new ComidaData();
@@ -165,7 +165,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jBBorrar;
-    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBCerrar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JComboBox<Comida> jCBComida;

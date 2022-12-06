@@ -86,7 +86,7 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 100, -1));
 
         jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        jBCancelar.setText("Cancelar");
+        jBCancelar.setText("Cerrar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);

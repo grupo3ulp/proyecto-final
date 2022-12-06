@@ -118,7 +118,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 BDBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(BDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 108, -1));
+        getContentPane().add(BDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 108, -1));
 
         cbDietas.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         getContentPane().add(cbDietas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 342, -1));
