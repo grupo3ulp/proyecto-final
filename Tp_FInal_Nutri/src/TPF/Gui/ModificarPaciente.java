@@ -81,12 +81,12 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         jLApellido.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLApellido.setText("Apellido:");
         jLApellido.setPreferredSize(new java.awt.Dimension(64, 26));
-        getContentPane().add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 90, 40));
+        getContentPane().add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 90, 40));
 
         jLDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDni.setText("DNI: ");
         jLDni.setPreferredSize(new java.awt.Dimension(64, 26));
-        getContentPane().add(jLDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 90, 40));
+        getContentPane().add(jLDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 90, 40));
 
         jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre: ");
@@ -96,17 +96,17 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         jLTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLTelefono.setText("Telefono:");
         jLTelefono.setPreferredSize(new java.awt.Dimension(64, 26));
-        getContentPane().add(jLTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 90, 40));
+        getContentPane().add(jLTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 90, 40));
 
         jLPesoActual.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLPesoActual.setText("Peso Actual");
         jLPesoActual.setPreferredSize(new java.awt.Dimension(64, 26));
-        getContentPane().add(jLPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 90, 40));
+        getContentPane().add(jLPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 90, 40));
 
         jLDomicilio.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDomicilio.setText("Domicilio:");
         jLDomicilio.setPreferredSize(new java.awt.Dimension(64, 26));
-        getContentPane().add(jLDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 90, 40));
+        getContentPane().add(jLDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 90, 40));
 
         txtNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,7 +122,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtApellidoKeyTyped(evt);
             }
         });
-        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 320, 27));
+        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 320, 27));
 
         txtDomicilio.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -130,7 +130,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtDomicilioKeyTyped(evt);
             }
         });
-        getContentPane().add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 320, 27));
+        getContentPane().add(txtDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 320, 27));
 
         txtDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -138,7 +138,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtDniKeyTyped(evt);
             }
         });
-        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 320, 27));
+        getContentPane().add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 320, 27));
 
         txtTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -149,7 +149,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtTelefonoKeyTyped(evt);
             }
         });
-        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 320, 27));
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 320, 27));
 
         txtPesoActual.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtPesoActual.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -157,7 +157,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtPesoActualKeyTyped(evt);
             }
         });
-        getContentPane().add(txtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 320, 27));
+        getContentPane().add(txtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 320, 27));
 
         cbPaciente.setBackground(new java.awt.Color(255, 255, 255));
         cbPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -181,7 +181,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 btnModActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, -1, 30));
+        getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, -1, 30));
 
         btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -190,7 +190,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 580, 90, 30));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 90, 30));
 
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnCancel.setText("Cerrar");
@@ -199,11 +199,11 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 683, 90, 30));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 90, 30));
 
         fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

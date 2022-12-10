@@ -111,10 +111,10 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
                 jBVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 90, -1));
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 90, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

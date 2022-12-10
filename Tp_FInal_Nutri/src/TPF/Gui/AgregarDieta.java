@@ -149,7 +149,7 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 CDCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(CDCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, 110, -1));
+        getContentPane().add(CDCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 110, -1));
 
         CDListaPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         getContentPane().add(CDListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 281, -1));
@@ -159,8 +159,8 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 60, 30));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -92,7 +92,7 @@ public class AgregarComida extends javax.swing.JInternalFrame {
                 jBCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 100, 30));
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 100, 30));
 
         jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
@@ -103,8 +103,8 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 100, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 520, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

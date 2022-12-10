@@ -110,7 +110,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel4.setText("Peso inicial:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 80, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 80, 30));
 
         txtPesoInicial.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtPesoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -121,11 +121,11 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 txtPesoInicialKeyTyped(evt);
             }
         });
-        getContentPane().add(txtPesoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 300, -1));
+        getContentPane().add(txtPesoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 300, -1));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel5.setText("Peso deseado");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 167, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 167, 30));
 
         txtPesoDeseado.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtPesoDeseado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -136,18 +136,18 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 txtPesoDeseadoKeyTyped(evt);
             }
         });
-        getContentPane().add(txtPesoDeseado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 300, -1));
+        getContentPane().add(txtPesoDeseado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 300, -1));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel6.setText("Limite de cal");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 177, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 177, 30));
 
         FIDateChooserMod.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FIDateChooserModPropertyChange(evt);
             }
         });
-        getContentPane().add(FIDateChooserMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 300, 30));
+        getContentPane().add(FIDateChooserMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 300, 30));
 
         txtLimiteCal.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtLimiteCal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -158,11 +158,11 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 txtLimiteCalKeyTyped(evt);
             }
         });
-        getContentPane().add(txtLimiteCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 300, -1));
+        getContentPane().add(txtLimiteCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 300, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de inicio");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 519, 110, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 110, 30));
 
         btnGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -171,7 +171,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 570, 90, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 90, -1));
 
         btnLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -180,7 +180,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 100, -1));
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 100, -1));
 
         btnCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnCerrar.setText("Cerrar");
@@ -189,7 +189,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 90, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 90, -1));
 
         btnBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnBorrar.setText("Borrar");
@@ -198,10 +198,10 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
                 btnBorrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 90, -1));
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 90, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_chico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
