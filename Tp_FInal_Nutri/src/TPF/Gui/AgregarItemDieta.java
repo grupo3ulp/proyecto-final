@@ -28,6 +28,8 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         ComidaData CD = new ComidaData();
         DietaData DD = new DietaData();
         jTFCalRestantes.setEditable(false);
+        jTFCalDieta.setEditable(false);
+        jTFLimiteCal.setEditable(false);
 
         for (Comida comida : CD.mostrarComidas()) {
             CBComida.addItem(comida);
@@ -59,7 +61,11 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jTFCalDieta = new javax.swing.JTextField();
         jTFCalRestantes = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTFLimiteCal = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setBorder(null);
@@ -130,11 +136,19 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
                 jBVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 110, 30));
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 110, 30));
 
-        jLabel2.setText("*Calorías restantes");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
-        getContentPane().add(jTFCalRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 70, -1));
+        jLabel2.setText("*Calorías totales");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, 20));
+        getContentPane().add(jTFCalDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 70, -1));
+        getContentPane().add(jTFCalRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 70, -1));
+
+        jLabel3.setText("*Calorías restantes");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, 20));
+
+        jLabel4.setText("*Límite calórico");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 20));
+        getContentPane().add(jTFLimiteCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 70, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
@@ -162,6 +176,8 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         ItemdietaData ID = new ItemdietaData();
         int caloriasRestantes = (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico()) - ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId());
         jTFCalRestantes.setText(String.valueOf(caloriasRestantes));
+        jTFCalDieta.setText(String.valueOf(ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId())));
+        jTFLimiteCal.setText(String.valueOf(((Dieta) CBDieta.getSelectedItem()).getLimite_calorico()));
     }//GEN-LAST:event_CBDietaItemStateChanged
 
 
@@ -179,6 +195,10 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLPorciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTFCalDieta;
     private javax.swing.JTextField jTFCalRestantes;
+    private javax.swing.JTextField jTFLimiteCal;
     // End of variables declaration//GEN-END:variables
 }
