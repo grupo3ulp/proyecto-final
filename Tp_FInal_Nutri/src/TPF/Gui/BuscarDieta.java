@@ -37,7 +37,6 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
             cbDietas.addItem(paciente);
 
         }
-        cbDietas.setSelectedItem(null);
         rbtnRango.setOpaque(false);
     }
 

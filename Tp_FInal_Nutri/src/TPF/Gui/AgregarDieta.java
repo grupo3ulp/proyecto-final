@@ -10,6 +10,7 @@ import TPF.Modelo.Dieta;
 import TPF.Modelo.Paciente;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -25,14 +26,16 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
     public AgregarDieta() {
         initComponents();
         CDGuardar.setEnabled(false);
-        
+
         PacienteData pacienteData = new PacienteData();
-        
+
         for (Paciente paciente : pacienteData.readAllPaciente()) {
-            
-           CDListaPaciente.addItem(paciente);
-            
+
+            CDListaPaciente.addItem(paciente);
+
         }
+        Date date1 = new Date();
+        FIDateChooser.getJCalendar().setMinSelectableDate(date1);
     }
 
     /**
@@ -178,15 +181,15 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void habilitarBoton(){
+    public void habilitarBoton() {
         if (PIText.getText().isEmpty() || PDText.getText().isEmpty() || LCText.getText().isEmpty() || ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).getText().isEmpty()) {
             CDGuardar.setEnabled(false);
-        }else{
+        } else {
             CDGuardar.setEnabled(true);
         }
-            
+
     }
-    
+
     private void PITextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PITextKeyReleased
         habilitarBoton();
     }//GEN-LAST:event_PITextKeyReleased
@@ -237,42 +240,52 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
     private void CDLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDLimpiarActionPerformed
         PIText.setText("");
         PDText.setText("");
-       LCText.setText("");
-       ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
+        LCText.setText("");
+        ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
         habilitarBoton();
     }//GEN-LAST:event_CDLimpiarActionPerformed
 
     private void CDGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDGuardarActionPerformed
         int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea asignar esta dieta?");
-         if (aux == 0){
-             Dieta dt = new Dieta();
-             int d = FIDateChooser.getCalendar().get(Calendar.DAY_OF_MONTH);
+        if (aux == 0) {
+            boolean flag = true;
+            Dieta dt = new Dieta();
+            int d = FIDateChooser.getCalendar().get(Calendar.DAY_OF_MONTH);
             int m = FIDateChooser.getCalendar().getTime().getMonth() + 1;
             int an = FIDateChooser.getCalendar().getTime().getYear() + 1900;
-            
+
             dt.setPeso_inicial(Double.parseDouble(PIText.getText()));
             dt.setPeso_deseado(Double.parseDouble(PDText.getText()));
             dt.setLimite_calorico(Integer.parseInt(LCText.getText()));
             dt.setFecha_incio(LocalDate.of(an, m, d));
             dt.setFecha_fin(LocalDate.of(an, m, d).plusDays(7));
-            dt.setId_paciente(((Paciente)CDListaPaciente.getSelectedItem()));
-            
+            dt.setId_paciente(((Paciente) CDListaPaciente.getSelectedItem()));
+
             DietaData DD = new DietaData();
-            
-            DD.createDieta(dt);
-            
+            for (Dieta dieta : DD.readAllDieta()) {
+                if (((Paciente) CDListaPaciente.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
+                    if (dieta.isEstado()) {
+                        JOptionPane.showMessageDialog(null, "El paciente ya tiene una dieta, si quiere agregar una borre la que ya existe");
+                        flag = false;
+                    } 
+                }
+            }
+            if(flag){
+                DD.createDieta(dt);
+            }
+
             PIText.setText("");
             PDText.setText("");
             LCText.setText("");
             ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
             CDGuardar.setEnabled(false);
-         }else if(aux == 1){
-             PIText.setText("");
+        } else if (aux == 1) {
+            PIText.setText("");
             PDText.setText("");
             LCText.setText("");
             ((JTextField) FIDateChooser.getDateEditor().getUiComponent()).setText("");
             CDGuardar.setEnabled(false);
-         }
+        }
     }//GEN-LAST:event_CDGuardarActionPerformed
 
 
