@@ -182,7 +182,7 @@ public class Menu extends javax.swing.JFrame {
         guiPaciente.setVisible(true);
 
         jDesktopPane1.add(guiPaciente);
-        guiPaciente.setLocation(800, -23);
+        guiPaciente.setLocation(750, -23);
         guiPaciente.setUI(null);
     }//GEN-LAST:event_cargarPacienteActionPerformed
 
@@ -190,7 +190,7 @@ public class Menu extends javax.swing.JFrame {
         ModificarPaciente guiPacienteMod = new ModificarPaciente();
         guiPacienteMod.setVisible(true);
         jDesktopPane1.add(guiPacienteMod);
-        guiPacienteMod.setLocation(800, -23);
+        guiPacienteMod.setLocation(750, -23);
         guiPacienteMod.setUI(null);
     }//GEN-LAST:event_ModPacienteActionPerformed
 
@@ -206,7 +206,7 @@ public class Menu extends javax.swing.JFrame {
         AgregarComida aux = new AgregarComida();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(800, -23);
+        aux.setLocation(750, -23);
         aux.setUI(null);
     }//GEN-LAST:event_jMAgregarComidaMousePressed
 
@@ -214,7 +214,7 @@ public class Menu extends javax.swing.JFrame {
         ModificarComida aux = new ModificarComida();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(800, -23);
+        aux.setLocation(750, -23);
         aux.setUI(null);
     }//GEN-LAST:event_jMModificarComidaMousePressed
 
@@ -231,7 +231,7 @@ public class Menu extends javax.swing.JFrame {
         AgregarDieta aux = new AgregarDieta();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(800, -23);
+        aux.setLocation(750, -23);
         aux.setUI(null);
     }//GEN-LAST:event_agregarDietaActionPerformed
 
@@ -239,7 +239,7 @@ public class Menu extends javax.swing.JFrame {
         ModificarDieta aux = new ModificarDieta();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(800, -23);
+        aux.setLocation(750, -23);
         aux.setUI(null);
     }//GEN-LAST:event_modificarDietaActionPerformed
 
@@ -256,7 +256,7 @@ public class Menu extends javax.swing.JFrame {
         AgregarItemDieta aux = new AgregarItemDieta();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(800, -23);
+        aux.setLocation(750, -23);
         aux.setUI(null);
     }//GEN-LAST:event_agregarPlanMousePressed
 

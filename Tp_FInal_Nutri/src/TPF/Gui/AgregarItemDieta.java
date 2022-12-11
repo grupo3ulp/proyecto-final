@@ -144,7 +144,9 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         ItemdietaData ID = new ItemdietaData();
-        if (ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId()) + ((Comida) CBComida.getSelectedItem()).getCalorias() < (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico())) {
+        
+        if (ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId()) + 
+                ((Comida) CBComida.getSelectedItem()).getCalorias() < (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico())) {
             Itemdieta item = new Itemdieta((Comida) CBComida.getSelectedItem(), (Dieta) CBDieta.getSelectedItem(), Integer.parseInt(CBCantidad.getSelectedItem().toString()), Integer.parseInt(CBDia.getSelectedItem().toString()));
             ID.createItemDieta(item);
         } else {

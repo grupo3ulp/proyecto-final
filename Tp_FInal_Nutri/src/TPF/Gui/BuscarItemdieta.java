@@ -220,6 +220,7 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         ItemdietaData idd = new ItemdietaData();
+       
         int fila = jTItemdieta.getSelectedRow();
         String comida = (String) modelo.getValueAt(fila, 0);
         int cantidad = (int) modelo.getValueAt(fila, 2);

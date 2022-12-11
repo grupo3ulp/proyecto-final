@@ -224,6 +224,7 @@ public class ItemdietaData {
                 comidaAux.setDetalles(rs.getString("detalles"));
                 itemDietaAux.setCantidad(rs.getInt("cantidad"));
                 itemDietaAux.setDia(rs.getInt("dia"));
+                System.out.println("asdasdsa");
                 modelo.addRow(new Object[]{comidaAux.getNombre(), comidaAux.getDetalles(), itemDietaAux.getCantidad(), itemDietaAux.getDia()});
             }
             conec.close();
@@ -246,7 +247,7 @@ public class ItemdietaData {
                 caloriasActuales = rs.getInt("SUM(calorias*cantidad)");
             }
 
-            conec.close();
+//            conec.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea asdsd " + ex);
 
