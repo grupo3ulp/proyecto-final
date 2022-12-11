@@ -11,6 +11,7 @@ import TPF.Control.ItemdietaData;
 import TPF.Modelo.Comida;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Itemdieta;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +27,7 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         setResizable(true);
         ComidaData CD = new ComidaData();
         DietaData DD = new DietaData();
+        jTFCalRestantes.setEditable(false);
 
         for (Comida comida : CD.mostrarComidas()) {
             CBComida.addItem(comida);
@@ -56,6 +58,8 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         CBCantidad = new javax.swing.JComboBox<>();
         jBGuardar = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTFCalRestantes = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setBorder(null);
@@ -66,6 +70,11 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         CBDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        CBDieta.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBDietaItemStateChanged(evt);
+            }
+        });
         getContentPane().add(CBDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 320, -1));
 
         CBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -113,6 +122,10 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 90, -1));
 
+        jLabel2.setText("*Calorías restantes");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, -1, 20));
+        getContentPane().add(jTFCalRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 70, -1));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
@@ -121,13 +134,23 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         ItemdietaData ID = new ItemdietaData();
-        Itemdieta item = new Itemdieta((Comida)CBComida.getSelectedItem(), (Dieta)CBDieta.getSelectedItem(), Integer.parseInt(CBCantidad.getSelectedItem().toString()), Integer.parseInt(CBDia.getSelectedItem().toString()));
-        ID.createItemDieta(item);
+        if (ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId()) + ((Comida) CBComida.getSelectedItem()).getCalorias() < (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico())) {
+            Itemdieta item = new Itemdieta((Comida) CBComida.getSelectedItem(), (Dieta) CBDieta.getSelectedItem(), Integer.parseInt(CBCantidad.getSelectedItem().toString()), Integer.parseInt(CBDia.getSelectedItem().toString()));
+            ID.createItemDieta(item);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo agregar la comida: Supera el límite calórico");
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
         dispose();
     }//GEN-LAST:event_jBVolverActionPerformed
+
+    private void CBDietaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBDietaItemStateChanged
+        ItemdietaData ID = new ItemdietaData();
+        int caloriasRestantes = (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico()) - ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId());
+        jTFCalRestantes.setText(String.valueOf(caloriasRestantes));
+    }//GEN-LAST:event_CBDietaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -143,5 +166,7 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLDieta;
     private javax.swing.JLabel jLPorciones;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTFCalRestantes;
     // End of variables declaration//GEN-END:variables
 }

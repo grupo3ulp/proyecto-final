@@ -175,7 +175,7 @@ public class ItemdietaData {
             ps.setString(2, comida);
             ps.setInt(3, dia);
             ps.setInt(4, cantidad);
-            
+
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 iditemdieta = rs.getInt("itemd.id");
@@ -210,6 +210,26 @@ public class ItemdietaData {
 
         }
 
+    }
+
+    public int caloriasActuales(int id) {
+        String sql = "SELECT SUM(calorias*cantidad) FROM dieta d JOIN itemdieta itemd ON d.id = itemd.id_dieta JOIN comida c ON itemd.id_comida = c.id WHERE itemd.estado = 1 and d.id = ?";
+        int caloriasActuales = 0;
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                caloriasActuales = rs.getInt("SUM(calorias*cantidad)");
+            }
+
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea asdsd " + ex);
+
+        }
+        return caloriasActuales;
     }
 
 }
