@@ -29,6 +29,8 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         TDieta.setEnabled(false);
         fechaInicio.setEnabled(false);
         fechaFinal.setEnabled(false);
+        
+       
 
         PacienteData pacienteData = new PacienteData();
 
@@ -195,6 +197,8 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
             fechaFinal.setEnabled(false);
             ((JTextField) fechaInicio.getDateEditor().getUiComponent()).setText("");
             ((JTextField) fechaFinal.getDateEditor().getUiComponent()).setText("");
+            fechaFinal.setMinSelectableDate(null);
+            fechaInicio.setMaxSelectableDate(null);
             BDBuscar.setEnabled(true);
         }
     }
@@ -255,11 +259,17 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbtnRangoMousePressed
 
     private void fechaInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaInicioPropertyChange
-        habilitarBoton();
+        habilitarBoton();        
+        if(!((JTextField)fechaInicio.getDateEditor().getUiComponent()).getText().isEmpty()){
+            fechaFinal.setMinSelectableDate(fechaInicio.getDate());
+        }
     }//GEN-LAST:event_fechaInicioPropertyChange
 
     private void fechaFinalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaFinalPropertyChange
         habilitarBoton();
+         if(!((JTextField)fechaFinal.getDateEditor().getUiComponent()).getText().isEmpty()){
+            fechaInicio.setMaxSelectableDate(fechaFinal.getDate());
+        }
     }//GEN-LAST:event_fechaFinalPropertyChange
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
