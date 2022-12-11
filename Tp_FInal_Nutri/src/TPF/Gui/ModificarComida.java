@@ -211,7 +211,8 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
         ComidaData CD = new ComidaData();
         ComidaData CD1 = new ComidaData();
-        CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
+//        CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
+        CD.deleteComida(((Comida)jCBComida.getSelectedItem()).getId());
         System.out.println(((Comida)jCBComida.getSelectedItem()).getId());
         
         jCBComida.removeAllItems();

@@ -93,6 +93,35 @@ public class ComidaData {
 
             }
         }
+
+    }
+
+    public void deleteComida(int id) {
+        String sql = "UPDATE `comida` SET `estado`=0 WHERE id=?";
+        ItemdietaData itemDietaData = new ItemdietaData();
+
+        if ((JOptionPane.showConfirmDialog(null, "Borrará la "
+                + "comida con id " + id + " y todos los datos relacionados a esta, ¿Desea continuar?", "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE)) == 0) {
+            try {
+                PreparedStatement ps = conec.prepareStatement(sql);
+                ps.setInt(1, id);
+                if (ps.executeUpdate() > 0) {
+                    itemDietaData.deleteItemDietaIdDieta(id);
+                    JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo modificar el registro");
+                }
+                
+                conec.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea");
+
+            }
+        }
+        
+
     }
 
     public Comida mostrarComida(int id) {
@@ -138,8 +167,8 @@ public class ComidaData {
         return listaAux;
 
     }
-    
-    public ArrayList<Comida> buscarMinCal(int calorias){
+
+    public ArrayList<Comida> buscarMinCal(int calorias) {
         ArrayList<Comida> listaAux = new ArrayList();
         String sql = "SELECT * FROM `comida` WHERE estado=1 AND calorias < ?;";
         try {

@@ -138,6 +138,21 @@ public class ItemdietaData {
 
     }
 
+    public void deleteItemDietaIdDieta(int id) {
+        String sql = "UPDATE `itemdieta` SET `estado`=0 WHERE id_comida=?";
+
+        try {
+            PreparedStatement ps = conec.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            conec.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
+
+        }
+
+    }
+
     public void deleteItemDieta(int id) {
         String sql = "UPDATE `itemdieta` SET `estado`=0 WHERE id=?";
 
@@ -190,8 +205,15 @@ public class ItemdietaData {
     }
 
     public void detallesDieta(int idDieta, DefaultTableModel modelo) {
-        String sql = "SELECT nombre, detalles, cantidad, dia FROM dieta d JOIN itemdieta itemd ON d.id = itemd.id_dieta JOIN comida c ON itemd.id_comida = c.id WHERE itemd.estado = 1 and d.id = ? ORDER BY itemd.dia ASC";
+        String sql = "SELECT nombre, detalles, cantidad, dia FROM dieta d "
+                + "JOIN itemdieta itemd "
+                + "ON d.id = itemd.id_dieta"
+                + " JOIN comida c "
+                + "ON itemd.id_comida = c.id "
+                + "WHERE itemd.estado = 1 and d.id = ? "
+                + "ORDER BY itemd.dia ASC";
         Itemdieta itemDietaAux = new Itemdieta();
+        
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, idDieta);

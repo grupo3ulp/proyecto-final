@@ -10,6 +10,7 @@ import TPF.Control.ItemdietaData;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Itemdieta;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -228,7 +229,14 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         int id_item = idd.encontrarID(id_dieta, comida, dia, cantidad);
 
         if (jRBEliminar.isSelected()) {
-            idd.deleteItemDieta(id_item);
+
+            if ((JOptionPane.showConfirmDialog(null, "Borara el "
+                    + "plan de comidas con id " + ((Itemdieta)jCBItemdieta.getSelectedItem()).getId() + " desea continuar?", "Confirmar Borrado",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE)) == 0) {
+                idd.deleteItemDieta(id_item);
+
+            }
         } else {
             idd.updateItemDieta(id_item, Integer.valueOf(CBCantidad.getSelectedItem().toString()), Integer.valueOf(CBDia.getSelectedItem().toString()), true);
         }
