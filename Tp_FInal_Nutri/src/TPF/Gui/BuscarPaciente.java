@@ -489,7 +489,6 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_rbtnKilosItemStateChanged
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
