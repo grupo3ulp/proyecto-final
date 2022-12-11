@@ -47,6 +47,11 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         cbDieta.setSelectedItem(null);
         cbPaciente.setSelectedItem(null);
 
+        txtLimiteCal.setText("");
+        txtPesoDeseado.setText("");
+        txtPesoInicial.setText("");
+        FIDateChooserMod.setDate(null);
+
     }
 
     /**
@@ -81,13 +86,13 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
         jLabel1.setText("Modificar Dieta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 270, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 230, -1));
 
-        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel8.setText("Datos");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 70, 30));
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel8.setText("Datos:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 30));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Paciente:");
@@ -200,7 +205,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 90, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
@@ -296,7 +301,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         DietaData dietaData2 = new DietaData();
         PacienteData pacienteData = new PacienteData();
         dietaData.deleteDieta(((Dieta) cbDieta.getSelectedItem()).getId());
-        
+
         cbDieta.removeAllItems();
         cbPaciente.removeAllItems();
         ArrayList<Dieta> dietas = dietaData2.readAllDieta();

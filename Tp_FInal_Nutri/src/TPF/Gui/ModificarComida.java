@@ -19,6 +19,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
      */
     public ModificarComida() {
         initComponents();
+        jBGuardar.setEnabled(false);
         ComidaData CD = new ComidaData();
         for (Comida comida : CD.mostrarComidas()) {
             jCBComida.addItem(comida);
@@ -69,6 +70,11 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 410, -1));
 
         jTFDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jTFDetalles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFDetallesKeyReleased(evt);
+            }
+        });
         getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 310, 127));
 
         jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -116,9 +122,19 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                 jTFNombreActionPerformed(evt);
             }
         });
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyReleased(evt);
+            }
+        });
         getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 310, -1));
 
         jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCaloriasKeyReleased(evt);
+            }
+        });
         getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 310, -1));
 
         jBBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -131,7 +147,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         getContentPane().add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 90, -1));
 
         fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();
@@ -161,6 +177,25 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
     }//GEN-LAST:event_jBBorrarActionPerformed
 
+    private void jTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_jTFNombreKeyReleased
+
+    private void jTFCaloriasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCaloriasKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_jTFCaloriasKeyReleased
+
+    private void jTFDetallesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDetallesKeyReleased
+        habilitarBoton();
+    }//GEN-LAST:event_jTFDetallesKeyReleased
+
+    public void habilitarBoton() {
+        if (!jLNombre.getText().isEmpty() && !jLCalorias.getText().isEmpty() && !jLDetalles.getText().isEmpty()) {
+            jBGuardar.setEnabled(true);
+        } else {
+            jBGuardar.setEnabled(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;

@@ -112,7 +112,7 @@ public class Dieta {
 
     @Override
     public String toString() {
-        return "Dieta{" + "id=" + id + ", id_paciente="+id_paciente;
+        return "Legajo #" + id;
     
     }
     

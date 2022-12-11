@@ -29,26 +29,26 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Leelawadee UI" size="36" style="1"/>
+          <Font name="Leelawadee UI" size="30" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modificar Dieta"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="110" width="270" height="-1"/>
+          <AbsoluteConstraints x="150" y="110" width="230" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Leelawadee UI" size="24" style="1"/>
+          <Font name="Leelawadee UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Datos"/>
+        <Property name="text" type="java.lang.String" value="Datos:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="230" width="70" height="30"/>
+          <AbsoluteConstraints x="60" y="230" width="70" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -294,7 +294,7 @@
     <Component class="javax.swing.JLabel" name="fondo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/TPF/Gui/fondochico.png"/>
+          <Image iconType="3" name="/im&#xe1;genes/fondochico.png"/>
         </Property>
       </Properties>
       <Constraints>

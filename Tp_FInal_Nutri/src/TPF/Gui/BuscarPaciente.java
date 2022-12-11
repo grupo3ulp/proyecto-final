@@ -178,11 +178,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tPacientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 750, 260));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 750, 160));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jLabel2.setText("* Simbolo negativo significa que subio de peso");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 679, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 679, -1));
 
         rbtnSinCumplir.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnSinCumplir.setText("Mostrar Pacientes sin cumplir meta");
@@ -200,7 +200,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 110, 30));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 110, 30));
 
         rbtnsinDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnsinDieta.setText("Mostrar Pacientes sin dieta");
@@ -212,8 +212,8 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(rbtnsinDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, -1));
 
         fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondo_frames_tablas2.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -103,7 +103,7 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 100, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 520, 760));
 
         pack();

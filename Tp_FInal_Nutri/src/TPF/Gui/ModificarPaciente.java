@@ -202,7 +202,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 90, 30));
 
         fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
 
         pack();

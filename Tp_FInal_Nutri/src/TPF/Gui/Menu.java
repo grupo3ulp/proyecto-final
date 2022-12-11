@@ -58,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
 
         Paciente.setText("Pacientes");
 
-        cargarPaciente.setText("Cargar");
+        cargarPaciente.setText("Agregar");
         cargarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarPacienteActionPerformed(evt);
@@ -66,7 +66,7 @@ public class Menu extends javax.swing.JFrame {
         });
         Paciente.add(cargarPaciente);
 
-        ModPaciente.setText("Mod");
+        ModPaciente.setText("Modificar");
         ModPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModPacienteActionPerformed(evt);
