@@ -48,6 +48,7 @@
         <Property name="text" type="java.lang.String" value="Por DNI"/>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rbtnDniItemStateChanged"/>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnDniMousePressed"/>
       </Events>
       <Constraints>
@@ -80,6 +81,7 @@
         <Property name="text" type="java.lang.String" value="Por kilos buscados"/>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rbtnKilosItemStateChanged"/>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnKilosMousePressed"/>
       </Events>
       <Constraints>

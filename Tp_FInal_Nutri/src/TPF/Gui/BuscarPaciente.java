@@ -109,6 +109,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
 
         rbtnDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnDni.setText("Por DNI");
+        rbtnDni.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rbtnDniItemStateChanged(evt);
+            }
+        });
         rbtnDni.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnDniMousePressed(evt);
@@ -127,6 +132,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
 
         rbtnKilos.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnKilos.setText("Por kilos buscados");
+        rbtnKilos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rbtnKilosItemStateChanged(evt);
+            }
+        });
         rbtnKilos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 rbtnKilosMousePressed(evt);
@@ -466,6 +476,18 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         borrarFilasTabla();
     }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void rbtnDniItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtnDniItemStateChanged
+        if (!rbtnDni.isSelected()){
+           txtDni.setEditable(false);
+        }
+    }//GEN-LAST:event_rbtnDniItemStateChanged
+
+    private void rbtnKilosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtnKilosItemStateChanged
+        if (!rbtnKilos.isSelected()){
+           txtKilos.setEditable(false);
+        }
+    }//GEN-LAST:event_rbtnKilosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
