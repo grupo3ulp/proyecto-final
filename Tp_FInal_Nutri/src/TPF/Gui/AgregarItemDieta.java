@@ -158,14 +158,20 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         ItemdietaData ID = new ItemdietaData();
-        
-        if (ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId()) + 
-                ((Comida) CBComida.getSelectedItem()).getCalorias() < (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico())) {
+
+        if (ID.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId())
+                + ((Comida) CBComida.getSelectedItem()).getCalorias() < (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico())) {
             Itemdieta item = new Itemdieta((Comida) CBComida.getSelectedItem(), (Dieta) CBDieta.getSelectedItem(), Integer.parseInt(CBCantidad.getSelectedItem().toString()), Integer.parseInt(CBDia.getSelectedItem().toString()));
             ID.createItemDieta(item);
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo agregar la comida: Supera el límite calórico");
         }
+        
+        ItemdietaData ID2 = new ItemdietaData();
+        int caloriasRestantes = (((Dieta) CBDieta.getSelectedItem()).getLimite_calorico()) - ID2.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId());
+        jTFCalRestantes.setText(String.valueOf(caloriasRestantes));
+        jTFCalDieta.setText(String.valueOf(ID2.caloriasActuales(((Dieta) CBDieta.getSelectedItem()).getId())));
+        jTFLimiteCal.setText(String.valueOf(((Dieta) CBDieta.getSelectedItem()).getLimite_calorico()));
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
