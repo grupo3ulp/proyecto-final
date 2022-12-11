@@ -183,7 +183,7 @@ public class ItemdietaData {
 
             //conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea asdsd " + ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
 
         }
         return iditemdieta;

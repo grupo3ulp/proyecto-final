@@ -39,6 +39,8 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         jBGuardar.setEnabled(false);
         jRBEliminar.setOpaque(false);
         jRBModificar.setOpaque(false);
+        jRBEliminar.setEnabled(false);
+        jRBModificar.setEnabled(false);
     }
 
     private void armarCabecera() {
@@ -103,6 +105,11 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
                 "", "", "", ""
             }
         ));
+        jTItemdieta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTItemdietaMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTItemdieta);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 760, 210));
@@ -182,6 +189,8 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         borrarFilasTabla();
         ItemdietaData idd = new ItemdietaData();
         idd.detallesDieta(((Dieta) jCBItemdieta.getSelectedItem()).getId(), modelo);
+        jRBEliminar.setEnabled(false);
+        jRBModificar.setEnabled(false);
     }//GEN-LAST:event_jCBItemdietaItemStateChanged
 
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
@@ -214,7 +223,7 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         if (jRBEliminar.isSelected()) {
             idd.deleteItemDieta(id_item);
         } else {
-            idd.updateItemDieta(id_item,Integer.valueOf(CBCantidad.getSelectedItem().toString()), Integer.valueOf(CBDia.getSelectedItem().toString()), true);
+            idd.updateItemDieta(id_item, Integer.valueOf(CBCantidad.getSelectedItem().toString()), Integer.valueOf(CBDia.getSelectedItem().toString()), true);
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -228,6 +237,16 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
             jBGuardar.setEnabled(false);
         }
     }//GEN-LAST:event_jRBEliminarActionPerformed
+
+    private void jTItemdietaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTItemdietaMouseReleased
+        if (jTItemdieta.getSelectedRow() >= 0) {
+            jRBEliminar.setEnabled(true);
+            jRBModificar.setEnabled(true);
+        } else {
+            jRBEliminar.setEnabled(false);
+            jRBModificar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTItemdietaMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
