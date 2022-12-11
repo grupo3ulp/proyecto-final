@@ -9,6 +9,7 @@ import TPF.Control.PacienteData;
 import TPF.Modelo.Dieta;
 import TPF.Modelo.Paciente;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,16 +36,18 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         tPacientes.getColumnModel().getColumn(8).setPreferredWidth(50);
         tPacientes.getColumnModel().getColumn(7).setPreferredWidth(40);
         tPacientes.getColumnModel().getColumn(6).setPreferredWidth(40);
-        tPacientes.getColumnModel().getColumn(5).setPreferredWidth(40);       
+        tPacientes.getColumnModel().getColumn(5).setPreferredWidth(40);
         tPacientes.getColumnModel().getColumn(2).setPreferredWidth(110);
-        
+
         rbtnDni.setOpaque(false);
         rbtnKilos.setOpaque(false);
         rbtnSinCumplir.setOpaque(false);
         rbtnTodos.setOpaque(false);
         rbtnsinDieta.setOpaque(false);
-        
-                
+        cbMasoMenos.setEnabled(false);
+        cbMasoMenos.addItem("-");
+        cbMasoMenos.addItem("+");
+        cbMasoMenos.setSelectedItem(null);
 
     }
 
@@ -58,7 +61,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         columnas.add("P Act");
         columnas.add("P Ini");
         columnas.add("P Bus");
-        columnas.add("Kg a Baj*");
+        columnas.add("Kg Busc*");
         columnas.add("Kg Baj*");
 
         for (Object columna : columnas) {
@@ -93,6 +96,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tPacientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        cbMasoMenos = new javax.swing.JComboBox<>();
         rbtnSinCumplir = new javax.swing.JRadioButton();
         btnCancelar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
@@ -194,6 +198,13 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jLabel2.setText("* Simbolo negativo significa que subio de peso");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, 679, -1));
+
+        cbMasoMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMasoMenosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbMasoMenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 50, 25));
 
         rbtnSinCumplir.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnSinCumplir.setText("Mostrar Pacientes sin cumplir meta");
@@ -325,6 +336,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         PacienteData pacienteData = new PacienteData();
         PacienteData pacienteData2 = new PacienteData();
         DietaData dietaData = new DietaData();
+        DietaData dietaData2 = new DietaData();
         borrarFilasTabla();
         boolean flag = false;
 
@@ -353,15 +365,33 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             }
 
         } else if (rbtnKilos.isSelected()) {
-            ArrayList<Dieta> dietasAux = dietaData.readAllDietaxKilo(Integer.parseInt(txtKilos.getText()));
+            HashSet<Dieta> dietasAux = new HashSet<>(dietaData.readAllDietaxKiloBajar(Integer.parseInt(txtKilos.getText())));
+            HashSet<Dieta> dietasAux2 = new HashSet<>(dietaData2.readAllDietaxKiloSubir(Integer.parseInt(txtKilos.getText())*(-1)));
 
-            for (Dieta aux : dietasAux) {
-                modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
-                    aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
-                    aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
-                    aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
-                    aux.getPeso_deseado(), (aux.getPeso_inicial() - aux.getPeso_deseado()),
-                    (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
+            if (cbMasoMenos.getSelectedItem().equals("-")) {
+                for (Dieta aux : dietasAux) {
+                    modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
+                        aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
+                        aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
+                        aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
+                        aux.getPeso_deseado(), "-" + Math.abs(aux.getPeso_inicial() - aux.getPeso_deseado()),
+                        (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
+
+                }
+            }
+
+            if (cbMasoMenos.getSelectedItem().equals("+")) {
+                for (Dieta aux : dietasAux2) {
+                    if (aux.getPeso_inicial() < aux.getPeso_deseado()) {
+                        modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
+                            aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
+                            aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
+                            aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
+                            aux.getPeso_deseado(), "+" + Math.abs(aux.getPeso_inicial() - aux.getPeso_deseado()),
+                            (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
+                    }
+                }
+
             }
 
         } else if (rbtnTodos.isSelected()) {
@@ -385,15 +415,29 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
             }
 
         } else if (rbtnSinCumplir.isSelected()) {
-            ArrayList<Dieta> dietasAux = dietaData.readAllDietaNoCumplena();
+            ArrayList<Dieta> dietasAuxBajar = dietaData.readAllDietaNoCumplenBajar();
+            ArrayList<Dieta> dietasAuxSubir = dietaData2.readAllDietaNoCumplenSubir();
 
-            for (Dieta aux : dietasAux) {
+            for (Dieta aux : dietasAuxBajar) {
+
                 modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
                     aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
                     aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
                     aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
-                    aux.getPeso_deseado(), (aux.getPeso_inicial() - aux.getPeso_deseado()),
+                    aux.getPeso_deseado(), "-" + Math.abs(aux.getPeso_inicial() - aux.getPeso_deseado()),
                     (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
+
+            }
+            for (Dieta aux : dietasAuxSubir) {
+                if (aux.getPeso_inicial() < aux.getPeso_deseado()) {
+                    modelo.addRow(new Object[]{aux.getId_paciente().getNombre(),
+                        aux.getId_paciente().getApellido(), aux.getId_paciente().getDomicilio(),
+                        aux.getId_paciente().getDni(), aux.getId_paciente().getTelefono(),
+                        aux.getId_paciente().getPesoActual(), aux.getPeso_inicial(),
+                        aux.getPeso_deseado(), "+" + Math.abs(aux.getPeso_inicial() - aux.getPeso_deseado()),
+                        (aux.getPeso_inicial() - aux.getId_paciente().getPesoActual())});
+                }
+
             }
 
         } else if (rbtnsinDieta.isSelected()) {
@@ -478,20 +522,33 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void rbtnDniItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtnDniItemStateChanged
-        if (!rbtnDni.isSelected()){
-           txtDni.setEditable(false);
+        if (!rbtnDni.isSelected()) {
+            txtDni.setEditable(false);
         }
     }//GEN-LAST:event_rbtnDniItemStateChanged
 
     private void rbtnKilosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtnKilosItemStateChanged
-        if (!rbtnKilos.isSelected()){
-           txtKilos.setEditable(false);
+        if (!rbtnKilos.isSelected()) {
+            txtKilos.setEditable(false);
+            cbMasoMenos.setEnabled(false);
+            cbMasoMenos.setSelectedItem(null);
+
+        } else {
+            cbMasoMenos.setSelectedItem(null);
+            cbMasoMenos.setEnabled(true);
+
         }
+
     }//GEN-LAST:event_rbtnKilosItemStateChanged
+
+    private void cbMasoMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMasoMenosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMasoMenosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cbMasoMenos;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLabel1;

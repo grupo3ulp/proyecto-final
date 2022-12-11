@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class PacienteData {
 
     private Connection conec;
-    
+
     public PacienteData() {
         this.conec = Conexion.getConexion();
     }
@@ -76,7 +76,7 @@ public class PacienteData {
 
             conec.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea "+ex);
+            JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea " + ex);
 
         }
         return pacienteAux;
@@ -139,9 +139,15 @@ public class PacienteData {
                 kilosBuscados = rs.getFloat("kilos_a_bajar");
                 kilosBajados = rs.getFloat("kilos_bajados");
 
-                modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
-                    pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
-                    pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
+                if (pesoInicial > pesoDeseado) {
+                    modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
+                        pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
+                        pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, "-" + Math.abs(kilosBuscados), kilosBajados});
+                } else {
+                    modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
+                        pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
+                        pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, "+" + Math.abs(kilosBuscados), kilosBajados});
+                }
 
             }
             conec.close();
@@ -149,7 +155,7 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
 
         }
-        
+
     }
 
     public ArrayList<Paciente> readAllPaciente() {
@@ -208,10 +214,16 @@ public class PacienteData {
                 pesoDeseado = rs.getFloat("peso_deseado");
                 kilosBuscados = rs.getFloat("kilos_a_bajar");
                 kilosBajados = rs.getFloat("kilos_bajados");
-
-                modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
-                    pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
-                    pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, kilosBuscados, kilosBajados});
+                if (pesoInicial > pesoDeseado) {
+                    modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
+                        pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
+                        pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, "-" + Math.abs(kilosBuscados), kilosBajados});
+                } else {
+                    modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
+                        pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
+                        pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, "+" + Math.abs(kilosBuscados), kilosBajados});
+                }
+              
 
             }
 
