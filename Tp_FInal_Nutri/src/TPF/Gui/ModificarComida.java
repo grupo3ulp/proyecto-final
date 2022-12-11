@@ -29,8 +29,8 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         jBBorrar.setEnabled(false);
         
         jTFNombre.setText("");
-           jTFCalorias.setText("");
-           jTFDetalles.setText("");
+        jTFCalorias.setText("");
+        jTFDetalles.setText("");
     }
 
     /**
@@ -186,7 +186,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         ComidaData CD = new ComidaData();
         ComidaData CD1 = new ComidaData();
         
-        CD.modificarComida((Comida)jCBComida.getSelectedItem(), jTFNombre.getText(), jTFDetalles.getText(), Integer.parseInt(jTFCalorias.getText()));
+        CD.modificarComida((Comida) jCBComida.getSelectedItem(), jTFNombre.getText(), jTFDetalles.getText(), Integer.parseInt(jTFCalorias.getText()));
         
         jCBComida.removeAllItems();
         
@@ -211,9 +211,10 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
         ComidaData CD = new ComidaData();
         ComidaData CD1 = new ComidaData();
-        CD.eliminarComida(3);
+        CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
+        System.out.println(((Comida)jCBComida.getSelectedItem()).getId());
         
-         jCBComida.removeAllItems();
+        jCBComida.removeAllItems();
         
         for (Comida comida : CD1.mostrarComidas()) {
             jCBComida.addItem(comida);
@@ -234,20 +235,20 @@ public class ModificarComida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFDetallesKeyReleased
 
     private void jCBComidaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBComidaItemStateChanged
-         if (jCBComida.getSelectedItem() != null) {
-           jTFNombre.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getNombre()));
-           jTFCalorias.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getCalorias()));
-           jTFDetalles.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getDetalles()));
-           jBBorrar.setEnabled(true);
+        if (jCBComida.getSelectedItem() != null) {
+            jTFNombre.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getNombre()));
+            jTFCalorias.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getCalorias()));
+            jTFDetalles.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getDetalles()));
+            jBBorrar.setEnabled(true);
             jBGuardar.setEnabled(true);
-        }else{
-         jBGuardar.setEnabled(false);
-         
+        } else {
+            jBGuardar.setEnabled(false);
+            
         }
     }//GEN-LAST:event_jCBComidaItemStateChanged
-
+    
     public void habilitarBoton() {
-       if (jTFNombre.getText().equals("") || jTFCalorias.getText().equals("")) {
+        if (jTFNombre.getText().equals("") || jTFCalorias.getText().equals("")) {
             jBGuardar.setEnabled(false);
         } else {
             jBGuardar.setEnabled(true);
