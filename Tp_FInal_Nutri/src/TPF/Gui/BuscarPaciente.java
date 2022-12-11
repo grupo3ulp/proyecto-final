@@ -95,6 +95,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         rbtnSinCumplir = new javax.swing.JRadioButton();
         btnCancelar = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
         rbtnsinDieta = new javax.swing.JRadioButton();
         fondo = new javax.swing.JLabel();
 
@@ -104,7 +105,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Paciente");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 110, 770, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 780, -1));
 
         rbtnDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnDni.setText("Por DNI");
@@ -178,11 +179,11 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tPacientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 750, 160));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 750, 170));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         jLabel2.setText("* Simbolo negativo significa que subio de peso");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 679, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, 679, -1));
 
         rbtnSinCumplir.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnSinCumplir.setText("Mostrar Pacientes sin cumplir meta");
@@ -200,7 +201,19 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, 110, 30));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 110, 30));
+
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 110, 30));
 
         rbtnsinDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnsinDieta.setText("Mostrar Pacientes sin dieta");
@@ -212,8 +225,8 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(rbtnsinDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, -1));
 
         fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondo_frames_tablas2.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 780));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondo_frames_tablas.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -450,11 +463,16 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_rbtnsinDietaMousePressed
 
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        borrarFilasTabla();
+    }//GEN-LAST:event_jBLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

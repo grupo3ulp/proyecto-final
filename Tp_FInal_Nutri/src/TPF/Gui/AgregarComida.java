@@ -20,6 +20,8 @@ public class AgregarComida extends javax.swing.JInternalFrame {
      */
     public AgregarComida() {
         initComponents();
+        jBGuardar.setEnabled(false);
+
     }
 
     /**
@@ -46,21 +48,23 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
+        jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTitulo.setText("Agregar Comida");
-        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 280, -1));
+        jLTitulo.setPreferredSize(new java.awt.Dimension(248, 48));
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
         jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre");
-        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLCalorias.setText("Calorías");
-        getContentPane().add(jLCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        getContentPane().add(jLCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         jLDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDetalles.setText("Detalles");
-        getContentPane().add(jLDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        getContentPane().add(jLDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jTFNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -68,43 +72,62 @@ public class AgregarComida extends javax.swing.JInternalFrame {
                 jTFNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 303, -1));
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 303, -1));
 
         jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 303, -1));
+        jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCaloriasKeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 303, -1));
 
         jTFDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 303, 127));
+        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 303, 127));
 
         jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        jBGuardar.setText("Guardar");
+        jBGuardar.setText("Agregar");
+        jBGuardar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 100, -1));
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 110, 30));
 
         jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBCancelar.setText("Cerrar");
+        jBCancelar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBCancelar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBCancelar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 100, 30));
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 110, 30));
 
         jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 100, -1));
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 110, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 520, 760));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,11 +163,28 @@ public class AgregarComida extends javax.swing.JInternalFrame {
         jTFNombre.setText("");
         jTFCalorias.setText("");
         jTFDetalles.setText("");
+        jBGuardar.setEnabled(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyReleased
+        if (jTFNombre.getText().equals("") || jTFCalorias.getText().equals("")) {
+            jBGuardar.setEnabled(false);
+        } else {
+            jBGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jTFNombreKeyReleased
+
+    private void jTFCaloriasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCaloriasKeyReleased
+        if (jTFNombre.getText().equals("") || jTFCalorias.getText().equals("")) {
+            jBGuardar.setEnabled(false);
+        } else {
+            jBGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jTFCaloriasKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

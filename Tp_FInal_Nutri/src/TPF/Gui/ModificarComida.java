@@ -7,6 +7,7 @@ package TPF.Gui;
 
 import TPF.Control.ComidaData;
 import TPF.Modelo.Comida;
+import TPF.Modelo.Paciente;
 
 /**
  *
@@ -24,6 +25,12 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         for (Comida comida : CD.mostrarComidas()) {
             jCBComida.addItem(comida);
         }
+        jCBComida.setSelectedItem(null);
+        jBBorrar.setEnabled(false);
+        
+        jTFNombre.setText("");
+           jTFCalorias.setText("");
+           jTFDetalles.setText("");
     }
 
     /**
@@ -54,20 +61,27 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
+        jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTitulo.setText("Modificar Comida");
-        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Datos");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 70, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 450, 40));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel1.setText("Elija la comida que quiere modificar/eliminar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         jCBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 410, -1));
+        jCBComida.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBComidaItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 410, -1));
 
         jTFDetalles.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTFDetalles.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -75,34 +89,43 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                 jTFDetallesKeyReleased(evt);
             }
         });
-        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 310, 127));
+        getContentPane().add(jTFDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 310, 127));
 
         jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 90, -1));
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, 110, 30));
 
         jBCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBCerrar.setText("Cerrar");
+        jBCerrar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBCerrar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBCerrar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, 110, -1));
+        getContentPane().add(jBCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 600, 110, 30));
 
         jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 90, -1));
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 600, 110, 30));
 
         jLNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLNombre.setText("Nombre");
@@ -127,7 +150,7 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                 jTFNombreKeyReleased(evt);
             }
         });
-        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 310, -1));
+        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 310, -1));
 
         jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -135,20 +158,22 @@ public class ModificarComida extends javax.swing.JInternalFrame {
                 jTFCaloriasKeyReleased(evt);
             }
         });
-        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 310, -1));
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 310, -1));
 
         jBBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBBorrar.setText("Borrar");
+        jBBorrar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBBorrar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBBorrar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBorrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 90, -1));
+        getContentPane().add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 110, 30));
 
-        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,13 +184,24 @@ public class ModificarComida extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         ComidaData CD = new ComidaData();
+        ComidaData CD1 = new ComidaData();
+        
         CD.modificarComida((Comida)jCBComida.getSelectedItem(), jTFNombre.getText(), jTFDetalles.getText(), Integer.parseInt(jTFCalorias.getText()));
+        
+        jCBComida.removeAllItems();
+        
+        for (Comida comida : CD1.mostrarComidas()) {
+            jCBComida.addItem(comida);
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         jTFNombre.setText("");
         jTFCalorias.setText("");
         jTFDetalles.setText("");
+        jBGuardar.setEnabled(false);
+        jCBComida.setSelectedItem(null);
+        jBBorrar.setEnabled(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCerrarActionPerformed
@@ -174,7 +210,15 @@ public class ModificarComida extends javax.swing.JInternalFrame {
 
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
         ComidaData CD = new ComidaData();
-        CD.eliminarComida(((Comida)jCBComida.getSelectedItem()).getId());
+        ComidaData CD1 = new ComidaData();
+        CD.eliminarComida(3);
+        
+         jCBComida.removeAllItems();
+        
+        for (Comida comida : CD1.mostrarComidas()) {
+            jCBComida.addItem(comida);
+        }
+        
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyReleased
@@ -189,11 +233,24 @@ public class ModificarComida extends javax.swing.JInternalFrame {
         habilitarBoton();
     }//GEN-LAST:event_jTFDetallesKeyReleased
 
-    public void habilitarBoton() {
-        if (!jLNombre.getText().isEmpty() && !jLCalorias.getText().isEmpty() && !jLDetalles.getText().isEmpty()) {
+    private void jCBComidaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBComidaItemStateChanged
+         if (jCBComida.getSelectedItem() != null) {
+           jTFNombre.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getNombre()));
+           jTFCalorias.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getCalorias()));
+           jTFDetalles.setText(String.valueOf(((Comida) jCBComida.getSelectedItem()).getDetalles()));
+           jBBorrar.setEnabled(true);
             jBGuardar.setEnabled(true);
-        } else {
+        }else{
+         jBGuardar.setEnabled(false);
+         
+        }
+    }//GEN-LAST:event_jCBComidaItemStateChanged
+
+    public void habilitarBoton() {
+       if (jTFNombre.getText().equals("") || jTFCalorias.getText().equals("")) {
             jBGuardar.setEnabled(false);
+        } else {
+            jBGuardar.setEnabled(true);
         }
     }
 

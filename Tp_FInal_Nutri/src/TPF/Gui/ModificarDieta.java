@@ -87,12 +87,14 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modificar Dieta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 230, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jLabel8.setText("Datos:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 70, 30));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Datos");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 450, 40));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Paciente:");
@@ -171,42 +173,54 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
 
         btnGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnGuardar.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnGuardar.setPreferredSize(new java.awt.Dimension(79, 27));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 90, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 110, 30));
 
         btnLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnLimpiar.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnLimpiar.setPreferredSize(new java.awt.Dimension(79, 27));
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 100, -1));
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 600, 110, 30));
 
         btnCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnCerrar.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnCerrar.setPreferredSize(new java.awt.Dimension(79, 27));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 90, -1));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 600, 110, 30));
 
         btnBorrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnBorrar.setText("Borrar");
+        btnBorrar.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnBorrar.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnBorrar.setPreferredSize(new java.awt.Dimension(79, 27));
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 90, -1));
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 110, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -85,16 +85,21 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         fechaInicio = new com.toedter.calendar.JDateChooser();
         fechaFinal = new com.toedter.calendar.JDateChooser();
         btnCancel = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buscar Dieta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 210, -1));
+        jLabel1.setMaximumSize(new java.awt.Dimension(263, 48));
+        jLabel1.setMinimumSize(new java.awt.Dimension(263, 48));
+        jLabel1.setPreferredSize(new java.awt.Dimension(263, 48));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 780, -1));
 
         TDieta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,7 +114,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TDieta);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 760, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 760, 250));
 
         BDBuscar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         BDBuscar.setText("Buscar");
@@ -118,10 +123,10 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 BDBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(BDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 108, -1));
+        getContentPane().add(BDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 110, 30));
 
         cbDietas.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(cbDietas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 342, -1));
+        getContentPane().add(cbDietas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 342, -1));
 
         rbtnRango.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         rbtnRango.setText("Seleccionar un rango de fechas para ver las dietas del paciente durante ese periodo");
@@ -130,21 +135,21 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 rbtnRangoMousePressed(evt);
             }
         });
-        getContentPane().add(rbtnRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
+        getContentPane().add(rbtnRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         fechaInicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 fechaInicioPropertyChange(evt);
             }
         });
-        getContentPane().add(fechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 100, -1));
+        getContentPane().add(fechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 100, -1));
 
         fechaFinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 fechaFinalPropertyChange(evt);
             }
         });
-        getContentPane().add(fechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 100, -1));
+        getContentPane().add(fechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 100, -1));
 
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnCancel.setText("Cerrar");
@@ -153,19 +158,31 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 90, 30));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 110, 30));
+
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 110, 30));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Fecha inicial");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel3.setText("Fecha final");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 64, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 64, -1));
 
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondo_frames_tablas.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,6 +267,10 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        borrarFilasTabla();
+    }//GEN-LAST:event_jBLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BDBuscar;
@@ -258,10 +279,11 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Object> cbDietas;
     private com.toedter.calendar.JDateChooser fechaFinal;
     private com.toedter.calendar.JDateChooser fechaInicio;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnRango;
     // End of variables declaration//GEN-END:variables

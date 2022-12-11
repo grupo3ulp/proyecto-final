@@ -64,13 +64,17 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Crear Dieta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 190, -1));
+        jLabel1.setMaximumSize(new java.awt.Dimension(221, 41));
+        jLabel1.setMinimumSize(new java.awt.Dimension(221, 41));
+        jLabel1.setPreferredSize(new java.awt.Dimension(248, 48));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel2.setText("Peso inicial:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 80, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 80, 30));
 
         PIText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         PIText.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -81,11 +85,11 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 PITextKeyTyped(evt);
             }
         });
-        getContentPane().add(PIText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 281, -1));
+        getContentPane().add(PIText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 281, -1));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel3.setText("Peso deseado:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 100, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 100, 30));
 
         PDText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         PDText.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -96,18 +100,18 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 PDTextKeyTyped(evt);
             }
         });
-        getContentPane().add(PDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 281, -1));
+        getContentPane().add(PDText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 281, -1));
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel4.setText("Llimite de calorias:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 120, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 120, 40));
 
         FIDateChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FIDateChooserPropertyChange(evt);
             }
         });
-        getContentPane().add(FIDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 280, 30));
+        getContentPane().add(FIDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 280, 30));
 
         LCText.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         LCText.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -118,49 +122,58 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
                 LCTextKeyTyped(evt);
             }
         });
-        getContentPane().add(LCText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 280, -1));
+        getContentPane().add(LCText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 280, -1));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel5.setText("Fecha de inicio:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 177, 50));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 177, 50));
 
         CDGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        CDGuardar.setText("Guardar");
+        CDGuardar.setText("Crear");
+        CDGuardar.setMaximumSize(new java.awt.Dimension(79, 27));
+        CDGuardar.setMinimumSize(new java.awt.Dimension(79, 27));
+        CDGuardar.setPreferredSize(new java.awt.Dimension(79, 27));
         CDGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(CDGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 90, -1));
+        getContentPane().add(CDGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 110, 30));
 
         CDLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CDLimpiar.setText("Limpiar");
+        CDLimpiar.setMaximumSize(new java.awt.Dimension(79, 27));
+        CDLimpiar.setMinimumSize(new java.awt.Dimension(79, 27));
+        CDLimpiar.setPreferredSize(new java.awt.Dimension(79, 27));
         CDLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(CDLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 91, -1));
+        getContentPane().add(CDLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 110, 30));
 
         CDCerrar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CDCerrar.setText("Cerrar");
+        CDCerrar.setMaximumSize(new java.awt.Dimension(79, 27));
+        CDCerrar.setMinimumSize(new java.awt.Dimension(79, 27));
+        CDCerrar.setPreferredSize(new java.awt.Dimension(79, 27));
         CDCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CDCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(CDCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 110, -1));
+        getContentPane().add(CDCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 110, 30));
 
         CDListaPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(CDListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 281, -1));
+        getContentPane().add(CDListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 281, -1));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLabel6.setText("Paciente");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 60, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 60, 30));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

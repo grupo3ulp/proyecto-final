@@ -65,9 +65,13 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Planificar dieta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
+        jLabel1.setMaximumSize(new java.awt.Dimension(221, 41));
+        jLabel1.setMinimumSize(new java.awt.Dimension(221, 41));
+        jLabel1.setPreferredSize(new java.awt.Dimension(248, 48));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
         CBDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBDieta.addItemListener(new java.awt.event.ItemListener() {
@@ -75,59 +79,65 @@ public class AgregarItemDieta extends javax.swing.JInternalFrame {
                 CBDietaItemStateChanged(evt);
             }
         });
-        getContentPane().add(CBDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 320, -1));
+        getContentPane().add(CBDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 320, -1));
 
         CBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(CBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 320, -1));
+        getContentPane().add(CBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 320, -1));
 
         jLDieta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDieta.setText("Dieta");
-        getContentPane().add(jLDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 40, -1));
+        getContentPane().add(jLDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 40, -1));
 
         jLComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLComida.setText("Comida");
-        getContentPane().add(jLComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        getContentPane().add(jLComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLPorciones.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLPorciones.setText("Porciones");
-        getContentPane().add(jLPorciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        getContentPane().add(jLPorciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         jLDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDia.setText("Día");
-        getContentPane().add(jLDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        getContentPane().add(jLDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         CBDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
-        getContentPane().add(CBDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 320, -1));
+        getContentPane().add(CBDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 320, -1));
 
         CBCantidad.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 320, -1));
+        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 320, -1));
 
         jBGuardar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBGuardar.setPreferredSize(new java.awt.Dimension(79, 27));
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 90, -1));
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 110, 30));
 
         jBVolver.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBVolver.setText("Cerrar");
+        jBVolver.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBVolver.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBVolver.setPreferredSize(new java.awt.Dimension(79, 27));
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 90, -1));
+        getContentPane().add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 590, 110, 30));
 
         jLabel2.setText("*Calorías restantes");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, -1, 20));
-        getContentPane().add(jTFCalRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 70, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, 20));
+        getContentPane().add(jTFCalRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 70, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

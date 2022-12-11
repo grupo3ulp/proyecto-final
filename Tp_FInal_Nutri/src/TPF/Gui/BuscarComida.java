@@ -60,14 +60,18 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         jBCancelar = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setBorder(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLTitulo.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTitulo.setText("Mostrar Comidas");
-        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jLTitulo.setMaximumSize(new java.awt.Dimension(263, 48));
+        jLTitulo.setMinimumSize(new java.awt.Dimension(263, 48));
+        jLTitulo.setPreferredSize(new java.awt.Dimension(263, 48));
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 780, -1));
 
         jRBUnaComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBUnaComida.setText("Una comida");
@@ -76,7 +80,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
                 jRBUnaComidaMousePressed(evt);
             }
         });
-        getContentPane().add(jRBUnaComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        getContentPane().add(jRBUnaComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
         jRBTodas.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBTodas.setText("Todas las comidas");
@@ -85,7 +89,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
                 jRBTodasMousePressed(evt);
             }
         });
-        getContentPane().add(jRBTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
+        getContentPane().add(jRBTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         jCBCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jCBCalorias.setText("Calorías menor a: ");
@@ -94,14 +98,14 @@ public class BuscarComida extends javax.swing.JInternalFrame {
                 jCBCaloriasMousePressed(evt);
             }
         });
-        getContentPane().add(jCBCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+        getContentPane().add(jCBCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
         jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 116, -1));
+        getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 116, -1));
 
         jCBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jCBComida.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 311, -1));
+        getContentPane().add(jCBComida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 311, -1));
 
         jTComidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +120,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTComidas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 750, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 750, 240));
 
         jBCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBCancelar.setText("Cerrar");
@@ -125,7 +129,7 @@ public class BuscarComida extends javax.swing.JInternalFrame {
                 jBCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, 100, -1));
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 110, 30));
 
         jBBuscar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBBuscar.setText("Buscar");
@@ -134,20 +138,23 @@ public class BuscarComida extends javax.swing.JInternalFrame {
                 jBBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 100, -1));
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 110, 30));
 
         jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(72, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(72, 27));
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 610, 100, -1));
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 110, 30));
 
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondo_frames_tablas2.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 760));
+        fondo.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondo_frames_tablas.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,13 +257,13 @@ public class BuscarComida extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JCheckBox jCBCalorias;
     private javax.swing.JComboBox<Comida> jCBComida;
     private javax.swing.JLabel jLTitulo;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRBTodas;
     private javax.swing.JRadioButton jRBUnaComida;
     private javax.swing.JScrollPane jScrollPane1;

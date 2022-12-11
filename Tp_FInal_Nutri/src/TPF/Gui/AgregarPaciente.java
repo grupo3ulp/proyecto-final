@@ -31,7 +31,6 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
         }
         cbPacientesBaja.setSelectedItem(null);
         btnAlta.setEnabled(false);
-   
 
     }
 
@@ -59,6 +58,7 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
         txtPesoActual = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbPacientesBaja = new javax.swing.JComboBox<>();
         jLPaciente = new javax.swing.JLabel();
@@ -70,7 +70,7 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cargar Paciente");
+        jLabel1.setText("Agregar Paciente");
         jLabel1.setPreferredSize(new java.awt.Dimension(248, 48));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, -1));
 
@@ -100,6 +100,9 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtNombre.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
@@ -108,6 +111,9 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtApellido.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidoKeyTyped(evt);
             }
@@ -116,6 +122,9 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtDomicilio.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDomicilioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDomicilioKeyTyped(evt);
             }
@@ -124,6 +133,9 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtDni.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDniKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
             }
@@ -132,8 +144,8 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyTyped(evt);
@@ -143,6 +155,9 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
         txtPesoActual.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtPesoActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesoActualKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPesoActualKeyTyped(evt);
             }
@@ -156,16 +171,31 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 100, 30));
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 110, 30));
 
         btnCancelar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnCancelar.setText("Cerrar");
+        btnCancelar.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnCancelar.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnCancelar.setPreferredSize(new java.awt.Dimension(79, 27));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 100, 30));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 110, 30));
+
+        jBLimpiar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setMaximumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setMinimumSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.setPreferredSize(new java.awt.Dimension(79, 27));
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 110, 30));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -178,23 +208,26 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
                 cbPacientesBajaItemStateChanged(evt);
             }
         });
-        getContentPane().add(cbPacientesBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 320, -1));
+        getContentPane().add(cbPacientesBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 320, -1));
 
         jLPaciente.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLPaciente.setText("Paciente");
-        getContentPane().add(jLPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 89, 41));
+        getContentPane().add(jLPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 89, 41));
 
         btnAlta.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btnAlta.setText("Alta");
+        btnAlta.setMaximumSize(new java.awt.Dimension(79, 27));
+        btnAlta.setMinimumSize(new java.awt.Dimension(79, 27));
+        btnAlta.setPreferredSize(new java.awt.Dimension(79, 27));
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAltaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 100, 30));
+        getContentPane().add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 560, 110, 30));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TPF/Gui/fondochico.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 760));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/fondochico.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 514, 676));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,36 +259,20 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnAgregar.setEnabled(false);
-        } else {
-            btnAgregar.setEnabled(true);
-        }
+
         if (txtNombre.getText().length() > 19) {
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnAgregar.setEnabled(false);
-        } else {
-            btnAgregar.setEnabled(true);
-        }
+
         if (txtApellido.getText().length() > 19) {
             evt.consume();
         }
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtDomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDomicilioKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnAgregar.setEnabled(false);
-        } else {
-            btnAgregar.setEnabled(true);
-        }
 
         if (txtDomicilio.getText().length() > 19) {
             evt.consume();
@@ -263,12 +280,6 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDomicilioKeyTyped
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnAgregar.setEnabled(false);
-        } else {
-            btnAgregar.setEnabled(true);
-        }
 
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
@@ -318,10 +329,6 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtPesoActualKeyTyped
 
-    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
-
-    }//GEN-LAST:event_txtTelefonoKeyPressed
-
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         PacienteData pacienteData = new PacienteData();
         pacienteData.volverDarAlta(((Paciente) cbPacientesBaja.getSelectedItem()));
@@ -336,6 +343,70 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbPacientesBajaItemStateChanged
 
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        txtApellido.setText("");
+        txtDni.setText("");
+        txtDomicilio.setText("");
+        txtNombre.setText("");
+        txtPesoActual.setText("");
+        txtTelefono.setText("");
+        btnAgregar.setEnabled(false);
+    }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtApellidoKeyReleased
+
+    private void txtDomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDomicilioKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtDomicilioKeyReleased
+
+    private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtDniKeyReleased
+
+    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtTelefonoKeyReleased
+
+    private void txtPesoActualKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoActualKeyReleased
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
+                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
+            btnAgregar.setEnabled(false);
+        } else {
+            btnAgregar.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtPesoActualKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -343,6 +414,7 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<Paciente> cbPacientesBaja;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JLabel jLApellido;
     private javax.swing.JLabel jLDni;
     private javax.swing.JLabel jLDomicilio;

@@ -16,7 +16,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon=new ImageIcon(getClass().getResource("fondo.jpg"));
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imágenes/fondo.jpg"));
         Image img=icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             public void paintComponent (Graphics g){
@@ -198,7 +198,7 @@ public class Menu extends javax.swing.JFrame {
         BuscarPaciente guiPacienteBus = new BuscarPaciente();
         guiPacienteBus.setVisible(true);
         jDesktopPane1.add(guiPacienteBus);
-        guiPacienteBus.setLocation(475, -23);
+        guiPacienteBus.setLocation(446, -23);
         guiPacienteBus.setUI(null);
     }//GEN-LAST:event_BuscPacienteActionPerformed
 
@@ -222,7 +222,7 @@ public class Menu extends javax.swing.JFrame {
         BuscarComida aux = new BuscarComida();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(475, -23);
+        aux.setLocation(446, -23);
         aux.setUI(null);
 
     }//GEN-LAST:event_jMBuscarComidaMousePressed
@@ -247,7 +247,7 @@ public class Menu extends javax.swing.JFrame {
         BuscarDieta aux = new BuscarDieta();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-        aux.setLocation(475, -23);
+        aux.setLocation(446, -23);
         aux.setUI(null);
 
     }//GEN-LAST:event_buscarDietaActionPerformed
@@ -264,7 +264,7 @@ public class Menu extends javax.swing.JFrame {
         BuscarItemdieta aux = new BuscarItemdieta();
         aux.setVisible(true);
         jDesktopPane1.add(aux);
-         aux.setLocation(475, -23);
+         aux.setLocation(446, -23);
         aux.setUI(null);
     }//GEN-LAST:event_modPlanMousePressed
 

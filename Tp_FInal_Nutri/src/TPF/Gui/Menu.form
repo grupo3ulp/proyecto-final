@@ -164,7 +164,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xd;&#xa;public void paintComponent (Graphics g){&#xd;&#xa;g.drawImage(img,0,0,getWidth(),getHeight(),this);&#xd;&#xa;}&#xd;&#xa;}&#xd;&#xa;"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="&#xd;&#xa;ImageIcon icon=new ImageIcon(getClass().getResource(&quot;fondo.jpg&quot;));&#xd;&#xa;Image img=icon.getImage();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="&#xd;&#xa;ImageIcon icon=new ImageIcon(getClass().getResource(&quot;/im&#xe1;genes/fondo.jpg&quot;));&#xd;&#xa;Image img=icon.getImage();"/>
       </AuxValues>
 
       <Layout>
