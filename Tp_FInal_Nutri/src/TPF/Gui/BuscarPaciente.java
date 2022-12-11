@@ -61,7 +61,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
         columnas.add("P Act");
         columnas.add("P Ini");
         columnas.add("P Bus");
-        columnas.add("Kg Busc*");
+        columnas.add("Kg Busc");
         columnas.add("Kg Baj*");
 
         for (Object columna : columnas) {
