@@ -198,7 +198,7 @@ public class PacienteData {
                 + "peso_actual,peso_inicial, peso_deseado,(d.peso_inicial-d.peso_deseado) "
                 + "as\"kilos_a_bajar\", (d.peso_inicial-p.peso_actual) as \"kilos_bajados\" "
                 + "FROM paciente p JOIN dieta d ON d.id_paciente = p.id "
-                + "WHERE p.estado=1";
+                + "WHERE p.estado=1 AND d.estado=1";
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
