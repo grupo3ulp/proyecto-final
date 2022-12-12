@@ -113,15 +113,14 @@ public class ItemdietaData {
         return listaAux;
     }
 
-    public void updateItemDieta(int id, int cantidad, int dia, boolean estado) {
-        String sql = "UPDATE `itemdieta` SET `cantidad`=?,`dia`=?,`estado`=? WHERE id=?";
+    public void updateItemDieta(int id, int dia, boolean estado) {
+        String sql = "UPDATE `itemdieta` SET `dia`=?,`estado`=? WHERE id=?";
         try {
             PreparedStatement ps = conec.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, cantidad);
-            ps.setInt(2, dia);
-            ps.setBoolean(3, estado);
-            ps.setInt(4, id);
+            ps.setInt(1, dia);
+            ps.setBoolean(2, estado);
+            ps.setInt(3, id);
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "El Registro fue modificado correctamente");

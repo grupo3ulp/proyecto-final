@@ -74,7 +74,7 @@ public class Comida {
 
     @Override
     public String toString() {
-        return nombre + " - Cal.: " + calorias;
+        return nombre + " - Calorías: " + calorias;
     }
     
    

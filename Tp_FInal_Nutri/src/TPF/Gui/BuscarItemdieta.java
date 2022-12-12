@@ -35,7 +35,6 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
             jCBItemdieta.addItem(dieta);
         }
 
-        CBCantidad.setEnabled(false);
         CBDia.setEnabled(false);
         jBGuardar.setEnabled(false);
         jRBEliminar.setOpaque(false);
@@ -78,10 +77,8 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         jBVolver = new javax.swing.JButton();
         jCBItemdieta = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLPorciones = new javax.swing.JLabel();
         jLDia = new javax.swing.JLabel();
         CBDia = new javax.swing.JComboBox<>();
-        CBCantidad = new javax.swing.JComboBox<>();
         jRBModificar = new javax.swing.JRadioButton();
         jBGuardar = new javax.swing.JButton();
         jRBEliminar = new javax.swing.JRadioButton();
@@ -140,21 +137,13 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         jLabel2.setText("Elegir la dieta que quiere ver en detalle");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
 
-        jLPorciones.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        jLPorciones.setText("Porciones");
-        getContentPane().add(jLPorciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, -1, -1));
-
         jLDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jLDia.setText("Día");
-        getContentPane().add(jLDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, 20));
+        getContentPane().add(jLDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, 20));
 
         CBDia.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         CBDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
-        getContentPane().add(CBDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 119, -1));
-
-        CBCantidad.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 119, -1));
+        getContentPane().add(CBDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 119, -1));
 
         jRBModificar.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jRBModificar.setText("Modificar");
@@ -207,12 +196,10 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
 
     private void jRBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBModificarActionPerformed
         if (jRBModificar.isSelected()) {
-            CBCantidad.setEnabled(true);
             CBDia.setEnabled(true);
             jBGuardar.setEnabled(true);
             jRBEliminar.setSelected(false);
         } else {
-            CBCantidad.setEnabled(false);
             CBDia.setEnabled(false);
             jBGuardar.setEnabled(false);
         }
@@ -230,23 +217,22 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
         int id_item = idd.encontrarID(id_dieta, comida, dia, cantidad);
 
         if (jRBEliminar.isSelected()) {
-
-            if ((JOptionPane.showConfirmDialog(null, "Borara el "
-                    + "plan de comidas con id " + ((Itemdieta)jCBItemdieta.getSelectedItem()).getId() + " desea continuar?", "Confirmar Borrado",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE)) == 0) {
                 idd.deleteItemDieta(id_item);
 
-            }
         } else {
-            idd.updateItemDieta(id_item, Integer.valueOf(CBCantidad.getSelectedItem().toString()), Integer.valueOf(CBDia.getSelectedItem().toString()), true);
+            idd.updateItemDieta(id_item, Integer.valueOf(CBDia.getSelectedItem().toString()), true);
         }
+        
+         borrarFilasTabla();
+        ItemdietaData idd2 = new ItemdietaData();
+        idd2.detallesDieta(((Dieta) jCBItemdieta.getSelectedItem()).getId(), modelo);
+        jRBEliminar.setEnabled(false);
+        jRBModificar.setEnabled(false);
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jRBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEliminarActionPerformed
         if (jRBEliminar.isSelected()) {
             jRBModificar.setSelected(false);
-            CBCantidad.setEnabled(false);
             CBDia.setEnabled(false);
             jBGuardar.setEnabled(true);
         } else {
@@ -266,14 +252,12 @@ public class BuscarItemdieta extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBCantidad;
     private javax.swing.JComboBox<String> CBDia;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBVolver;
     private javax.swing.JComboBox<Object> jCBItemdieta;
     private javax.swing.JLabel jLDia;
-    private javax.swing.JLabel jLPorciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRBEliminar;
