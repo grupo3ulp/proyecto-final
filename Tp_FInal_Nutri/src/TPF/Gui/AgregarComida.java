@@ -84,6 +84,9 @@ public class AgregarComida extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTFCaloriasKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCaloriasKeyTyped(evt);
+            }
         });
         getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 303, -1));
 
@@ -185,6 +188,15 @@ public class AgregarComida extends javax.swing.JInternalFrame {
             jBGuardar.setEnabled(true);
         }
     }//GEN-LAST:event_jTFCaloriasKeyReleased
+
+    private void jTFCaloriasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCaloriasKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_jTFCaloriasKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

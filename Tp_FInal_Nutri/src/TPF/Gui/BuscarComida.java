@@ -8,6 +8,7 @@ package TPF.Gui;
 import TPF.Control.ComidaData;
 import TPF.Modelo.Comida;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -101,6 +102,11 @@ public class BuscarComida extends javax.swing.JInternalFrame {
         getContentPane().add(jCBCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
         jTFCalorias.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
+        jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCaloriasKeyTyped(evt);
+            }
+        });
         getContentPane().add(jTFCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 116, -1));
 
         jCBComida.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
@@ -232,6 +238,15 @@ public class BuscarComida extends javax.swing.JInternalFrame {
             jTFCalorias.setEnabled(false);
         }
     }//GEN-LAST:event_jCBCaloriasMousePressed
+
+    private void jTFCaloriasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCaloriasKeyTyped
+        Character c = evt.getKeyChar();
+        if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se pueden ingresar numeros en "
+                    + "este campo");
+        }
+    }//GEN-LAST:event_jTFCaloriasKeyTyped
 
     private void armarCabecera() {
         ArrayList<Object> columnas = new ArrayList();

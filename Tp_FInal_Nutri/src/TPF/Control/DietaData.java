@@ -200,7 +200,7 @@ public class DietaData {
         LocalDate fechaActual = LocalDate.now();
 
         String sql = "SELECT * FROM dieta d JOIN paciente p ON d.id_paciente"
-                + " = p.id WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0 AND d.estado=1";
+                + " = p.id WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0 AND d.estado=0";
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -237,7 +237,7 @@ public class DietaData {
         LocalDate fechaActual = LocalDate.now();
 
         String sql = "SELECT * FROM dieta d JOIN paciente p ON d.id_paciente"
-                + " = p.id WHERE (p.peso_actual-d.peso_deseado)<0 AND d.estado=1";
+                + " = p.id WHERE (p.peso_actual-d.peso_deseado)<0 AND d.estado=0";
         try {
             PreparedStatement ps = conec.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
