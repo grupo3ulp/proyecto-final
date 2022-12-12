@@ -196,9 +196,9 @@ public class DietaData {
     }
 
     public ArrayList<Dieta> readAllDietaNoCumplenBajar() {
-       ArrayList<Dieta> listaAux = new ArrayList();
+        ArrayList<Dieta> listaAux = new ArrayList();
         LocalDate fechaActual = LocalDate.now();
-        
+
         String sql = "SELECT * FROM dieta d JOIN paciente p ON d.id_paciente"
                 + " = p.id WHERE ((d.peso_inicial-p.peso_actual)-(d.peso_inicial-d.peso_deseado))<0";
         try {
@@ -216,14 +216,14 @@ public class DietaData {
                 dietaAux.setPeso_deseado(rs.getDouble(6));
                 dietaAux.setLimite_calorico(rs.getInt(7));
                 dietaAux.setEstado(rs.getBoolean(8));
-                System.out.println("Actual " +fechaActual);
-                System.out.println(dietaAux.getId_paciente()+" Fecha fin " +dietaAux.getFecha_fin());
-                
-                if (dietaAux.getFecha_fin().isBefore(fechaActual)) {
+                System.out.println("Actual " + fechaActual);
+                System.out.println(dietaAux.getId_paciente() + " Fecha fin " + dietaAux.getFecha_fin());
+
+                if (dietaAux.getFecha_fin().isBefore(fechaActual) && dietaAux.getId_paciente().getPesoActual() != 0) {
                     listaAux.add(dietaAux);
                 }
             }
-            
+
             conec.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
@@ -231,11 +231,11 @@ public class DietaData {
         }
         return listaAux;
     }
-    
+
     public ArrayList<Dieta> readAllDietaNoCumplenSubir() {
-       ArrayList<Dieta> listaAux = new ArrayList();
+        ArrayList<Dieta> listaAux = new ArrayList();
         LocalDate fechaActual = LocalDate.now();
-        
+
         String sql = "SELECT * FROM dieta d JOIN paciente p ON d.id_paciente"
                 + " = p.id WHERE (p.peso_actual-d.peso_deseado)<0";
         try {
@@ -253,14 +253,14 @@ public class DietaData {
                 dietaAux.setPeso_deseado(rs.getDouble(6));
                 dietaAux.setLimite_calorico(rs.getInt(7));
                 dietaAux.setEstado(rs.getBoolean(8));
-                System.out.println("Actual " +fechaActual);
-                System.out.println(dietaAux.getId_paciente()+" Fecha fin " +dietaAux.getFecha_fin());
-                
-                if (dietaAux.getFecha_fin().isBefore(fechaActual)) {
+                System.out.println("Actual " + fechaActual);
+                System.out.println(dietaAux.getId_paciente() + " Fecha fin " + dietaAux.getFecha_fin());
+
+                if (dietaAux.getFecha_fin().isBefore(fechaActual) && dietaAux.getId_paciente().getPesoActual() != 0) {
                     listaAux.add(dietaAux);
                 }
             }
-            
+
             conec.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Sentencia SQL Erronea" + ex);
@@ -277,7 +277,7 @@ public class DietaData {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, kilos);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {           ;
+            while (rs.next()) {;
                 PacienteData pacienteData = new PacienteData();
                 Dieta dietaAux = new Dieta();
                 dietaAux.setId(rs.getInt(1));
@@ -289,7 +289,9 @@ public class DietaData {
                 dietaAux.setPeso_deseado(rs.getDouble(6));
                 dietaAux.setLimite_calorico(rs.getInt(7));
                 dietaAux.setEstado(rs.getBoolean(8));
-                listaAux.add(dietaAux);
+                if (dietaAux.getId_paciente().getPesoActual() != 0) {
+                    listaAux.add(dietaAux);
+                }
             }
 
             conec.close();
@@ -299,7 +301,7 @@ public class DietaData {
         }
         return listaAux;
     }
-    
+
     public ArrayList<Dieta> readAllDietaxKiloSubir(int kilos) {
         ArrayList<Dieta> listaAux = new ArrayList();
         String sql = "SELECT * FROM dieta d JOIN paciente p ON d.id_paciente"
@@ -308,7 +310,7 @@ public class DietaData {
             PreparedStatement ps = conec.prepareStatement(sql);
             ps.setInt(1, kilos);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {           ;
+            while (rs.next()) {;
                 PacienteData pacienteData = new PacienteData();
                 Dieta dietaAux = new Dieta();
                 dietaAux.setId(rs.getInt(1));
@@ -320,7 +322,10 @@ public class DietaData {
                 dietaAux.setPeso_deseado(rs.getDouble(6));
                 dietaAux.setLimite_calorico(rs.getInt(7));
                 dietaAux.setEstado(rs.getBoolean(8));
-                listaAux.add(dietaAux);
+                if (dietaAux.getId_paciente().getPesoActual() != 0) {
+                    listaAux.add(dietaAux);
+                }
+
             }
 
             conec.close();

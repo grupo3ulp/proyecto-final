@@ -366,7 +366,7 @@ public class BuscarPaciente extends javax.swing.JInternalFrame {
 
         } else if (rbtnKilos.isSelected()) {
             HashSet<Dieta> dietasAux = new HashSet<>(dietaData.readAllDietaxKiloBajar(Integer.parseInt(txtKilos.getText())));
-            HashSet<Dieta> dietasAux2 = new HashSet<>(dietaData2.readAllDietaxKiloSubir(Integer.parseInt(txtKilos.getText())*(-1)));
+            HashSet<Dieta> dietasAux2 = new HashSet<>(dietaData2.readAllDietaxKiloSubir(Integer.parseInt(txtKilos.getText()) * (-1)));
 
             if (cbMasoMenos.getSelectedItem().equals("-")) {
                 for (Dieta aux : dietasAux) {

@@ -214,7 +214,8 @@ public class PacienteData {
                 pesoDeseado = rs.getFloat("peso_deseado");
                 kilosBuscados = rs.getFloat("kilos_a_bajar");
                 kilosBajados = rs.getFloat("kilos_bajados");
-                if (pesoInicial > pesoDeseado) {
+              
+                if (pesoInicial > pesoDeseado ) {
                     modelo.addRow(new Object[]{pacienteAux.getNombre(), pacienteAux.getApellido(),
                         pacienteAux.getDomicilio(), pacienteAux.getDni(), pacienteAux.getTelefono(),
                         pacienteAux.getPesoActual(), pesoInicial, pesoDeseado, "-" + Math.abs(kilosBuscados), kilosBajados});

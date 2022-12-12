@@ -20,21 +20,10 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
      */
     public ModificarPaciente() {
         initComponents();
-        PacienteData pacienteData = new PacienteData();
-        ArrayList<Paciente> pacientes = pacienteData.readAllPaciente();
-         btnMod.setEnabled(false);
-          btnEliminar.setEnabled(false);
-        for (Paciente aux : pacientes) {
-            cbPaciente.addItem(aux);
-        }
-        cbPaciente.setSelectedItem(null);
+        btnMod.setEnabled(false);
+        btnEliminar.setEnabled(false);
 
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtDomicilio.setText("");
-        txtDni.setText("");
-        txtTelefono.setText("");
-        txtPesoActual.setText("");
+        cargarComboBox();
     }
 
     /**
@@ -145,9 +134,6 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
 
         txtTelefono.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyTyped(evt);
             }
@@ -222,17 +208,44 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
-
-    }//GEN-LAST:event_txtTelefonoKeyPressed
-
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+    private void habilitarBoton() {
         if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
                 || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
             btnMod.setEnabled(false);
         } else {
             btnMod.setEnabled(true);
         }
+    }
+
+    private void controlarLongitudString() {
+
+    }
+
+    private void resetearCampos() {
+        txtApellido.setText("");
+        txtDni.setText("");
+        txtDomicilio.setText("");
+        txtNombre.setText("");
+        txtPesoActual.setText("");
+        txtTelefono.setText("");
+        btnEliminar.setEnabled(false);
+        btnMod.setEnabled(false);
+        cbPaciente.setSelectedItem(null);
+    }
+
+    private void cargarComboBox() {
+        
+        PacienteData pacienteData = new PacienteData();
+        ArrayList<Paciente> pacientes = pacienteData.readAllPaciente();
+        cbPaciente.removeAllItems();
+        for (Paciente aux : pacientes) {
+            cbPaciente.addItem(aux);
+        }
+        cbPaciente.setSelectedItem(null);
+        resetearCampos();
+    }
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        habilitarBoton();
 
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
@@ -246,12 +259,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtPesoActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoActualKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnMod.setEnabled(false);
-        } else {
-            btnMod.setEnabled(true);
-        }
+        habilitarBoton();
 
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n') && !c.equals('.')) {
@@ -271,21 +279,16 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
             txtPesoActual.setText(String.valueOf(((Paciente) cbPaciente.getSelectedItem()).getPesoActual()));
             btnMod.setEnabled(true);
             btnEliminar.setEnabled(true);
-        }else{
-         btnMod.setEnabled(false);
-         btnEliminar.setEnabled(false);
+        } else {
+            btnMod.setEnabled(false);
+            btnEliminar.setEnabled(false);
         }
 
 
     }//GEN-LAST:event_cbPacienteItemStateChanged
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnMod.setEnabled(false);
-        } else {
-            btnMod.setEnabled(true);
-        }
+        habilitarBoton();
 
         Character c = evt.getKeyChar();
         if (!Character.isDigit(c) && !c.equals('\b') && !c.equals('\t') && !c.equals('\n')) {
@@ -300,12 +303,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void txtDomicilioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDomicilioKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnMod.setEnabled(false);
-        } else {
-            btnMod.setEnabled(true);
-        }
+        habilitarBoton();
 
         if (txtDomicilio.getText().length() > 19) {
             evt.consume();
@@ -313,24 +311,14 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDomicilioKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnMod.setEnabled(false);
-        } else {
-            btnMod.setEnabled(true);
-        }
+        habilitarBoton();
         if (txtApellido.getText().length() > 19) {
             evt.consume();
         }
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtDomicilio.getText().equals("")
-                || txtDni.getText().equals("") || txtTelefono.getText().equals("") || txtPesoActual.getText().equals("")) {
-            btnMod.setEnabled(false);
-        } else {
-            btnMod.setEnabled(true);
-        }
+        habilitarBoton();
         if (txtNombre.getText().length() > 19) {
             evt.consume();
         }
@@ -344,23 +332,14 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
                 txtDomicilio.getText(), txtDni.getText(),
                 txtTelefono.getText(), Float.parseFloat(txtPesoActual.getText()),
                 ((Paciente) cbPaciente.getSelectedItem()).isEstado());
+        cargarComboBox();
 
     }//GEN-LAST:event_btnModActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         PacienteData pacienteData = new PacienteData();
         pacienteData.deletePaciente(((Paciente) cbPaciente.getSelectedItem()).getId());
-        int index = cbPaciente.getSelectedIndex();
-        cbPaciente.removeItemAt(index);
-                
-        System.out.println(index);
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtDomicilio.setText("");
-        txtDni.setText("");
-        txtTelefono.setText("");
-        txtPesoActual.setText("");
-        cbPaciente.setSelectedItem(null);       
+        cargarComboBox();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -368,15 +347,7 @@ public class ModificarPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        txtApellido.setText("");
-        txtDni.setText("");
-        txtDomicilio.setText("");
-        txtNombre.setText("");
-        txtPesoActual.setText("");
-        txtTelefono.setText("");
-        btnEliminar.setEnabled(false);
-        btnMod.setEnabled(false);
-        cbPaciente.setSelectedItem(null);
+        resetearCampos();
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
 
