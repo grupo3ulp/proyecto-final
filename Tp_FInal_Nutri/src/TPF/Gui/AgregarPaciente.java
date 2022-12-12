@@ -6,10 +6,6 @@ package TPF.Gui;
 
 import TPF.Control.PacienteData;
 import TPF.Modelo.Paciente;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -250,6 +246,12 @@ public class AgregarPaciente extends javax.swing.JInternalFrame {
         }
 
         btnAgregar.setEnabled(false);
+             txtApellido.setText("");
+        txtDni.setText("");
+        txtDomicilio.setText("");
+        txtNombre.setText("");
+        txtPesoActual.setText("");
+        txtTelefono.setText("");
 
 
     }//GEN-LAST:event_btnAgregarActionPerformed
