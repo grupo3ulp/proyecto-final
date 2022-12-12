@@ -246,6 +246,7 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CDLimpiarActionPerformed
 
     private void CDGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CDGuardarActionPerformed
+       
         int aux = JOptionPane.showConfirmDialog(rootPane, "¿Está seguro que desea asignar esta dieta?");
         if (aux == 0) {
             boolean flag = true;
@@ -262,7 +263,8 @@ public class AgregarDieta extends javax.swing.JInternalFrame {
             dt.setId_paciente(((Paciente) CDListaPaciente.getSelectedItem()));
 
             DietaData DD = new DietaData();
-            for (Dieta dieta : DD.readAllDieta()) {
+             DietaData DD2= new DietaData();
+            for (Dieta dieta : DD2.readAllDieta()) {
                 if (((Paciente) CDListaPaciente.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
                     if (dieta.isEstado()) {
                         JOptionPane.showMessageDialog(null, "El paciente ya tiene una dieta, si quiere agregar una borre la que ya existe");
