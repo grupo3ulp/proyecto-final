@@ -49,6 +49,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
         columnas.add("Peso inicial");
         columnas.add("Peso deseado");
         columnas.add("Limite calorico");
+        columnas.add("Estado");
 
         for (Object columna : columnas) {
             modelo.addColumn(columna);
@@ -216,6 +217,7 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
     private void BDBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDBuscarActionPerformed
         DietaData dietaData = new DietaData();
         borrarFilasTabla();
+        String est;
         if (rbtnRango.isSelected()) {
             boolean esta = false;
             int dInicial = fechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -242,13 +244,18 @@ public class BuscarDieta extends javax.swing.JInternalFrame {
                     esta = false;
                 }
                 if (((Paciente) cbDietas.getSelectedItem()).getId() == dieta.getId_paciente().getId() && esta) {
-                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
+                    if (dieta.isEstado()) {
+                        est = "Activa";
+                    }else{
+                        est = "Inactiva";
+                    }
+                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico(), est});
                 }
             }
         } else {
             for (Dieta dieta : dietaData.readAllDieta()) {
                 if (((Paciente) cbDietas.getSelectedItem()).getId() == dieta.getId_paciente().getId()) {
-                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico()});
+                    modelo.addRow(new Object[]{dieta.getFecha_incio(), dieta.getFecha_fin(), dieta.getPeso_inicial(), dieta.getPeso_deseado(), dieta.getLimite_calorico(), "Activa"});
                 }
             }
         }
